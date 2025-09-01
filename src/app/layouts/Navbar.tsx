@@ -1,25 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/app/components/providers/ThemeToggle";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { theme } = useTheme();
 
-  return (
-    // Main navbar - WHITE in light mode, GRAY-900 in dark mode
-    <nav className={`bg-${theme === "light" ? "WHITE" : "GRAY-900"} dark:${theme === "dark" ? "WHITE" : "GRAY-900"} shadow-lg fixed w-full z-50 top-0 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 `}>
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
+      // Show navbar when at top of page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      }
+      // Hide when scrolling down, show when scrolling up
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+        setIsOpen(false); // Close mobile menu when hiding
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", throttledHandleScroll);
+    };
+  }, [lastScrollY]);
+
+  return (
+    <nav
+      className={`shadow-lg fixed w-full z-50 top-0 border-b transition-all duration-300 ${
+        theme === "dark"
+          ? "bg-gray-900 border-gray-700"
+          : "bg-white border-gray-200"
+      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div>
             <Link
               href="/"
-              className={`text-2xl font-bold text-${theme === "light" ? "GRAY-900" : "WHITE"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:text-blue-600 dark:hover:text-blue-400 transition-colors`}
+              className={`text-2xl font-bold transition-colors hover:text-blue-500 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
             >
               Eroll Oliver
             </Link>
@@ -30,25 +76,33 @@ export default function Navbar() {
             <div className="flex space-x-6">
               <Link
                 href="/"
-                className={`text-${theme === "light" ? "GRAY-900" : "WHITE"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:text-gray-900 dark:hover:text-white px-3 py-2 transition-colors`}
+                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-700"
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="#about"
-                className={`text-${theme === "light" ? "GRAY-900" : "WHITE"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:text-gray-900 dark:hover:text-white px-3 py-2 transition-colors`}
+                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-700"
+                }`}
               >
                 About
               </Link>
               <Link
                 href="#projects"
-                className={`text-${theme === "light" ? "GRAY-900" : "WHITE"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:text-gray-900 dark:hover:text-white px-3 py-2 transition-colors`}
+                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-700"
+                }`}
               >
                 Projects
               </Link>
               <Link
                 href="#contact"
-                className={`text-${theme === "light" ? "GRAY-900" : "WHITE"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:text-gray-900 dark:hover:text-white px-3 py-2 transition-colors`}
+                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-700"
+                }`}
               >
                 Contact
               </Link>
@@ -63,7 +117,11 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md text-${theme === "light" ? "GRAY-700" : "GRAY-300"} hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors`}
+              className={`p-2 rounded-md transition-colors ${
+                theme === "dark"
+                  ? "text-gray-300 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               <svg
@@ -95,32 +153,54 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className={`md:hidden bg-${theme === "light" ? "WHITE" : "GRAY-900"} border-t border-gray-200 dark:border-gray-700`}>
+        <div
+          className={`md:hidden border-t transition-colors duration-300 ${
+            theme === "dark"
+              ? "bg-gray-900 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/"
-              className={`block px-3 py-2 text-${theme === "light" ? "GRAY-700" : "GRAY-300"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors`}
+              className={`block px-3 py-2 rounded-md transition-colors hover:text-blue-500 ${
+                theme === "dark"
+                  ? "text-gray-300 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               href="#about"
-              className={`block px-3 py-2 text-${theme === "light" ? "GRAY-700" : "GRAY-300"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors`}
+              className={`block px-3 py-2 rounded-md transition-colors hover:text-blue-500 ${
+                theme === "dark"
+                  ? "text-gray-300 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
               href="#projects"
-              className={`block px-3 py-2 text-${theme === "light" ? "GRAY-700" : "GRAY-300"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors`}
+              className={`block px-3 py-2 rounded-md transition-colors hover:text-blue-500 ${
+                theme === "dark"
+                  ? "text-gray-300 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
               onClick={() => setIsOpen(false)}
             >
               Projects
             </Link>
             <Link
               href="#contact"
-              className={`block px-3 py-2 text-${theme === "light" ? "GRAY-700" : "GRAY-300"} dark:text-${theme === "dark" ? "WHITE" : "GRAY-900"} hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors`}
+              className={`block px-3 py-2 rounded-md transition-colors hover:text-blue-500 ${
+                theme === "dark"
+                  ? "text-gray-300 hover:bg-gray-800"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
               onClick={() => setIsOpen(false)}
             >
               Contact
