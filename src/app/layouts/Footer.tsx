@@ -1,22 +1,25 @@
 "use client";
 
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { useTheme } from "@/app/components/providers/ThemeProvider";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <footer className={`bg-${theme === "light" ? "WHITE" : "GRAY-900"} dark:${theme === "dark" ? "WHITE" : "GRAY-900"} border-t border-gray-200 dark:border-gray-700`}>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Eroll Maxharraj
+              Eroll Oliver
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-              Passionate full-stack developer creating innovative web solutions
-              with modern technologies. Always learning, always building.
+              Passionate developer creating innovative web solutions with modern
+              technologies. Always learning, always building.
             </p>
           </div>
 
@@ -81,7 +84,7 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              © {currentYear} Eroll Maxharraj. All rights reserved.
+              © {currentYear} Eroll Oliver. All rights reserved.
             </p>
             <p className="text-gray-600 dark:text-gray-300 text-sm flex items-center mt-2 sm:mt-0">
               Made with{" "}

@@ -37,6 +37,9 @@ export default function FirstSection() {
             innovation, continuously seeking new ways to drive growth and
             deliver exceptional results.
           </p>
+
+          {/* Additional Information */}
+          {/* to be added CV, number, email. location (City, Country),  */}
         </div>
         {/* column 2 */}
         <div className="flex justify-center">
