@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     // Main navbar - WHITE in light mode, GRAY-900 in dark mode
-    <nav className={`bg-${theme === "light" ? "WHITE" : "GRAY-900"} dark:${theme === "dark" ? "WHITE" : "GRAY-900"} shadow-lg fixed w-full z-50 top-0 border-b border-gray-200 dark:border-gray-700 transition-all duration-300`}>
+    <nav className={`bg-${theme === "light" ? "WHITE" : "GRAY-900"} dark:${theme === "dark" ? "WHITE" : "GRAY-900"} shadow-lg fixed w-full z-50 top-0 border-b border-gray-200 dark:border-gray-700 transition-all duration-300 `}>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
