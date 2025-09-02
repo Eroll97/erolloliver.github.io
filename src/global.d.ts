@@ -20,6 +20,12 @@ declare global {
     interface IntrinsicElements {
       meshLineGeometry: any;
       meshLineMaterial: any;
+      // Add other Three.js elements you might use
+      group: any;
+      mesh: any;
+      geometry: any;
+      material: any;
+      primitive: any;
     }
   }
 }

@@ -42,7 +42,7 @@ export default function Lanyard({
 
   return (
     <div
-      className={`relative z-0 w-full h-96 flex justify-center items-center transform scale-100 origin-center ${className}`}
+      className={`relative z-0 w-full h-96 flex justify-center items-center transform scale-100 origin-center ${className} z-10 overflow-visible`}
     >
       <Canvas
         camera={{ position, fov }}
@@ -53,6 +53,7 @@ export default function Lanyard({
             transparent ? 0 : 1
           )
         }
+        className=" overflow-visible"
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
@@ -120,9 +121,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     linearDamping: 4,
   };
 
-  // ✅ FIXED - Using public folder paths
   const { nodes, materials } = useGLTF("/assets/card.glb") as any;
-  const texture = useTexture("/assets/lanyard.png");
+  const lanyardTexture = useTexture("/assets/lanyard.png");
+  const cardTexture = useTexture("/assets/teloy.jpeg");
 
   const [curve] = useState(
     () =>
@@ -208,7 +209,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   });
 
   curve.curveType = "chordal";
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  lanyardTexture.wrapS = lanyardTexture.wrapT = THREE.RepeatWrapping;
 
   return (
     <>
@@ -273,7 +274,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={materials.base.map}
+                map={cardTexture}
                 map-anisotropy={16}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
@@ -291,13 +292,15 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         </RigidBody>
       </group>
       <mesh ref={band}>
+        {/* @ts-ignore */}
         <meshLineGeometry />
+        {/* @ts-ignore */}
         <meshLineMaterial
           color={theme === "dark" ? "#6366f1" : "#3b82f6"}
           depthTest={false}
           resolution={isSmall ? [1000, 2000] : [1000, 1000]}
           useMap
-          map={texture}
+          map={lanyardTexture}
           repeat={[-4, 1]}
           lineWidth={1}
         />
