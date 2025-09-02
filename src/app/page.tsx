@@ -5,11 +5,10 @@ import AboutSection from "./components/sections/AboutSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className=" bg-white dark:bg-gray-900">
       <Navbar />
       <FirstSection />
       <AboutSection />
-      
       <Footer />
     </div>
   );

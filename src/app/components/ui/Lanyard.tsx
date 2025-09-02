@@ -53,7 +53,7 @@ export default function Lanyard({
             transparent ? 0 : 1
           )
         }
-        className=" overflow-visible"
+    
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>

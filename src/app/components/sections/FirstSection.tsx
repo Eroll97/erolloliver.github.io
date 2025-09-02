@@ -8,17 +8,15 @@ export default function FirstSection() {
   const { theme } = useTheme();
 
   return (
-    <section
-      className={`min-h-screen pt-20 ${
-        theme === "dark" ? "bg-gray-900" : "bg-white"
-      } overflow-visible z-10`}
 
-    >
       <div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center px-4 py-16 overflow-visible"
+        className={` pt-20 ${
+        theme === "dark" ? "bg-gray-900" : "bg-white"
+      } overflow-visible grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16 min-h-auto
+      `}
       >
         {/* Text Column */}
-        <div className="pl-16 w-full text-center lg:text-left">
+        <div className="pl-16  pt-16 w-full text-center lg:text-left">
           <h1
             className={`text-4xl md:text-6xl font-bold mb-4 ${
               theme === "dark" ? "text-white" : "text-gray-900"
@@ -43,16 +41,13 @@ export default function FirstSection() {
         </div>
 
         {/* 3D Lanyard Column */}
-        <div
-          className="flex flex-col flex-nowrap justify-center relative overflow-visible z-10 "
-        >
+    
           <Lanyard
-            position={[0, 0, 10]}
+            position={[0, 0, 5]}
             gravity={[0, -20, 0]}
-            className="w-full h-64"
+            // className="w-full max-w-lg z-50 relative overflow-auto"
           />
-        </div>
+      
       </div>
-    </section>
   );
 }
