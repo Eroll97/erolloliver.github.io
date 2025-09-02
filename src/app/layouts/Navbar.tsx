@@ -125,7 +125,6 @@ export default function Navbar() {
                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               } focus:outline-none focus:ring-2 focus:ring-blue-500`}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
             >
               {/* Animated Burger Icon */}
               <div className="w-6 h-6 flex flex-col justify-center space-y-1">
