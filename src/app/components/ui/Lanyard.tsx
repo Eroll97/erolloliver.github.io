@@ -42,7 +42,7 @@ export default function Lanyard({
 
   return (
     <div
-      className={`relative z-0 w-full h-96 flex justify-center items-center transform scale-100 origin-center ${className} z-10 overflow-visible`}
+      className={`relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center`}
     >
       <Canvas
         camera={{ position, fov }}
@@ -53,37 +53,82 @@ export default function Lanyard({
             transparent ? 0 : 1
           )
         }
-    
       >
-        <ambientLight intensity={Math.PI} />
+        {/* ✅ REDUCED AMBIENT LIGHT */}
+        <ambientLight
+          intensity={theme === "dark" ? Math.PI * 0.2 : Math.PI * 3} // ✅ Reduced from 1 to 0.6
+        />
+
+        {/* ✅ SOFTER DIRECTIONAL LIGHT */}
+        <directionalLight
+          position={[5, 5, 5]}
+          intensity={theme === "dark" ? 1 : 1} // ✅ Reduced from 2 to 1.2
+          color={theme === "dark" ? "#ffffff" : "#f0f0f0"}
+          castShadow={false}
+        />
+
         <Physics gravity={gravity} timeStep={1 / 60}>
           <Band />
         </Physics>
+
         <Environment blur={0.75}>
+          {/* ✅ REDUCED KEY LIGHT */}
           <Lightformer
-            intensity={theme === "dark" ? 1.5 : 2}
-            color={theme === "dark" ? "#3b82f6" : "white"}
+            intensity={theme === "dark" ? 2 : 1.5} // ✅ Reduced from 3 to 2
+            color={theme === "dark" ? "#FFF8ED" : "#e8e8e8"}
+            position={[0, 2, 8]}
+            rotation={[0, 0, 0]}
+            scale={[20, 20, 1]}
+          />
+
+          {/* ✅ REDUCED FILL LIGHT */}
+          <Lightformer
+            intensity={theme === "dark" ? 1.5 : 1} // ✅ Reduced from 2.5 to 1.5
+            color={theme === "dark" ? "#f0f8ff" : "#d0d0d0"}
+            position={[3, 1, 6]}
+            rotation={[-Math.PI / 6, 0, 0]}
+            scale={[15, 15, 1]}
+          />
+
+          {/* ✅ REDUCED OPPOSITE FILL LIGHT */}
+          <Lightformer
+            intensity={theme === "dark" ? 1 : 0.8} // ✅ Reduced from 2 to 1.2
+            color={theme === "dark" ? "#f0f8ff" : "#c8c8c8"}
+            position={[-3, 1, 6]}
+            rotation={[Math.PI / 6, 0, 0]}
+            scale={[15, 15, 1]}
+          />
+
+          {/* ✅ BACKGROUND/RIM LIGHT */}
+          <Lightformer
+            intensity={theme === "dark" ? 1 : 2} // ✅ Reduced from 1.5 to 1
+            color={theme === "dark" ? "#4f46e5" : "#6b7280"}
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
+
+          {/* ✅ REDUCED CONTRAST LIGHTS */}
           <Lightformer
-            intensity={theme === "dark" ? 2 : 3}
-            color={theme === "dark" ? "#6366f1" : "white"}
+            intensity={theme === "dark" ? 1.2 : 3} // ✅ Reduced from 2 to 1.2
+            color={theme === "dark" ? "#6366f1" : "#9ca3af"}
             position={[-1, -1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
+
           <Lightformer
-            intensity={theme === "dark" ? 2 : 3}
-            color="white"
+            intensity={theme === "dark" ? 1.2 : 3} // ✅ Reduced from 2 to 1.2
+            color={theme === "dark" ? "#ffffff" : "#6b7280"}
             position={[1, 1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
+
+          {/* ✅ SIGNIFICANTLY REDUCED MAIN KEY LIGHT */}
           <Lightformer
-            intensity={theme === "dark" ? 8 : 10}
-            color="white"
+            intensity={theme === "dark" ? 6 : 8} // ✅ Reduced from 12 to 6
+            color={theme === "dark" ? "#ffffff" : "#8b5cf6"}
             position={[-10, 0, 14]}
             rotation={[0, Math.PI / 2, Math.PI / 3]}
             scale={[100, 10, 1]}
@@ -210,6 +255,30 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   curve.curveType = "chordal";
   lanyardTexture.wrapS = lanyardTexture.wrapT = THREE.RepeatWrapping;
+
+  useEffect(() => {
+    if (cardTexture) {
+      // ✅ Try different rotation values to fix orientation
+      cardTexture.rotation = -Math.PI; // -90 degrees
+      // OR try: cardTexture.rotation = Math.PI / 2; // 90 degrees
+      // OR try: cardTexture.rotation = Math.PI; // 180 degrees
+
+      cardTexture.center.set(0.5, 0.5);
+
+      // ✅ Ensure full coverage
+      cardTexture.repeat.set(1.8, 1.2); // Slightly larger to ensure coverage
+      cardTexture.offset.set(-0.4, -0.1); // Center the larger image
+
+      // ✅ Fix wrapping
+      cardTexture.wrapS = THREE.ClampToEdgeWrapping;
+      cardTexture.wrapT = THREE.ClampToEdgeWrapping;
+
+      // ✅ Flip settings
+      cardTexture.flipY = true; // Try both true and false
+
+      cardTexture.needsUpdate = true;
+    }
+  }, [cardTexture]);
 
   return (
     <>
