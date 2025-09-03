@@ -14,22 +14,38 @@ export default function AboutSection() {
     >
       <div className="max-w-4xl mx-auto">
         <h2
-          className={`text-3xl text-center font-bold mb-6 ${
+          className={`text-3xl text-left font-bold mb-6 ${
             theme === "dark" ? "text-white" : "text-gray-900"
           }`}
         >
-          About Me
+          Learn More About Me
         </h2>
         <p
           className={`text-lg text-justify  leading-relaxed mb-8 ${
             theme === "dark" ? "text-gray-300" : "text-gray-700"
-          }`}
+          } text-left`}
         >
           I am a passionate Full Stack Developer with expertise in building
           dynamic web applications. With over 3 years of experience in crafting
           digital solutions, I specialize in modern web technologies and digital
           marketing strategies that drive results.
         </p>
+
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* image division */}
+          <div>
+            <img src="/path/to/image.jpg" alt="Description" />
+          </div>
+
+          {/* description */}
+          <div>
+            <p>
+              This is a description of the image. It provides context and
+              details about what the image represents.
+            </p>
+          </div>
+
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
