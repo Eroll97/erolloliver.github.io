@@ -11,7 +11,7 @@ export default function Home() {
     <div className=" bg-white dark:bg-gray-900">
       <Navbar />
 
-      <div className="overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto ">
+      <div className="overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto h-screen">
         <FirstSection />
 
         <Lanyard

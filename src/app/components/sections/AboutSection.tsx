@@ -14,6 +14,8 @@ import {
   Mountain,
   Camera,
   BookOpen,
+  BrainCog,
+  Brain,
 } from "lucide-react";
 import PixelTransition from "../ui/PixelTransition";
 
@@ -44,6 +46,11 @@ export default function AboutSection() {
     {
       icon: BookOpen,
       fact: "I read one tech book and one fiction book every month",
+      color: "text-pink-500",
+    },
+    {
+      icon: BrainCog,
+      fact: "I think algorithms are like puzzles waiting to be solved",
       color: "text-pink-500",
     },
   ];
@@ -330,13 +337,13 @@ export default function AboutSection() {
               }`}
             >
               <div className="flex items-center space-x-3 mb-4">
-                <Code className="w-8 h-8 text-blue-500" />
+                <Palette className="w-8 h-8 text-blue-500" />
                 <h4
                   className={`text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Frontend
+                  Design Spotter
                 </h4>
               </div>
               <p
@@ -356,15 +363,13 @@ export default function AboutSection() {
               }`}
             >
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">DB</span>
-                </div>
+                <Brain className="w-8 h-8 text-green-500" />
                 <h4
                   className={`text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Backend
+                  High Perception
                 </h4>
               </div>
               <p
@@ -372,7 +377,7 @@ export default function AboutSection() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                Node.js, Python, PostgreSQL, MongoDB, Express.js, REST APIs
+                Node.js, Python, PostgreSQL
               </p>
             </div>
 
@@ -384,13 +389,13 @@ export default function AboutSection() {
               }`}
             >
               <div className="flex items-center space-x-3 mb-4">
-                <TrendingUp className="w-8 h-8 text-purple-500" />
+                <Users className="w-8 h-8 text-purple-500" />
                 <h4
                   className={`text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Strategy
+                  Enthusiast in Collaboration
                 </h4>
               </div>
               <p
