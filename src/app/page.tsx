@@ -13,12 +13,14 @@ export default function Home() {
 
       <div className="overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto ">
         <FirstSection />
+
         <Lanyard
           position={[0, 0, 10]}
           gravity={[0, -40, 0]}
-          className="overflow-visible z-10"
+        
         />
       </div>
+      <hr className="m-20" />
 
       <AboutSection />
       <ProjectsSection />
