@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
+import Image from "next/image";
 import {
   Code,
   Palette,
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 import PixelTransition from "../ui/PixelTransition";
 
-export default function   AboutSection() {
+export default function AboutSection() {
   const { theme } = useTheme();
 
   return (
@@ -46,29 +47,36 @@ export default function   AboutSection() {
           <div className="flex justify-center">
             <PixelTransition
               firstContent={
-                <div className="w-full h-full bg-gradient-to-br flex items-center justify-center rounded-[15px]">
-                  <img
-                    src="./public/assets/bee_farm_photo.jpeg"
+                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center rounded-[15px] relative">
+                  <Image
+                    src="/assets/bee_farm_photo.jpeg"
                     alt="Eroll Oliver - Full Stack Developer"
-                    className="w-full h-full object-cover rounded-[13px]"
-                    onError={(e) => {
-                      // Fallback if image doesn't load
-                      e.currentTarget.style.display = "none";
-                      e.currentTarget.parentElement!.innerHTML = `
-                        <div class="w-full h-full flex items-center justify-center text-white">
-                          <div class="text-center">
-                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                              </svg>
-                            </div>
-                            <p class="font-semibold">Eroll Oliver</p>
-                            <p class="text-sm opacity-80">Full Stack Developer</p>
-                          </div>
-                        </div>
-                      `;
+                    fill
+                    className="object-cover rounded-[13px]"
+                    onError={() => {
+                      console.log("Image failed to load");
                     }}
                   />
+                  {/* Fallback content - only shows if image fails */}
+                  <div className="absolute inset-0 flex items-center justify-center text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-[13px] opacity-0 [&.show]:opacity-100">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg
+                          className="w-10 h-10"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                      <p className="font-semibold">Eroll Oliver</p>
+                      <p className="text-sm opacity-80">Full Stack Developer</p>
+                    </div>
+                  </div>
                 </div>
               }
               secondContent={
@@ -79,45 +87,20 @@ export default function   AboutSection() {
                       : "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900"
                   }`}
                 >
+                  {/* diri sugod sa words ni taloloy */}
                   <div className="text-center space-y-4">
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="text-center">
-                        <Calendar className="w-8 h-8 mx-auto mb-2 text-blue-500" />
-                        <div className="text-2xl font-bold">3+</div>
-                        <div className="text-sm opacity-75">
-                          Years Experience
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <Award className="w-8 h-8 mx-auto mb-2 text-green-500" />
-                        <div className="text-2xl font-bold">50+</div>
-                        <div className="text-sm opacity-75">
-                          Projects Completed
-                        </div>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-center space-x-2">
-                        <Code className="w-5 h-5 text-blue-400" />
-                        <span className="text-sm">Full Stack Development</span>
-                      </div>
-                      <div className="flex items-center justify-center space-x-2">
-                        <TrendingUp className="w-5 h-5 text-green-400" />
-                        <span className="text-sm">Digital Marketing</span>
-                      </div>
-                      <div className="flex items-center justify-center space-x-2">
-                        <Users className="w-5 h-5 text-purple-400" />
-                        <span className="text-sm">Team Leadership</span>
-                      </div>
-                    </div>
+                    {/* mga words ni taloy */}
+                    <h3 className="text-4xl font-semibold">
+                      Handsome, Yeah 😉
+                    </h3>
                   </div>
                 </div>
               }
-              gridSize={8}
+              gridSize={15}
               animationStepDuration={0.4}
               className="w-full max-w-md mx-auto"
               aspectRatio="100%"
-              pixelColor={theme === "dark" ? "#374151" : "#6b7280"}
+              pixelColor={theme === "dark" ? "#ffffff" : "#6b7280"}
             />
           </div>
 
@@ -137,8 +120,8 @@ export default function   AboutSection() {
                 }`}
               >
                 As a seasoned digital marketing expert with over 5 years of
-                proven success, I've evolved into a Full Stack Developer who
-                bridges the gap between technical excellence and business
+                proven success, I&apos;ve evolved into a Full Stack Developer
+                who bridges the gap between technical excellence and business
                 strategy.
               </p>
               <p
