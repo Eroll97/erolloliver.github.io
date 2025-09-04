@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useTheme } from "../providers/ThemeProvider";
-import Lanyard from "../ui/Lanyard";
 
 export default function FirstSection() {
   const { theme } = useTheme();
@@ -11,7 +10,7 @@ export default function FirstSection() {
     <div
       className={` pt-20 ${
         theme === "dark" ? "bg-gray-900" : "bg-white"
-      } overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto
+      } 
       `}
     >
       {/* Text Column */}
@@ -40,11 +39,7 @@ export default function FirstSection() {
       </div>
 
       {/* 3D Lanyard Column */}
-      <Lanyard
-        position={[0, 0, 11]}
-        gravity={[0, -40, 0]}
-        className="overflow-visible z-10"
-      />
+
     </div>
   );
 }
