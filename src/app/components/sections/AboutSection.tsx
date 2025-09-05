@@ -2,15 +2,9 @@
 import React from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 import Image from "next/image";
-import {
-  Code,
-  Palette,
-  TrendingUp,
-  Award,
-  Users,
-  Calendar,
-} from "lucide-react";
+import { Code, TrendingUp, Cloud, Smartphone, Palette } from "lucide-react";
 import PixelTransition from "../ui/PixelTransition";
+import ScrambledText from "../Text-animation/ScrambledText";
 
 export default function AboutSection() {
   const { theme } = useTheme();
@@ -87,12 +81,12 @@ export default function AboutSection() {
                       : "bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900"
                   }`}
                 >
-                  {/* diri sugod sa words ni taloloy */}
-                  <div className="text-center space-y-4">
-                    {/* mga words ni taloy */}
-                    <h3 className="text-4xl font-semibold">
-                      Handsome, Yeah 😉
-                    </h3>
+                  <div className="text-center space-y-6">
+                    <div className="space-y-2">
+                      <h3 className="text-6xl font-semibold">
+                        Handsome Yeah 😉
+                      </h3>
+                    </div>
                   </div>
                 </div>
               }
@@ -100,7 +94,7 @@ export default function AboutSection() {
               animationStepDuration={0.4}
               className="w-full max-w-md mx-auto"
               aspectRatio="100%"
-              pixelColor={theme === "dark" ? "#ffffff" : "#6b7280"}
+              pixelColor={theme === "dark" ? "#ffffff" : "#ffffff"}
             />
           </div>
 
@@ -114,60 +108,36 @@ export default function AboutSection() {
               >
                 My Journey
               </h3>
-              <p
-                className={`text-base leading-relaxed mb-4 ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}
+              {/* Example usage of ScrambledText component */}
+              <ScrambledText
+                radius={100}
+                duration={1.2}
+                speed={0.5}
+                scrambleChars=".:"
               >
-                As a seasoned digital marketing expert with over 5 years of
-                proven success, I&apos;ve evolved into a Full Stack Developer
-                who bridges the gap between technical excellence and business
-                strategy.
-              </p>
-              <p
-                className={`text-base leading-relaxed ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                I thrive on creativity and innovation, continuously seeking new
-                ways to drive growth and deliver exceptional results through
-                cutting-edge web technologies and data-driven marketing
-                approaches.
-              </p>
-            </div>
+                <p className="text-base leading-relaxed mb-4">
+                  As a seasoned digital marketing expert with over 5 years of
+                  proven success, I&apos;ve evolved into a Full Stack Developer
+                  who bridges the gap between technical excellence and business
+                  strategy.
+                </p>
+               
+              </ScrambledText>
 
-            {/* Quick stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div
-                className={`p-4 rounded-lg ${
-                  theme === "dark"
-                    ? "bg-gray-800 border border-gray-700"
-                    : "bg-gray-50 border border-gray-200"
-                }`}
+                <ScrambledText
+                radius={100}
+                duration={1.2}
+                speed={0.5}
+                scrambleChars=".:"
               >
-                <div className="flex items-center space-x-3">
-                  <Code className="w-6 h-6 text-blue-500" />
-                  <div>
-                    <div className="font-semibold">Development</div>
-                    <div className="text-sm opacity-75">Full Stack</div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`p-4 rounded-lg ${
-                  theme === "dark"
-                    ? "bg-gray-800 border border-gray-700"
-                    : "bg-gray-50 border border-gray-200"
-                }`}
-              >
-                <div className="flex items-center space-x-3">
-                  <TrendingUp className="w-6 h-6 text-green-500" />
-                  <div>
-                    <div className="font-semibold">Marketing</div>
-                    <div className="text-sm opacity-75">Digital Strategy</div>
-                  </div>
-                </div>
-              </div>
+          
+                <p className="text-base leading-relaxed">
+                  I thrive on creativity and innovation, continuously seeking
+                  new ways to drive growth and deliver exceptional results
+                  through cutting-edge web technologies and data-driven
+                  marketing approaches.
+                </p>
+              </ScrambledText>
             </div>
           </div>
         </div>
@@ -175,13 +145,13 @@ export default function AboutSection() {
         {/* Skills section */}
         <div>
           <h3
-            className={`text-2xl font-semibold text-center mb-8 ${
+            className={`text-4xl font-bold text-center mb-8 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            Technical Expertise
+            Skilled In
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
               className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
@@ -232,7 +202,7 @@ export default function AboutSection() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                Node.js, Python, PostgreSQL, MongoDB, Express.js
+                Node.js, Python, PostgreSQL
               </p>
             </div>
 
@@ -259,6 +229,84 @@ export default function AboutSection() {
                 }`}
               >
                 SEO, Social Media, Analytics, Strategy, Content Marketing
+              </p>
+            </div>
+
+            <div
+              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 hover:border-orange-500"
+                  : "bg-gray-50 border border-gray-200 hover:border-orange-500 hover:shadow-lg"
+              }`}
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <Cloud className="w-8 h-8 text-orange-500" />
+                <h4
+                  className={`text-xl font-semibold ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  Cloud & DevOps
+                </h4>
+              </div>
+              <p
+                className={`${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                AWS, Docker, Vercel, CI/CD, Git
+              </p>
+            </div>
+
+            <div
+              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 hover:border-pink-500"
+                  : "bg-gray-50 border border-gray-200 hover:border-pink-500 hover:shadow-lg"
+              }`}
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <Smartphone className="w-8 h-8 text-pink-500" />
+                <h4
+                  className={`text-xl font-semibold ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  Mobile
+                </h4>
+              </div>
+              <p
+                className={`${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                React Native, Flutter, Progressive Web Apps
+              </p>
+            </div>
+
+            <div
+              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 hover:border-cyan-500"
+                  : "bg-gray-50 border border-gray-200 hover:border-cyan-500 hover:shadow-lg"
+              }`}
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <Palette className="w-8 h-8 text-cyan-500" />
+                <h4
+                  className={`text-xl font-semibold ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  Design
+                </h4>
+              </div>
+              <p
+                className={`${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
+                Figma, Adobe Creative Suite, UI/UX Design
               </p>
             </div>
           </div>
