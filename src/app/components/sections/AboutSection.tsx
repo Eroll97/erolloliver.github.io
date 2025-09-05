@@ -22,18 +22,8 @@ export default function AboutSection() {
             theme === "dark" ? "text-white" : "text-gray-900"
           }`}
         >
-          About Me
+          Learn More About Me
         </h2>
-        <p
-          className={`text-lg text-center leading-relaxed mb-12 max-w-3xl mx-auto ${
-            theme === "dark" ? "text-gray-300" : "text-gray-700"
-          }`}
-        >
-          I am a passionate Full Stack Developer with expertise in building
-          dynamic web applications. With over 3 years of experience in crafting
-          digital solutions, I specialize in modern web technologies and digital
-          marketing strategies that drive results.
-        </p>
 
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -121,16 +111,14 @@ export default function AboutSection() {
                   who bridges the gap between technical excellence and business
                   strategy.
                 </p>
-               
               </ScrambledText>
 
-                <ScrambledText
+              <ScrambledText
                 radius={100}
                 duration={1.2}
                 speed={0.5}
                 scrambleChars=".:"
               >
-          
                 <p className="text-base leading-relaxed">
                   I thrive on creativity and innovation, continuously seeking
                   new ways to drive growth and deliver exceptional results
@@ -187,14 +175,14 @@ export default function AboutSection() {
             >
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">DB</span>
+                  <span className="text-white font-bold text-sm">VE</span>
                 </div>
                 <h4
                   className={`text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Backend
+                  Video Editing & Graphics
                 </h4>
               </div>
               <p
@@ -202,7 +190,7 @@ export default function AboutSection() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                Node.js, Python, PostgreSQL
+                Adobe Premiere Pro, After Effects, Photoshop, Illustrator
               </p>
             </div>
 
