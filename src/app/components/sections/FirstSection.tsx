@@ -25,14 +25,20 @@ export default function FirstSection() {
           Hi, I&apos;m <span className="text-blue-500">Eroll Oliver</span>
         </h1>
 
-        <TextType 
-  text={["Digital Marketing Expert", "Video Editor", "Graphics Designer", "Developer", "Father and Husband"]}
-  typingSpeed={75}
-  pauseDuration={1500}
-  showCursor={true}
-  cursorCharacter="|"
-/>
-      
+        <TextType
+          text={[
+            "Digital Marketing Expert",
+            "Video Editor",
+            "Graphics Designer",
+            "Developer",
+            "Father and Husband",
+          ]}
+          typingSpeed={75}
+          pauseDuration={1500}
+          showCursor={true}
+          cursorCharacter="|"
+        />
+
         <p className="text-justify max-w-lg mx-auto lg:mx-0 text-gray-500">
           I am Eroll Oliver, a seasoned digital marketing expert with over 5
           years of proven success in crafting and executing effective
@@ -146,11 +152,15 @@ export default function FirstSection() {
       </div>
 
       {/* 3D Lanyard Column */}
-      <Lanyard
-        position={[0, 0, 11]}
-        gravity={[0, -40, 0]}
-        className="overflow-visible z-10"
-      />
+      <div className="order-2 flex justify-center items-center h-full">
+        <div className="w-full max-w-md">
+          <Lanyard
+            position={[0, 0, 11]} // Reduced from 11 to 5
+            gravity={[0, -40, 0]} // Reduced from -40 to -20
+            className="overflow-visible z-10"
+          />
+        </div>
+      </div>
     </div>
   );
 }
