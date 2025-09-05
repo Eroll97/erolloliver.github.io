@@ -42,7 +42,7 @@ export default function Lanyard({
 
   return (
     <div
-      className={`absolute z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center`}
+      className={`relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center`}
     >
       <Canvas
         camera={{ position, fov }}
