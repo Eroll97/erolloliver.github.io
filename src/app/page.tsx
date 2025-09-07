@@ -10,9 +10,7 @@ export default function Home() {
     <div className=" bg-white dark:bg-gray-900">
       <Navbar />
 
-        <FirstSection />
-
-
+      <FirstSection />
       <AboutSection />
       <ProjectsSection />
       <ContactSection />
