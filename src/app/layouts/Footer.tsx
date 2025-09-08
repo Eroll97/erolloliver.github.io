@@ -8,24 +8,55 @@ export default function Footer() {
   const { theme } = useTheme();
 
   return (
-    <footer className={`bg-${theme === "light" ? "WHITE" : "GRAY-900"} dark:${theme === "dark" ? "WHITE" : "GRAY-900"} border-t border-gray-200 dark:border-gray-700`}>
-
+    <footer
+      className={`border-t transition-all duration-300 ${
+        theme === "dark"
+          ? "bg-gray-900 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3
+              className={`text-lg font-semibold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
               Eroll Oliver
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+            <br />
+            <p
+              className={`text-sm leading-relaxed ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               Passionate developer creating innovative web solutions with modern
               technologies. Always learning, always building.
             </p>
+
+            <p
+              className={`mt-4 text-sm ${
+                theme === "dark" ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Isaiah 29:11 
+              <br />
+              "For I know the plans I have for you, declares the
+              Lord, plans to prosper you and not to harm you, plans to give you
+              hope and a future."
+            </p>
+
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3
+              className={`text-lg font-semibold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -33,7 +64,9 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors duration-200"
+                    className={`text-sm transition-colors duration-200 hover:text-blue-500 ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-600"
+                    }`}
                   >
                     {link}
                   </a>
@@ -44,7 +77,11 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3
+              className={`text-lg font-semibold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
               Connect
             </h3>
             <div className="flex space-x-4">
@@ -54,7 +91,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 title="GitHub Profile"
                 aria-label="Visit GitHub Profile"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                className={`transition-colors duration-200 hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 <Github size={20} />
               </a>
@@ -64,7 +103,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 title="LinkedIn Profile"
                 aria-label="Visit LinkedIn Profile"
-                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                className={`transition-colors duration-200 hover:text-blue-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 <Linkedin size={20} />
               </a>
@@ -72,7 +113,9 @@ export default function Footer() {
                 href="mailto:eroll@example.com"
                 title="Send Email"
                 aria-label="Send an email"
-                className="text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                className={`transition-colors duration-200 hover:text-red-500 ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
               >
                 <Mail size={20} />
               </a>
@@ -81,12 +124,24 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div
+          className={`mt-8 pt-8 border-t ${
+            theme === "dark" ? "border-gray-700" : "border-gray-200"
+          }`}
+        >
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
+            <p
+              className={`text-sm ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               © {currentYear} Eroll Oliver. All rights reserved.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 text-sm flex items-center mt-2 sm:mt-0">
+            <p
+              className={`text-sm flex items-center mt-2 sm:mt-0 ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               Made with{" "}
               <Heart
                 size={16}

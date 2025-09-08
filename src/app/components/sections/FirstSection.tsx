@@ -2,59 +2,167 @@
 
 import React from "react";
 import { useTheme } from "../providers/ThemeProvider";
-import ProfileCard from "../ui/profileCard";
-
+import { Mail, MapPin, Phone } from "lucide-react";
+import Lanyard from "../ui/Lanyard";
+import TextType from "../Text-animation/TextType";
 export default function FirstSection() {
   const { theme } = useTheme();
 
   return (
-    <section
-      className={`min-h-screen pt-20 ${
+    <div
+      className={` pt-20 ${
         theme === "dark" ? "bg-gray-900" : "bg-white"
-      }`}
+      } overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto
+      `}
     >
-      <div className="grid grid-cols-2 grid-rows-1 gap-4 items-center justify-center px-4 py-16">
-        <div className="text-center mb-12">
-          <h1
-            className={`text-4xl md:text-6xl font-bold mb-4 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Hi, I&apos;m <span className="text-blue-500">Eroll Oliver</span>
-          </h1>
-          <p
-            className={`text-xl md:text-2xl ${
-              theme === "dark" ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Full Stack Developer & Digital Marketing Expert
-          </p>
-          <p className="text-justify mt-6 max-w-lg mx-auto text-gray-500">
-            
-            I am Eroll Oliver, a seasoned digital marketing expert with over 5
-            years of proven success in crafting and executing effective
-            strategies. As a Digital Strategist, I thrive on creativity and
-            innovation, continuously seeking new ways to drive growth and
-            deliver exceptional results.
-          </p>
+      {/* Text Column */}
+      <div className="pl-16  pt-16 w-full text-center lg:text-left mt-20">
+        <h1
+          className={`text-4xl md:text-6xl font-bold mb-4 ${
+            theme === "dark" ? "text-white" : "text-gray-900"
+          }`}
+        >
+          Hi, I&apos;m <span className="text-blue-500">Eroll Oliver</span>
+        </h1>
 
-          {/* Additional Information */}
-          {/* to be added CV, number, email. location (City, Country),  */}
+        <TextType
+          text={[
+            "Digital Marketing Expert",
+            "Video Editor",
+            "Graphics Designer",
+            "Developer",
+            "Father and Husband",
+          ]}
+          typingSpeed={75}
+          pauseDuration={1500}
+          showCursor={true}
+          cursorCharacter="|"
+        />
+
+        <p className="text-justify max-w-lg mx-auto lg:mx-0 text-gray-500">
+          I am Eroll Oliver, a seasoned digital marketing expert with over 5
+          years of proven success in crafting and executing effective
+          strategies. As a Digital Strategist, I thrive on creativity and
+          innovation, continuously seeking new ways to drive growth and deliver
+          exceptional results.
+        </p>
+
+        <a
+          href="https://drive.google.com/file/d/1wikQl77-nIu-bgLFePNkNT4jTvslUQ5j/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-6"
+        >
+          View CV
+        </a>
+
+        <div className="mt-8 space-y-4">
+          <div className="flex items-center space-x-3">
+            <div
+              className={`p-2 rounded-lg ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <Mail
+                className={`w-4 h-4 ${
+                  theme === "dark" ? "text-blue-400" : "text-blue-600"
+                }`}
+              />
+            </div>
+            <div>
+              <p
+                className={`text-xs font-medium uppercase tracking-wide ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Email
+              </p>
+              <a
+                href="mailto:erolloliver97@gmail.com"
+                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
+                  theme === "dark" ? "text-gray-200" : "text-gray-700"
+                }`}
+              >
+                erolloliver97@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <div
+              className={`p-2 rounded-lg ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <MapPin
+                className={`w-4 h-4 ${
+                  theme === "dark" ? "text-green-400" : "text-green-600"
+                }`}
+              />
+            </div>
+            <div>
+              <p
+                className={`text-xs font-medium uppercase tracking-wide ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Location
+              </p>
+              <p
+                className={`text-sm font-medium ${
+                  theme === "dark" ? "text-gray-200" : "text-gray-700"
+                }`}
+              >
+                Butuan City, Agusan del Norte, Philippines
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <div
+              className={`p-2 rounded-lg ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <Phone
+                className={`w-4 h-4 ${
+                  theme === "dark" ? "text-purple-400" : "text-purple-600"
+                }`}
+              />
+            </div>
+            <div>
+              <p
+                className={`text-xs font-medium uppercase tracking-wide ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Phone
+              </p>
+              <a
+                href="tel:+639638249137"
+                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
+                  theme === "dark" ? "text-gray-200" : "text-gray-700"
+                }`}
+              >
+                +63 963 824 9137
+              </a>
+            </div>
+          </div>
         </div>
-        {/* column 2 */}
-        <div className="flex justify-center">
-          <ProfileCard
-            name="Eroll Oliver"
-            title="Full Stack Developer"
-            handle="erolloliver"
-            status="Available for hire"
-            contactText="Contact Me"
-            avatarUrl="/assets/teloy.jpeg" // This will work if image exists in public/assets/
-            showUserInfo={true}
-            onContactClick={() => console.log("Contact clicked")}
+      </div>
+
+      {/* 3D Lanyard Column */}
+      <div className="order-2 flex justify-center items-center h-full">
+        <div className="w-full max-w-md">
+          <Lanyard
+            position={[0, 0, 11]} // Reduced from 11 to 5
+            gravity={[0, -40, 0]} // Reduced from -40 to -20
+            className="overflow-visible z-10"
           />
         </div>
       </div>
-    </section>
+    </div>
+    
+
   );
 }
