@@ -2,17 +2,22 @@
 
 import React, { useState } from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
-import { 
-  ExternalLink, 
-  Github, 
-  Code, 
-  Palette, 
+import Image from "next/image";
+import {
+  ExternalLink,
+  Github,
+  Code,
+  Palette,
   Database,
   Globe,
   Smartphone,
   Zap,
   Filter,
-  ChevronRight
+  ChevronRight,
+  Share2,
+  TrendingUp,
+  Video,
+  Users,
 } from "lucide-react";
 
 interface Project {
@@ -25,88 +30,308 @@ interface Project {
   image: string;
   demoUrl?: string;
   githubUrl?: string;
-  status: 'completed' | 'in-progress' | 'planned';
+  status: "completed" | "in-progress" | "planned";
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with modern UI and robust backend",
-    longDescription: "A comprehensive e-commerce platform built with Next.js and Node.js, featuring user authentication, payment processing, inventory management, and admin dashboard. Includes real-time notifications and responsive design.",
-    technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Stripe", "Redis"],
-    category: "fullstack",
-    image: "/api/placeholder/600/400",
-    demoUrl: "https://demo.example.com",
-    githubUrl: "https://github.com/example/ecommerce",
-    status: "completed"
+    title: "Social Media Campaign - Brand Awareness",
+    description:
+      "Strategic social media campaign for brand visibility and engagement",
+    longDescription:
+      "Comprehensive social media marketing campaign designed to increase brand awareness, drive engagement, and build a strong online community. Includes content strategy, visual design, and performance analytics.",
+    technologies: [
+      "Facebook Ads",
+      "Instagram",
+      "Content Strategy",
+      "Analytics",
+      "Canva",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp063om_p0.webp",
+    demoUrl: "https://facebook.com/campaign",
+    status: "completed",
   },
   {
     id: 2,
-    title: "Digital Marketing Dashboard",
-    description: "Analytics dashboard for tracking marketing campaigns and ROI",
-    longDescription: "An advanced analytics dashboard that aggregates data from multiple marketing channels including Google Ads, Facebook, and email campaigns. Features custom reporting, automated alerts, and predictive analytics.",
-    technologies: ["React", "D3.js", "Python", "FastAPI", "MongoDB", "Docker"],
-    category: "analytics",
-    image: "/api/placeholder/600/400",
-    demoUrl: "https://dashboard.example.com",
-    githubUrl: "https://github.com/example/dashboard",
-    status: "completed"
+    title: "E-commerce Product Promotion",
+    description:
+      "Product launch campaign with targeted social media advertising",
+    longDescription:
+      "Multi-platform social media campaign for e-commerce product launch, featuring targeted advertising, influencer partnerships, and conversion-optimized content across all major social platforms.",
+    technologies: [
+      "Facebook Ads",
+      "Instagram Shopping",
+      "TikTok Ads",
+      "Google Analytics",
+      "Hootsuite",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp0k2rmbo0.webp",
+    demoUrl: "https://instagram.com/campaign",
+    status: "completed",
   },
   {
     id: 3,
-    title: "Mobile App Design System",
-    description: "Comprehensive design system for mobile applications",
-    longDescription: "A complete design system built for mobile applications with reusable components, style guides, and documentation. Includes Figma libraries, React Native components, and automated testing.",
-    technologies: ["React Native", "Figma", "Storybook", "Jest", "TypeScript"],
-    category: "mobile",
-    image: "/api/placeholder/600/400",
-    demoUrl: "https://design.example.com",
-    status: "in-progress"
+    title: "Restaurant Social Media Management",
+    description: "Complete social media management for restaurant chain",
+    longDescription:
+      "Full-service social media management including daily content creation, community management, promotional campaigns, and customer engagement strategies for a growing restaurant chain.",
+    technologies: [
+      "Instagram",
+      "Facebook",
+      "Content Creation",
+      "Community Management",
+      "Scheduling Tools",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp1gvij9vn.webp",
+    demoUrl: "https://instagram.com/restaurant",
+    status: "completed",
   },
   {
     id: 4,
-    title: "AI Content Generator",
-    description: "AI-powered tool for generating marketing content",
-    longDescription: "An intelligent content generation platform that uses machine learning to create marketing copy, social media posts, and email campaigns. Features template management, brand voice consistency, and performance tracking.",
-    technologies: ["Python", "OpenAI API", "Vue.js", "Django", "Celery", "AWS"],
-    category: "ai",
-    image: "/api/placeholder/600/400",
-    githubUrl: "https://github.com/example/ai-content",
-    status: "in-progress"
+    title: "Fitness Brand Content Strategy",
+    description: "Health and fitness brand social media content strategy",
+    longDescription:
+      "Developed comprehensive content strategy for fitness brand including workout videos, nutrition tips, success stories, and community building initiatives across multiple social platforms.",
+    technologies: [
+      "Video Content",
+      "Instagram Reels",
+      "YouTube",
+      "Content Planning",
+      "Engagement Strategy",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp49azcblo.webp",
+    demoUrl: "https://youtube.com/fitness",
+    status: "completed",
   },
   {
     id: 5,
-    title: "Real-time Chat Application",
-    description: "Scalable chat platform with video calling features",
-    longDescription: "A modern chat application supporting real-time messaging, file sharing, video calls, and group conversations. Built with scalability in mind to handle thousands of concurrent users.",
-    technologies: ["Socket.io", "WebRTC", "Express.js", "MySQL", "AWS S3"],
-    category: "fullstack",
-    image: "/api/placeholder/600/400",
-    demoUrl: "https://chat.example.com",
-    githubUrl: "https://github.com/example/chat",
-    status: "completed"
+    title: "Tech Startup Launch Campaign",
+    description: "Social media launch strategy for tech startup",
+    longDescription:
+      "Strategic social media campaign for tech startup launch, including thought leadership content, product demonstrations, investor outreach, and community building across LinkedIn, Twitter, and Instagram.",
+    technologies: [
+      "LinkedIn Ads",
+      "Twitter",
+      "Content Marketing",
+      "Lead Generation",
+      "Analytics",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp4ut17_2n.webp",
+    demoUrl: "https://linkedin.com/company/startup",
+    status: "completed",
   },
   {
     id: 6,
-    title: "Blockchain Voting System",
-    description: "Secure voting platform using blockchain technology",
-    longDescription: "A transparent and secure voting system built on blockchain technology. Features voter verification, real-time results, and immutable vote records with complete audit trails.",
-    technologies: ["Solidity", "Web3.js", "Ethereum", "IPFS", "React"],
-    category: "blockchain",
-    image: "/api/placeholder/600/400",
-    githubUrl: "https://github.com/example/voting",
-    status: "planned"
-  }
+    title: "Fashion Brand Visual Campaign",
+    description: "Visual storytelling campaign for fashion brand",
+    longDescription:
+      "Creative visual campaign for fashion brand featuring lifestyle photography, product showcases, behind-the-scenes content, and user-generated content campaigns across Instagram and Pinterest.",
+    technologies: [
+      "Photography",
+      "Instagram",
+      "Pinterest",
+      "Visual Design",
+      "UGC Strategy",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp92y9b9ir.webp",
+    demoUrl: "https://pinterest.com/fashion",
+    status: "completed",
+  },
+  {
+    id: 7,
+    title: "Real Estate Social Marketing",
+    description: "Real estate social media marketing and lead generation",
+    longDescription:
+      "Comprehensive social media strategy for real estate agency including property showcases, virtual tours, client testimonials, and targeted advertising for lead generation and brand building.",
+    technologies: [
+      "Facebook Lead Ads",
+      "Instagram Stories",
+      "Virtual Tours",
+      "CRM Integration",
+      "Local SEO",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmp9wexqk65.webp",
+    demoUrl: "https://facebook.com/realestate",
+    status: "completed",
+  },
+  {
+    id: 8,
+    title: "Beauty Brand Influencer Campaign",
+    description: "Influencer marketing campaign for beauty products",
+    longDescription:
+      "Strategic influencer marketing campaign for beauty brand featuring micro and macro influencers, product reviews, tutorials, and user-generated content to drive brand awareness and sales.",
+    technologies: [
+      "Influencer Marketing",
+      "TikTok",
+      "Instagram",
+      "Campaign Management",
+      "ROI Tracking",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpalw0_cpm.webp",
+    demoUrl: "https://tiktok.com/beauty",
+    status: "completed",
+  },
+  {
+    id: 9,
+    title: "Non-Profit Awareness Campaign",
+    description: "Social media campaign for non-profit organization",
+    longDescription:
+      "Awareness and fundraising campaign for non-profit organization including storytelling content, donation drives, volunteer recruitment, and community engagement across multiple platforms.",
+    technologies: [
+      "Facebook Fundraisers",
+      "Instagram Stories",
+      "Email Marketing",
+      "Volunteer Management",
+      "Impact Metrics",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpau8nn21z.webp",
+    demoUrl: "https://facebook.com/nonprofit",
+    status: "completed",
+  },
+  {
+    id: 10,
+    title: "Event Promotion Campaign",
+    description: "Social media promotion for major events and conferences",
+    longDescription:
+      "Comprehensive event promotion strategy including pre-event buzz, live coverage, speaker highlights, attendee engagement, and post-event follow-up across all major social platforms.",
+    technologies: [
+      "Event Marketing",
+      "Live Streaming",
+      "Facebook Events",
+      "Twitter",
+      "LinkedIn",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpduhurj4p.webp",
+    demoUrl: "https://facebook.com/events",
+    status: "completed",
+  },
+  {
+    id: 11,
+    title: "Travel Agency Social Strategy",
+    description: "Travel and tourism social media marketing strategy",
+    longDescription:
+      "Creative travel marketing campaign featuring destination highlights, travel tips, customer experiences, and booking promotions designed to inspire wanderlust and drive bookings.",
+    technologies: [
+      "Instagram",
+      "Pinterest",
+      "Travel Content",
+      "Booking Integration",
+      "Geo-targeting",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmphx2kylot.webp",
+    demoUrl: "https://instagram.com/travel",
+    status: "completed",
+  },
+  {
+    id: 12,
+    title: "Food & Beverage Campaign",
+    description: "Food and beverage brand social media campaign",
+    longDescription:
+      "Appetizing social media campaign for food and beverage brand including recipe content, behind-the-scenes footage, user-generated content, and seasonal promotional campaigns.",
+    technologies: [
+      "Food Photography",
+      "Recipe Content",
+      "Instagram",
+      "TikTok",
+      "Seasonal Campaigns",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpjpf5s6sk.webp",
+    demoUrl: "https://instagram.com/food",
+    status: "completed",
+  },
+  {
+    id: 13,
+    title: "Educational Platform Promotion",
+    description: "Social media strategy for online education platform",
+    longDescription:
+      "Educational content marketing strategy including course highlights, student success stories, instructor spotlights, and lead generation campaigns to drive enrollment and engagement.",
+    technologies: [
+      "Educational Content",
+      "LinkedIn",
+      "YouTube",
+      "Lead Generation",
+      "Student Engagement",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmplqxeddms.webp",
+    demoUrl: "https://linkedin.com/education",
+    status: "completed",
+  },
+  {
+    id: 14,
+    title: "Healthcare Social Media",
+    description: "Healthcare provider social media management",
+    longDescription:
+      "Professional healthcare social media strategy focusing on patient education, health tips, service highlights, and community health initiatives while maintaining compliance and professionalism.",
+    technologies: [
+      "Healthcare Marketing",
+      "Educational Content",
+      "Compliance",
+      "Facebook",
+      "LinkedIn",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpos5kwl69.webp",
+    demoUrl: "https://facebook.com/healthcare",
+    status: "completed",
+  },
+  {
+    id: 15,
+    title: "Automotive Brand Campaign",
+    description: "Automotive industry social media marketing campaign",
+    longDescription:
+      "Dynamic automotive marketing campaign featuring vehicle showcases, test drive promotions, customer testimonials, and seasonal sales campaigns across multiple social media platforms.",
+    technologies: [
+      "Automotive Marketing",
+      "Video Content",
+      "Facebook Ads",
+      "Instagram",
+      "Lead Generation",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpu4p19odx.webp",
+    demoUrl: "https://facebook.com/automotive",
+    status: "completed",
+  },
+  {
+    id: 16,
+    title: "Corporate B2B Strategy",
+    description: "B2B corporate social media strategy and implementation",
+    longDescription:
+      "Strategic B2B social media approach for corporate clients including thought leadership content, industry insights, networking strategies, and lead generation campaigns on professional platforms.",
+    technologies: [
+      "B2B Marketing",
+      "LinkedIn",
+      "Thought Leadership",
+      "Lead Generation",
+      "Industry Content",
+    ],
+    category: "social-media",
+    image: "/assets/sample-social-media/tmpw2smznxm.webp",
+    demoUrl: "https://linkedin.com/company/corporate",
+    status: "completed",
+  },
 ];
 
 const categories = [
   { id: "all", name: "All Projects", icon: Globe },
-  { id: "fullstack", name: "Full Stack", icon: Code },
-  { id: "mobile", name: "Mobile", icon: Smartphone },
-  { id: "analytics", name: "Analytics", icon: Database },
-  { id: "ai", name: "AI/ML", icon: Zap },
-  { id: "blockchain", name: "Blockchain", icon: Database }
+  { id: "social-media", name: "Social Media", icon: Share2 },
+  { id: "campaigns", name: "Campaigns", icon: TrendingUp },
+  { id: "content", name: "Content Creation", icon: Video },
+  { id: "strategy", name: "Strategy", icon: Users },
 ];
 
 export default function ProjectsSection() {
@@ -114,17 +339,18 @@ export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return theme === "dark" ? "text-green-400" : "text-green-600";
-      case 'in-progress':
+      case "in-progress":
         return theme === "dark" ? "text-yellow-400" : "text-yellow-600";
-      case 'planned':
+      case "planned":
         return theme === "dark" ? "text-blue-400" : "text-blue-600";
       default:
         return theme === "dark" ? "text-gray-400" : "text-gray-600";
@@ -133,11 +359,11 @@ export default function ProjectsSection() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return "Completed";
-      case 'in-progress':
+      case "in-progress":
         return "In Progress";
-      case 'planned':
+      case "planned":
         return "Planned";
       default:
         return "Unknown";
@@ -159,16 +385,17 @@ export default function ProjectsSection() {
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            Featured Projects
+            Social Media Portfolio
           </h2>
           <p
             className={`text-lg max-w-3xl mx-auto ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            A showcase of my recent work spanning full-stack development, mobile applications, 
-            data analytics, and emerging technologies. Each project represents a unique solution 
-            to real-world challenges.
+            A showcase of successful social media campaigns, content strategies,
+            and digital marketing initiatives across various industries. Each
+            project demonstrates creative storytelling, strategic thinking, and
+            measurable results.
           </p>
         </div>
 
@@ -186,20 +413,22 @@ export default function ProjectsSection() {
                       ? "bg-blue-600 text-white"
                       : "bg-blue-600 text-white"
                     : theme === "dark"
-                      ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
                 <IconComponent className="w-4 h-4" />
                 <span>{category.name}</span>
-                {activeCategory === category.id && <Filter className="w-4 h-4" />}
+                {activeCategory === category.id && (
+                  <Filter className="w-4 h-4" />
+                )}
               </button>
             );
           })}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
@@ -211,30 +440,34 @@ export default function ProjectsSection() {
               onClick={() => setSelectedProject(project)}
             >
               {/* Project Image */}
-              <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Code className="w-16 h-16 text-white opacity-50" />
-                </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <div
-                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(project.status)} ${
-                    theme === "dark" ? "bg-gray-900/80" : "bg-white/80"
-                  }`}
+                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                    project.status
+                  )} ${theme === "dark" ? "bg-gray-900/80" : "bg-white/80"}`}
                 >
                   {getStatusText(project.status)}
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
+              <div className="p-4">
                 <h3
-                  className={`text-xl font-semibold mb-2 ${
+                  className={`text-lg font-semibold mb-2 ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
                   {project.title}
                 </h3>
                 <p
-                  className={`text-sm mb-4 ${
+                  className={`text-sm mb-3 ${
                     theme === "dark" ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
@@ -242,8 +475,8 @@ export default function ProjectsSection() {
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech) => (
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {project.technologies.slice(0, 2).map((tech) => (
                     <span
                       key={tech}
                       className={`px-2 py-1 text-xs rounded-md ${
@@ -255,7 +488,7 @@ export default function ProjectsSection() {
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 3 && (
+                  {project.technologies.length > 2 && (
                     <span
                       className={`px-2 py-1 text-xs rounded-md ${
                         theme === "dark"
@@ -263,19 +496,19 @@ export default function ProjectsSection() {
                           : "bg-gray-100 text-gray-600"
                       }`}
                     >
-                      +{project.technologies.length - 3} more
+                      +{project.technologies.length - 2} more
                     </span>
                   )}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex space-x-3">
+                {/* Action Button */}
+                <div className="flex space-x-2">
                   {project.demoUrl && (
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex-1 justify-center ${
                         theme === "dark"
                           ? "bg-blue-600 hover:bg-blue-700 text-white"
                           : "bg-blue-600 hover:bg-blue-700 text-white"
@@ -283,23 +516,7 @@ export default function ProjectsSection() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink className="w-4 h-4" />
-                      <span>Demo</span>
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        theme === "dark"
-                          ? "bg-gray-700 hover:bg-gray-600 text-gray-300"
-                          : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                      }`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Code</span>
+                      <span>View</span>
                     </a>
                   )}
                 </div>
@@ -315,7 +532,7 @@ export default function ProjectsSection() {
             onClick={() => setSelectedProject(null)}
           >
             <div
-              className={`max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-xl ${
+              className={`max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-xl ${
                 theme === "dark" ? "bg-gray-800" : "bg-white"
               }`}
               onClick={(e) => e.stopPropagation()}
@@ -332,11 +549,23 @@ export default function ProjectsSection() {
                   <button
                     onClick={() => setSelectedProject(null)}
                     className={`text-2xl ${
-                      theme === "dark" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"
+                      theme === "dark"
+                        ? "text-gray-400 hover:text-white"
+                        : "text-gray-600 hover:text-gray-900"
                     }`}
                   >
                     ×
                   </button>
+                </div>
+
+                {/* Project Image */}
+                <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 <p
@@ -353,7 +582,7 @@ export default function ProjectsSection() {
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Technologies Used
+                    Tools & Platforms Used
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
@@ -384,22 +613,7 @@ export default function ProjectsSection() {
                       }`}
                     >
                       <ExternalLink className="w-5 h-5" />
-                      <span>View Demo</span>
-                    </a>
-                  )}
-                  {selectedProject.githubUrl && (
-                    <a
-                      href={selectedProject.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                        theme === "dark"
-                          ? "bg-gray-700 hover:bg-gray-600 text-gray-300"
-                          : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                      }`}
-                    >
-                      <Github className="w-5 h-5" />
-                      <span>View Code</span>
+                      <span>View Campaign</span>
                     </a>
                   )}
                 </div>

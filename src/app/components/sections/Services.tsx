@@ -115,7 +115,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl border-blue-700 ${
+              className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl border-blue-700 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-blue-700"
                   : "bg-white border border-gray-200 hover:border-blue-700 shadow-lg hover:shadow-xl"
