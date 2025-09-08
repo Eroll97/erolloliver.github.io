@@ -26,6 +26,7 @@ export default function Footer() {
             >
               Eroll Oliver
             </h3>
+            <br />
             <p
               className={`text-sm leading-relaxed ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
@@ -34,6 +35,19 @@ export default function Footer() {
               Passionate developer creating innovative web solutions with modern
               technologies. Always learning, always building.
             </p>
+
+            <p
+              className={`mt-4 text-sm ${
+                theme === "dark" ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Isaiah 29:11 
+              <br />
+              "For I know the plans I have for you, declares the
+              Lord, plans to prosper you and not to harm you, plans to give you
+              hope and a future."
+            </p>
+
           </div>
 
           {/* Quick Links */}
