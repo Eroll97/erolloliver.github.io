@@ -2,9 +2,17 @@
 
 import React from "react";
 import { useTheme } from "../providers/ThemeProvider";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Instagram,
+  Linkedin,
+  Facebook,
+} from "lucide-react";
 import Lanyard from "../ui/Lanyard";
 import TextType from "../Text-animation/TextType";
+
 export default function FirstSection() {
   const { theme } = useTheme();
 
@@ -30,7 +38,13 @@ export default function FirstSection() {
             "Digital Marketing Expert",
             "Video Editor",
             "Graphics Designer",
-            "Developer",
+            "Social Media Manager",
+            "Website Developer",
+            "UI/UX Designer",
+            "Bookkeeping",
+            "Go High Level Specialist",
+            "WordPress Developer",
+            "Freelancer",
             "Father and Husband",
           ]}
           typingSpeed={75}
@@ -39,13 +53,45 @@ export default function FirstSection() {
           cursorCharacter="|"
         />
 
-        <p className="text-justify max-w-lg mx-auto lg:mx-0 text-gray-500">
-          I am Eroll Oliver, a seasoned digital marketing expert with over 5
-          years of proven success in crafting and executing effective
-          strategies. As a Digital Strategist, I thrive on creativity and
-          innovation, continuously seeking new ways to drive growth and deliver
-          exceptional results.
-        </p>
+        {/* Social Media Icons */}
+        <div className="flex justify-center lg:justify-start space-x-4 mt-8">
+          <a
+            href="https://www.instagram.com/eroll_onnn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+              theme === "dark"
+                ? "bg-gray-800 hover:bg-pink-600 text-pink-400 hover:text-white"
+                : "bg-gray-100 hover:bg-pink-600 text-pink-600 hover:text-white"
+            }`}
+          >
+            <Instagram className="w-5 h-5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/eroll-oliver-20009b290/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+              theme === "dark"
+                ? "bg-gray-800 hover:bg-blue-600 text-blue-400 hover:text-white"
+                : "bg-gray-100 hover:bg-blue-600 text-blue-600 hover:text-white"
+            }`}
+          >
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a
+            href="https://www.facebook.com/eroll.oliver.98"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+              theme === "dark"
+                ? "bg-gray-800 hover:bg-blue-700 text-blue-400 hover:text-white"
+                : "bg-gray-100 hover:bg-blue-700 text-blue-600 hover:text-white"
+            }`}
+          >
+            <Facebook className="w-5 h-5" />
+          </a>
+        </div>
 
         <a
           href="https://drive.google.com/file/d/1wikQl77-nIu-bgLFePNkNT4jTvslUQ5j/view"
@@ -57,6 +103,36 @@ export default function FirstSection() {
         </a>
 
         <div className="mt-8 space-y-4">
+          <div className="flex items-center space-x-3">
+            <div
+              className={`p-2 rounded-lg ${
+                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+              }`}
+            >
+              <Phone
+                className={`w-4 h-4 ${
+                  theme === "dark" ? "text-purple-400" : "text-purple-600"
+                }`}
+              />
+            </div>
+            <div>
+              <p
+                className={`text-xs font-medium uppercase tracking-wide ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                }`}
+              >
+                Phone
+              </p>
+              <a
+                href="tel:+639638249137"
+                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
+                  theme === "dark" ? "text-gray-200" : "text-gray-700"
+                }`}
+              >
+                +63 963 824 9137
+              </a>
+            </div>
+          </div>
           <div className="flex items-center space-x-3">
             <div
               className={`p-2 rounded-lg ${
@@ -117,37 +193,6 @@ export default function FirstSection() {
               </p>
             </div>
           </div>
-
-          <div className="flex items-center space-x-3">
-            <div
-              className={`p-2 rounded-lg ${
-                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-              }`}
-            >
-              <Phone
-                className={`w-4 h-4 ${
-                  theme === "dark" ? "text-purple-400" : "text-purple-600"
-                }`}
-              />
-            </div>
-            <div>
-              <p
-                className={`text-xs font-medium uppercase tracking-wide ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-500"
-                }`}
-              >
-                Phone
-              </p>
-              <a
-                href="tel:+639638249137"
-                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
-                  theme === "dark" ? "text-gray-200" : "text-gray-700"
-                }`}
-              >
-                +63 963 824 9137
-              </a>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -155,14 +200,12 @@ export default function FirstSection() {
       <div className="order-2 flex justify-center items-center h-full">
         <div className="w-full max-w-md">
           <Lanyard
-            position={[0, 0, 11]} // Reduced from 11 to 5
-            gravity={[0, -40, 0]} // Reduced from -40 to -20
+            position={[0, 0, 11]}
+            gravity={[0, -40, 0]}
             className="overflow-visible z-10"
           />
         </div>
       </div>
     </div>
-    
-
   );
 }

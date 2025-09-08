@@ -25,6 +25,13 @@ export default function AboutSection() {
           Learn More About Me
         </h2>
 
+        {/* <p className="text-justify max-w-lg mx-auto lg:mx-0 text-gray-500">
+          I am Eroll Oliver, a seasoned digital marketing expert with over 5
+          years of proven success in crafting and executing effective
+          strategies. As a Digital Strategist, I thrive on creativity and
+          innovation, continuously seeking new ways to drive growth and deliver
+          exceptional results.
+        </p> */}
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
@@ -51,7 +58,7 @@ export default function AboutSection() {
               firstContent={
                 <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center rounded-[15px] relative">
                   <Image
-                    src="/assets/bee_farm_photo.jpeg"
+                    src="/assets/eroll-girlie.jpeg"
                     alt="Eroll Oliver - Full Stack Developer"
                     fill
                     className="object-cover rounded-[13px]"
@@ -92,7 +99,7 @@ export default function AboutSection() {
                   <div className="text-center space-y-6">
                     <div className="space-y-2">
                       <Image
-                        src="/assets/eroll_girlie.png"
+                        src="/assets/etan.jpeg"
                         alt="Eroll Oliver - Full Stack Developer"
                         fill
                         className="object-cover rounded-[13px]"
