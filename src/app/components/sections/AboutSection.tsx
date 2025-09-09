@@ -35,22 +35,52 @@ export default function AboutSection() {
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
-            
-            Hi, I'm Eroll Oliver, and I'm not your average developer. With
-            expertise in WordPress and GoHighLevel, I design websites that are
-            not only visually stunning but also optimized for performance and
-            user experience. From sleek portfolios to robust e-commerce
-            platforms, I ensure your site looks great and functions flawlessly.
-            Beyond web development, I offer a diverse skill set to enhance your
-            business operations. I provide meticulous bookkeeping, compelling
-            copywriting, and strategic SEO to boost your online visibility.
-            Additionally, I excel in social media management (SMM) to grow your
-            brand's presence and offer virtual assistant (V.A.) services to
-            streamline your tasks and projects. What sets me apart is my passion
-            for innovation and excellence. I thrive on challenges and am
-            dedicated to pushing the boundaries to deliver exceptional results.
-            Let's connect and explore how we can elevate your business to new
-            heights together.
+            <ScrambledText
+              radius={100}
+              duration={1.2}
+              speed={0.5}
+              scrambleChars=".:"
+            >
+              <p className="text-base leading-relaxed mb-4">
+                Hi, I'm Eroll Oliver, and I'm not your average developer. With
+                expertise in WordPress and GoHighLevel, I design websites that
+                are not only visually stunning but also optimized for
+                performance and user experience. From sleek portfolios to robust
+                e-commerce platforms, I ensure your site looks great and
+                functions flawlessly.
+              </p>
+
+              <p className="text-base leading-relaxed mb-4">
+                Beyond web development, I offer a diverse skill set to enhance
+                your business operations. I provide meticulous bookkeeping,
+                compelling copywriting, and strategic SEO to boost your online
+                visibility. Additionally, I excel in social media management
+                (SMM) to grow your brand's presence and offer virtual assistant
+                (V.A.) services to streamline your tasks and projects.
+              </p>
+
+              <p className="text-base leading-relaxed mb-4">
+                As a seasoned digital marketing expert with over 5 years of
+                proven success, I've evolved into a Full Stack Developer who
+                bridges the gap between technical excellence and business
+                strategy.
+              </p>
+
+              <p className="text-base leading-relaxed mb-4">
+                I thrive on creativity and innovation, continuously seeking new
+                ways to drive growth and deliver exceptional results through
+                cutting-edge web technologies and data-driven marketing
+                approaches.
+              </p>
+
+              <p className="text-base leading-relaxed">
+                What sets me apart is my passion for innovation and excellence.
+                I thrive on challenges and am dedicated to pushing the
+                boundaries to deliver exceptional results. Let's connect and
+                explore how we can elevate your business to new heights
+                together.
+              </p>
+            </ScrambledText>
           </div>
           {/* Image section with PixelTransition */}
           <div className="flex justify-center">
@@ -119,46 +149,7 @@ export default function AboutSection() {
             />
           </div>
 
-          {/* Description section */}
-          <div className="flex flex-col justify-center space-y-6">
-            <div>
-              <h3
-                className={`text-2xl font-semibold mb-4 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
-              >
-                My Journey
-              </h3>
-              {/* Example usage of ScrambledText component */}
-              <ScrambledText
-                radius={100}
-                duration={1.2}
-                speed={0.5}
-                scrambleChars=".:"
-              >
-                <p className="text-base leading-relaxed mb-4">
-                  As a seasoned digital marketing expert with over 5 years of
-                  proven success, I&apos;ve evolved into a Full Stack Developer
-                  who bridges the gap between technical excellence and business
-                  strategy.
-                </p>
-              </ScrambledText>
-
-              <ScrambledText
-                radius={100}
-                duration={1.2}
-                speed={0.5}
-                scrambleChars=".:"
-              >
-                <p className="text-base leading-relaxed">
-                  I thrive on creativity and innovation, continuously seeking
-                  new ways to drive growth and deliver exceptional results
-                  through cutting-edge web technologies and data-driven
-                  marketing approaches.
-                </p>
-              </ScrambledText>
-            </div>
-          </div>
+   
         </div>
 
         {/* Skills section */}
