@@ -4,7 +4,8 @@ import { useTheme } from "@/app/components/providers/ThemeProvider";
 import Image from "next/image";
 import { Code, TrendingUp, Cloud, Smartphone, Palette } from "lucide-react";
 import PixelTransition from "../ui/PixelTransition";
-import ScrambledText from "../Text-animation/ScrambledText";
+import ScrollReveal from "../Text-animation/ScrollReveal";
+import ScrollFloat from "../Text-animation/ScrollFloat";
 
 export default function AboutSection() {
   const { theme } = useTheme();
@@ -17,33 +18,42 @@ export default function AboutSection() {
       id="about"
     >
       <div className="max-w-6xl mx-auto">
-        <h2
-          className={`text-4xl text-center font-bold mb-6 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
+        {/* Title */}
+        <ScrollFloat
+          animationDuration={1}
+          ease="back.inOut(2)"
+          scrollStart="center bottom+=50%"
+          scrollEnd="bottom bottom-=40%"
+          stagger={0.08}
         >
           Learn More About Me
-        </h2>
-
+        </ScrollFloat>
+        
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
-            
-            Hi, I'm Eroll Oliver, and I'm not your average developer. With
-            expertise in WordPress and GoHighLevel, I design websites that are
-            not only visually stunning but also optimized for performance and
-            user experience. From sleek portfolios to robust e-commerce
-            platforms, I ensure your site looks great and functions flawlessly.
-            Beyond web development, I offer a diverse skill set to enhance your
-            business operations. I provide meticulous bookkeeping, compelling
-            copywriting, and strategic SEO to boost your online visibility.
-            Additionally, I excel in social media management (SMM) to grow your
-            brand's presence and offer virtual assistant (V.A.) services to
-            streamline your tasks and projects. What sets me apart is my passion
-            for innovation and excellence. I thrive on challenges and am
-            dedicated to pushing the boundaries to deliver exceptional results.
-            Let's connect and explore how we can elevate your business to new
-            heights together.
+            <ScrollReveal
+              baseOpacity={0.1}
+              enableBlur={true}
+              baseRotation={0}
+              blurStrength={10}
+            >
+              Hi, I'm Eroll Oliver, and I'm not your average developer. With
+              expertise in WordPress and GoHighLevel, I design websites that are
+              not only visually stunning but also optimized for performance and
+              user experience. From sleek portfolios to robust e-commerce
+              platforms, I ensure your site looks great and functions
+              flawlessly. Beyond web development, I offer a diverse skill set to
+              enhance your business operations. I provide meticulous
+              bookkeeping, compelling copywriting, and strategic SEO to boost
+              your online visibility. Additionally, I excel in social media
+              management (SMM) to grow your brand's presence and offer virtual
+              assistant (V.A.) services to streamline your tasks and projects.
+              What sets me apart is my passion for innovation and excellence. I
+              thrive on challenges and am dedicated to pushing the boundaries to
+              deliver exceptional results. Let's connect and explore how we can
+              elevate your business to new heights together.
+            </ScrollReveal>
           </div>
           {/* Image section with PixelTransition */}
           <div className="flex justify-center">
@@ -51,7 +61,7 @@ export default function AboutSection() {
               firstContent={
                 <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center rounded-[15px] relative">
                   <Image
-                    src="/assets/bee_farm_photo.jpeg"
+                    src="/assets/eroll-girlie.jpeg"
                     alt="Eroll Oliver - Full Stack Developer"
                     fill
                     className="object-cover rounded-[13px]"
@@ -92,7 +102,7 @@ export default function AboutSection() {
                   <div className="text-center space-y-6">
                     <div className="space-y-2">
                       <Image
-                        src="/assets/eroll_girlie.png"
+                        src="/assets/etan.jpeg"
                         alt="Eroll Oliver - Full Stack Developer"
                         fill
                         className="object-cover rounded-[13px]"
@@ -110,47 +120,6 @@ export default function AboutSection() {
               aspectRatio="100%"
               pixelColor={theme === "dark" ? "#ffffff" : "#ffffff"}
             />
-          </div>
-
-          {/* Description section */}
-          <div className="flex flex-col justify-center space-y-6">
-            <div>
-              <h3
-                className={`text-2xl font-semibold mb-4 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
-              >
-                My Journey
-              </h3>
-              {/* Example usage of ScrambledText component */}
-              <ScrambledText
-                radius={100}
-                duration={1.2}
-                speed={0.5}
-                scrambleChars=".:"
-              >
-                <p className="text-base leading-relaxed mb-4">
-                  As a seasoned digital marketing expert with over 5 years of
-                  proven success, I&apos;ve evolved into a Full Stack Developer
-                  who bridges the gap between technical excellence and business
-                  strategy.
-                </p>
-              </ScrambledText>
-
-              <ScrambledText
-                radius={100}
-                duration={1.2}
-                speed={0.5}
-                scrambleChars=".:"
-              >
-                <p className="text-base leading-relaxed">
-                  I thrive on creativity and innovation, continuously seeking
-                  new ways to drive growth and deliver exceptional results
-                  through cutting-edge web technologies and data-driven
-                  marketing approaches.
-                </p>
-              </ScrambledText>
-            </div>
           </div>
         </div>
 
