@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Code, TrendingUp, Cloud, Smartphone, Palette } from "lucide-react";
 import PixelTransition from "../ui/PixelTransition";
 import ScrollReveal from "../Text-animation/ScrollReveal";
+import ScrollFloat from "../Text-animation/ScrollFloat";
 
 export default function AboutSection() {
   const { theme } = useTheme();
@@ -17,13 +18,17 @@ export default function AboutSection() {
       id="about"
     >
       <div className="max-w-6xl mx-auto">
-        <h2
-          className={`text-4xl text-center font-bold mb-6 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
+        {/* Title */}
+        <ScrollFloat
+          animationDuration={1}
+          ease="back.inOut(2)"
+          scrollStart="center bottom+=50%"
+          scrollEnd="bottom bottom-=40%"
+          stagger={0.08}
         >
           Learn More About Me
-        </h2>
+        </ScrollFloat>
+        
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
@@ -32,7 +37,6 @@ export default function AboutSection() {
               enableBlur={true}
               baseRotation={0}
               blurStrength={10}
-     
             >
               Hi, I'm Eroll Oliver, and I'm not your average developer. With
               expertise in WordPress and GoHighLevel, I design websites that are
