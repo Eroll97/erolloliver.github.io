@@ -6,6 +6,8 @@ import ProjectsSection from "./components/sections/ProjectsSection";
 import ContactSection from "./components/sections/ContactSection";
 import Skill from "./components/sections/Skill";
 import Services from "./components/sections/Services";
+import Gallery from "./components/sections/Gallery";
+
 export default function Home() {
   return (
     <div className=" bg-white dark:bg-gray-900">
@@ -13,6 +15,7 @@ export default function Home() {
 
       <FirstSection />
       <AboutSection />
+      <Gallery />
       <Skill />
       <Services />
       <ProjectsSection />
