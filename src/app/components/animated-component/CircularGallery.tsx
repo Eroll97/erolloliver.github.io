@@ -461,7 +461,7 @@ class App {
       textColor = "#ffffff",
       borderRadius = 0,
       font = "bold 30px Figtree",
-      scrollSpeed = 2,
+      scrollSpeed = 3,
       scrollEase = 0.05,
     }: AppConfig
   ) {
@@ -518,15 +518,15 @@ class App {
     const defaultItems = [
       {
         image: `/assets/circular-gallery/5-KEYS-1-min.jpg`,
-        text: "I am Focused",
+        text: "I am Committed",
       },
       {
-      image: `/assets/circular-gallery/ant.jpg`,
-        text: "I am Focused",
+        image: `/assets/circular-gallery/ant.jpg`,
+        text: "I am Hardworking",
       },
       {
-       image: `/assets/circular-gallery/high-intellect.jpg`,
-        text: "I am Focused",
+        image: `/assets/circular-gallery/high-intellect.jpg`,
+        text: "I am Intelligent",
       },
       {
         image: `/assets/circular-gallery/lion.webp`,
@@ -534,17 +534,16 @@ class App {
       },
       {
         image: `/assets/circular-gallery/Matthew-6-33-KJV.png`,
-        text: "I am Focused",
+        text: "I am God Centered",
       },
       {
         image: `/assets/circular-gallery/running-hill.jpg`,
-        text: "I am Focused",
+        text: "I am Disciplined",
       },
       {
-       image: `/assets/circular-gallery/tech-head.jpg`,
-        text: "I am Focused",
+        image: `/assets/circular-gallery/tech-head.jpg`,
+        text: "I am Adaptive",
       },
-   
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
