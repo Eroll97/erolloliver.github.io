@@ -9,6 +9,7 @@ import {
   Transform,
 } from "ogl";
 import { useEffect, useRef } from "react";
+import { useTheme } from "../providers/ThemeProvider";
 
 type GL = Renderer["gl"];
 
@@ -54,15 +55,33 @@ function createTextTexture(
   const fontSize = getFontSize(font);
   const textHeight = Math.ceil(fontSize * 1.2);
 
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  canvas.width = textWidth + 40; // Increased padding
+  canvas.height = textHeight + 40; // Increased padding
 
+  // Clear canvas with transparent background
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Set font again after clearing
   context.font = font;
   context.fillStyle = color;
   context.textBaseline = "middle";
   context.textAlign = "center";
-  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Add text shadow for better visibility
+  context.shadowColor =
+    color === "#ffffff" ? "rgba(0,0,0,0.8)" : "rgba(255,255,255,0.8)";
+  context.shadowBlur = 4;
+  context.shadowOffsetX = 2;
+  context.shadowOffsetY = 2;
+
+  // Draw the text
   context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+  // Reset shadow
+  context.shadowColor = "transparent";
+  context.shadowBlur = 0;
+  context.shadowOffsetX = 0;
+  context.shadowOffsetY = 0;
 
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
@@ -92,6 +111,7 @@ class Title {
     plane,
     renderer,
     text,
+    // change color to bg-gray-900 in light mode and bg-white in dark mode
     textColor = "#545050",
     font = "30px sans-serif",
   }: TitleProps) {
@@ -420,6 +440,7 @@ interface AppConfig {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  theme?: "light" | "dark";
 }
 
 class App {
@@ -443,6 +464,7 @@ class App {
   screen!: { width: number; height: number };
   viewport!: { width: number; height: number };
   raf: number = 0;
+  theme: "light" | "dark" = "light";
 
   boundOnResize!: () => void;
   boundOnWheel!: (e: Event) => void;
@@ -463,6 +485,7 @@ class App {
       font = "bold 30px Figtree",
       scrollSpeed = 3,
       scrollEase = 0.05,
+      theme = "light",
     }: AppConfig
   ) {
     document.documentElement.classList.remove("no-js");
@@ -470,6 +493,7 @@ class App {
     this.scrollSpeed = scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
+    this.theme = theme;
     this.createRenderer();
     this.createCamera();
     this.createScene();
@@ -482,12 +506,20 @@ class App {
 
   createRenderer() {
     this.renderer = new Renderer({
-      alpha: true,
+      alpha: false, // Change to false for solid background
       antialias: true,
       dpr: Math.min(window.devicePixelRatio || 1, 2),
     });
     this.gl = this.renderer.gl;
-    this.gl.clearColor(0, 0, 0, 0);
+
+    // INVERTED BACKGROUND FEATURE:
+    // Light mode = dark background, Dark mode = light background
+    if (this.theme === "light") {
+      this.gl.clearColor(0.111, 0.111, 0.111, 1); // Dark background for light mode
+    } else {
+      this.gl.clearColor(0.95, 0.95, 0.95, 1); // Light background for dark mode
+    }
+
     this.container.appendChild(this.renderer.gl.canvas as HTMLCanvasElement);
   }
 
@@ -679,44 +711,61 @@ class App {
   }
 }
 
-interface CircularGalleryProps {
-  items?: { image: string; text: string }[];
-  bend?: number;
-  textColor?: string;
-  borderRadius?: number;
-  font?: string;
-  scrollSpeed?: number;
-  scrollEase?: number;
-}
-
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = "#ffffff",
+  textColor,
   borderRadius = 0.05,
   font = "bold 30px Figtree",
   scrollSpeed = 3,
   scrollEase = 0.05,
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+
+  // INVERTED TEXT COLOR FOR INVERTED BACKGROUND FEATURE:
+  // Light mode = white text on dark background
+  // Dark mode = black text on light background
+  const effectiveTextColor =
+    textColor || (theme === "light" ? "#ffffff" : "#000000");
+
   useEffect(() => {
     if (!containerRef.current) return;
+
     const app = new App(containerRef.current, {
       items,
       bend,
-      textColor,
+      textColor: effectiveTextColor,
       borderRadius,
       font,
       scrollSpeed,
       scrollEase,
+      theme,
     });
+
     return () => {
       app.destroy();
     };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [
+    items,
+    bend,
+    effectiveTextColor,
+    borderRadius,
+    font,
+    scrollSpeed,
+    scrollEase,
+    theme,
+  ]);
+
   return (
     <div
-      className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+      className={`w-full h-full overflow-hidden cursor-grab active:cursor-grabbing transition-colors duration-300 ${
+        // INVERTED BACKGROUND FEATURE:
+        // Light mode = dark container, Dark mode = light container
+        theme === "light"
+          ? "bg-gray-900" // Dark background for light mode
+          : "bg-white" // Light background for dark mode
+      }`}
       ref={containerRef}
     />
   );
