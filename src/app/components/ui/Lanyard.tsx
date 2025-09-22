@@ -16,12 +16,28 @@ import {
   useRopeJoint,
   useSphericalJoint,
   RigidBodyProps,
+  RapierRigidBody,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import * as THREE from "three";
 import { useTheme } from "../providers/ThemeProvider";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
+
+interface RigidBodyWithLerp extends RapierRigidBody {
+  lerped?: THREE.Vector3;
+}
+
+interface GLTFResult {
+  nodes: {
+    card: THREE.Mesh;
+    clip: THREE.Mesh;
+    clamp: THREE.Mesh;
+  };
+  materials: {
+    metal: THREE.Material;
+  };
+}
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -144,29 +160,28 @@ interface BandProps {
   minSpeed?: number;
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
+function Band({ maxSpeed = 5, minSpeed = 1.5 }: BandProps = {}) {
   const { theme } = useTheme();
-  const band = useRef<any>(null);
-  const fixed = useRef<any>(null);
-  const j1 = useRef<any>(null);
-  const j2 = useRef<any>(null);
-  const j3 = useRef<any>(null);
-  const card = useRef<any>(null);
+  const band = useRef<THREE.Mesh>(null);
+  const fixed = useRef<RapierRigidBody>(null!);
+  const j1 = useRef<RapierRigidBody>(null!);
+  const j2 = useRef<RapierRigidBody>(null!);
+  const j3 = useRef<RapierRigidBody>(null!);
+  const card = useRef<RapierRigidBody>(null!);
 
   const vec = new THREE.Vector3();
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();
+  const { nodes, materials } = useGLTF("/assets/card.glb") as unknown as GLTFResult;
   const dir = new THREE.Vector3();
 
-  const segmentProps: any = {
+  const segmentProps: Partial<RigidBodyProps> = {
     type: "dynamic" as RigidBodyProps["type"],
     canSleep: true,
     colliders: false,
     angularDamping: 4,
     linearDamping: 4,
   };
-
-  const { nodes, materials } = useGLTF("/assets/card.glb") as any;
   const lanyardTexture = useTexture("/assets/lanyard.png");
   const cardTexture = useTexture("/assets/teloy.jpeg");
 
@@ -227,30 +242,34 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         z: vec.z - dragged.z,
       });
     }
-    if (fixed.current) {
-      [j1, j2].forEach((ref) => {
-        if (!ref.current.lerped)
-          ref.current.lerped = new THREE.Vector3().copy(
-            ref.current.translation()
-          );
-        const clampedDistance = Math.max(
-          0.1,
-          Math.min(1, ref.current.lerped.distanceTo(ref.current.translation()))
+    
+    [j1, j2, j3].forEach((ref) => {
+      const rigidBodyWithLerp = ref.current as RigidBodyWithLerp;
+      if (!rigidBodyWithLerp.lerped)
+        rigidBodyWithLerp.lerped = new THREE.Vector3().copy(
+          ref.current.translation()
         );
-        ref.current.lerped.lerp(
-          ref.current.translation(),
-          delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
-        );
-      });
-      curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy(j2.current.lerped);
-      curve.points[2].copy(j1.current.lerped);
-      curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
-    }
+      const clampedDistance = Math.max(
+        0.1,
+        Math.min(1, rigidBodyWithLerp.lerped.distanceTo(ref.current.translation()))
+      );
+      rigidBodyWithLerp.lerped.lerp(
+        ref.current.translation(),
+        delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+      );
+    });
+    
+    curve.points[0].copy(j3.current.translation());
+    curve.points[1].copy((j2.current as RigidBodyWithLerp).lerped!);
+    curve.points[2].copy((j1.current as RigidBodyWithLerp).lerped!);
+    curve.points[3].copy(fixed.current.translation());
+    
+    const points = curve.getPoints(32);
+    const flatPoints = points.flatMap(point => [point.x, point.y, point.z]);
+    (band.current!.geometry as unknown as MeshLineGeometry).setPoints(flatPoints);
+    ang.copy(card.current.angvel());
+    rot.copy(card.current.rotation());
+    card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true);
   });
 
   curve.curveType = "chordal";
@@ -328,12 +347,12 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onPointerUp={(e: any) => {
-              e.target.releasePointerCapture(e.pointerId);
+            onPointerUp={(e: React.PointerEvent<THREE.Group>) => {
+              (e.target as Element).releasePointerCapture((e.nativeEvent as PointerEvent).pointerId);
               drag(false);
             }}
-            onPointerDown={(e: any) => {
-              e.target.setPointerCapture(e.pointerId);
+            onPointerDown={(e: React.PointerEvent<THREE.Group> & { point: THREE.Vector3 }) => {
+              (e.target as Element).setPointerCapture((e.nativeEvent as PointerEvent).pointerId);
               drag(
                 new THREE.Vector3()
                   .copy(e.point)
@@ -341,7 +360,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
               );
             }}
           >
-            <mesh geometry={nodes.card.geometry}>
+            <mesh geometry={(nodes.card as THREE.Mesh).geometry}>
               <meshPhysicalMaterial
                 map={cardTexture}
                 map-anisotropy={16}
@@ -361,9 +380,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         </RigidBody>
       </group>
       <mesh ref={band}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - meshLineGeometry is extended from meshline library */}
         <meshLineGeometry />
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - meshLineMaterial is extended from meshline library */}
         <meshLineMaterial
           color={theme === "dark" ? "#6366f1" : "#3b82f6"}
           depthTest={false}

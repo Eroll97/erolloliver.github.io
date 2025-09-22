@@ -5,15 +5,8 @@ import { useTheme } from "@/app/components/providers/ThemeProvider";
 import Image from "next/image";
 import {
   ExternalLink,
-  Github,
-  Code,
-  Palette,
-  Database,
   Globe,
-  Smartphone,
-  Zap,
   Filter,
-  ChevronRight,
   Share2,
   TrendingUp,
   Video,
