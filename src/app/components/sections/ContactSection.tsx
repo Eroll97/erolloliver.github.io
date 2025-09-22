@@ -63,7 +63,7 @@ export default function ContactSection() {
         message: "Message sent successfully! I'll get back to you soon.",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Failed to send message. Please try again.",
@@ -132,7 +132,7 @@ export default function ContactSection() {
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            I'm always interested in new opportunities and exciting projects.
+            I&apos;m always interested in new opportunities and exciting projects.
             Whether you have a question or just want to say hi, feel free to
             reach out!
           </p>
