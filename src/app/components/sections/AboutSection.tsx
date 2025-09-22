@@ -37,7 +37,7 @@ export default function AboutSection() {
               baseRotation={10}
               blurStrength={15}
             >
-              Hi, I'm Eroll Oliver — a passionate developer, loving husband, and
+              Hi, I&apos;m Eroll Oliver — a passionate developer, loving husband, and
               proud father. With deep expertise in WordPress and GoHighLevel, I
               create websites that are not only visually striking but also
               optimized for performance and user experience.
@@ -49,7 +49,7 @@ export default function AboutSection() {
               baseRotation={10}
               blurStrength={15}
             >
-              Whether it's a sleek portfolio or a powerful e-commerce platform,
+              Whether it&apos;s a sleek portfolio or a powerful e-commerce platform,
               I make sure your site looks amazing and works flawlessly. Beyond
               web development, I bring a versatile skill set to support your
               business operations. together.
@@ -79,7 +79,7 @@ export default function AboutSection() {
               hard work, creativity, and purpose. What sets me apart is my drive
               for innovation and continuous improvement. I embrace challenges
               and always aim to push boundaries to deliver outstanding results.
-              Let's connect and explore how we can elevate your business to new
+              Let&apos;s connect and explore how we can elevate your business to new
               heights — together.
             </ScrollReveal>
           </div>
