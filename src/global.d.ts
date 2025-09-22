@@ -11,21 +11,44 @@ declare module "*.png" {
 }
 
 declare module "meshline" {
-  export const MeshLineGeometry: any;
-  export const MeshLineMaterial: any;
+  export class MeshLineGeometry extends THREE.BufferGeometry {
+    constructor();
+    setPoints(points: Float32Array | number[]): void;
+  }
+  export class MeshLineMaterial extends THREE.Material {
+    constructor(options?: {
+      color?: THREE.Color | string | number;
+      lineWidth?: number;
+      opacity?: number;
+      transparent?: boolean;
+      [key: string]: unknown;
+    });
+  }
 }
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      meshLineGeometry: any;
-      meshLineMaterial: any;
+      meshLineGeometry: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        points?: Float32Array | number[];
+        [key: string]: unknown;
+      };
+      meshLineMaterial: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        color?: THREE.Color | string | number;
+        lineWidth?: number;
+        opacity?: number;
+        transparent?: boolean;
+        [key: string]: unknown;
+      };
       // Add other Three.js elements you might use
-      group: any;
-      mesh: any;
-      geometry: any;
-      material: any;
-      primitive: any;
+      group: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      mesh: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      geometry: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      material: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      primitive: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        object?: THREE.Object3D;
+        [key: string]: unknown;
+      };
     }
   }
 }
