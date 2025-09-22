@@ -13,7 +13,7 @@ export default function Services() {
       description:
         "Creating stunning, responsive websites with cutting-edge design and flawless functionality using WordPress and modern web technologies.",
       image:
-        "/assets/service-section/1961186a-8c14-4c83-92d0-0b04a40cb125.jpeg",
+        "/assets/service-section/web-dev.jpeg",
       category: "Development",
     },
     {
@@ -21,7 +21,7 @@ export default function Services() {
       description:
         "Comprehensive social media strategies to boost your brand presence across all major platforms and engage your target audience effectively.",
       image:
-        "/assets/service-section/1a99d7d8-3b0f-457a-8894-43f8564d1f80.jpeg",
+        "/assets/service-section/social-media-marketing.jpeg",
       category: "Marketing",
     },
     {
@@ -29,7 +29,7 @@ export default function Services() {
       description:
         "Professional video editing services for content creators, businesses, and digital marketing campaigns with cinematic quality results.",
       image:
-        "/assets/service-section/2e75cdf4-5efa-46d4-86b1-c4538d759cb8.jpeg",
+        "/assets/service-section/video-editing.jpeg",
       category: "Creative",
     },
     {
@@ -37,7 +37,7 @@ export default function Services() {
       description:
         "Creative visual solutions including logos, branding materials, digital graphics, and promotional content that captivate your audience.",
       image:
-        "/assets/service-section/321fe485-305e-41de-b149-12160adca83c.jpeg",
+        "/assets/service-section/graphic-designer.jpeg",
       category: "Design",
     },
     {
@@ -45,7 +45,7 @@ export default function Services() {
       description:
         "Expert GoHighLevel implementation and optimization for complete business automation, CRM management, and marketing workflows.",
       image:
-        "/assets/service-section/6747beba-db49-4be7-8480-a8cd9e55cfc4.jpeg",
+        "/assets/service-section/go-high-level.jpeg",
       category: "Automation",
     },
     {
@@ -53,7 +53,7 @@ export default function Services() {
       description:
         "Strategic search engine optimization to improve your website's visibility, drive organic traffic, and achieve higher search rankings.",
       image:
-        "/assets/service-section/75b0e32d-4bbe-4a9a-815c-544ba05ae515.jpeg",
+        "/assets/service-section/seo.jpeg",
       category: "Optimization",
     },
     {
@@ -61,7 +61,7 @@ export default function Services() {
       description:
         "Accurate financial record management, expense tracking, and comprehensive bookkeeping services to keep your business finances organized.",
       image:
-        "/assets/service-section/c3c32979-e6ef-485e-8f17-ccad40ae8a87.jpeg",
+        "/assets/service-section/bookkeeping.jpeg",
       category: "Finance",
     },
     {
@@ -69,7 +69,7 @@ export default function Services() {
       description:
         "Compelling, persuasive copy that converts visitors into customers through strategic messaging and engaging content creation.",
       image:
-        "/assets/service-section/caead848-7ad7-44e8-a992-10203e2dff90.jpeg",
+        "/assets/service-section/copy-writing.jpeg",
       category: "Content",
     },
     {
@@ -77,7 +77,7 @@ export default function Services() {
       description:
         "Comprehensive virtual assistance including administrative tasks, project management, and business support to streamline your operations.",
       image:
-        "/assets/service-section/e8854298-0f27-4b47-bba2-960e29c6f31e.jpeg",
+        "/assets/service-section/virtual-assistant-service.jpeg",
       category: "Support",
     },
   ];

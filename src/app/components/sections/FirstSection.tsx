@@ -59,37 +59,43 @@ export default function FirstSection() {
             href="https://www.instagram.com/eroll_onnn/"
             target="_blank"
             rel="noopener noreferrer"
+            title="Follow me on Instagram"
+            aria-label="Follow Eroll Oliver on Instagram"
             className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
               theme === "dark"
                 ? "bg-gray-800 hover:bg-pink-600 text-pink-400 hover:text-white"
                 : "bg-gray-100 hover:bg-pink-600 text-pink-600 hover:text-white"
             }`}
           >
-            <Instagram className="w-5 h-5" />
+            <Instagram className="w-5 h-5" aria-hidden="true" />
           </a>
           <a
             href="https://www.linkedin.com/in/eroll-oliver-20009b290/"
             target="_blank"
             rel="noopener noreferrer"
+            title="Connect with me on LinkedIn"
+            aria-label="Connect with Eroll Oliver on LinkedIn"
             className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
               theme === "dark"
                 ? "bg-gray-800 hover:bg-blue-600 text-blue-400 hover:text-white"
                 : "bg-gray-100 hover:bg-blue-600 text-blue-600 hover:text-white"
             }`}
           >
-            <Linkedin className="w-5 h-5" />
+            <Linkedin className="w-5 h-5" aria-hidden="true" />
           </a>
           <a
             href="https://www.facebook.com/eroll.oliver.98"
             target="_blank"
             rel="noopener noreferrer"
+            title="Visit my Facebook profile"
+            aria-label="Visit Eroll Oliver's Facebook profile"
             className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
               theme === "dark"
                 ? "bg-gray-800 hover:bg-blue-700 text-blue-400 hover:text-white"
                 : "bg-gray-100 hover:bg-blue-700 text-blue-600 hover:text-white"
             }`}
           >
-            <Facebook className="w-5 h-5" />
+            <Facebook className="w-5 h-5" aria-hidden="true" />
           </a>
         </div>
 
