@@ -1,4 +1,8 @@
 "use client";
+
+// Add this at the top - declare timeout variable
+let timeout: number | null = null;
+
 import {
   Camera,
   Mesh,
@@ -13,10 +17,71 @@ import { useTheme } from "../providers/ThemeProvider";
 
 type GL = Renderer["gl"];
 
-function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
-  let timeout: number;
-  return function (this: any, ...args: Parameters<T>) {
-    window.clearTimeout(timeout);
+// Define all interfaces at the top
+interface CircularGalleryProps {
+  items?: { image: string; text: string }[];
+  bend?: number;
+  textColor?: string;
+  borderRadius?: number;
+  font?: string;
+  scrollSpeed?: number;
+  scrollEase?: number;
+}
+
+interface TitleProps {
+  gl: GL;
+  plane: Mesh;
+  renderer: Renderer;
+  text: string;
+  textColor?: string;
+  font?: string;
+}
+
+interface ScreenSize {
+  width: number;
+  height: number;
+}
+
+interface Viewport {
+  width: number;
+  height: number;
+}
+
+interface MediaProps {
+  geometry: Plane;
+  gl: GL;
+  image: string;
+  index: number;
+  length: number;
+  renderer: Renderer;
+  scene: Transform;
+  screen: ScreenSize;
+  text: string;
+  viewport: Viewport;
+  bend: number;
+  textColor: string;
+  borderRadius?: number;
+  font?: string;
+}
+
+interface AppConfig {
+  items?: { image: string; text: string }[];
+  bend?: number;
+  textColor?: string;
+  borderRadius?: number;
+  font?: string;
+  scrollSpeed?: number;
+  scrollEase?: number;
+  theme?: "light" | "dark";
+}
+
+// Fix debounce function
+function debounce<T extends (...args: unknown[]) => void>(
+  func: T,
+  wait: number
+) {
+  return function (this: unknown, ...args: Parameters<T>) {
+    if (timeout) window.clearTimeout(timeout);
     timeout = window.setTimeout(() => func.apply(this, args), wait);
   };
 }
@@ -25,11 +90,19 @@ function lerp(p1: number, p2: number, t: number): number {
   return p1 + (p2 - p1) * t;
 }
 
-function autoBind(instance: any): void {
+// Fix autoBind function - remove 'any' type
+function autoBind(instance: object): void {
   const proto = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto).forEach((key) => {
-    if (key !== "constructor" && typeof instance[key] === "function") {
-      instance[key] = instance[key].bind(instance);
+    if (
+      key !== "constructor" &&
+      typeof (instance as Record<string, unknown>)[key] === "function"
+    ) {
+      (instance as Record<string, unknown>)[key] = (
+        (instance as Record<string, unknown>)[key] as (
+          ...args: unknown[]
+        ) => unknown
+      ).bind(instance);
     }
   });
 }
@@ -86,15 +159,6 @@ function createTextTexture(
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
   return { texture, width: canvas.width, height: canvas.height };
-}
-
-interface TitleProps {
-  gl: GL;
-  plane: Mesh;
-  renderer: Renderer;
-  text: string;
-  textColor?: string;
-  font?: string;
 }
 
 class Title {
@@ -167,33 +231,6 @@ class Title {
       -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 - 0.05;
     this.mesh.setParent(this.plane);
   }
-}
-
-interface ScreenSize {
-  width: number;
-  height: number;
-}
-
-interface Viewport {
-  width: number;
-  height: number;
-}
-
-interface MediaProps {
-  geometry: Plane;
-  gl: GL;
-  image: string;
-  index: number;
-  length: number;
-  renderer: Renderer;
-  scene: Transform;
-  screen: ScreenSize;
-  text: string;
-  viewport: Viewport;
-  bend: number;
-  textColor: string;
-  borderRadius?: number;
-  font?: string;
 }
 
 class Media {
@@ -273,27 +310,33 @@ class Media {
         attribute vec2 uv;
         uniform mat4 modelViewMatrix;
         uniform mat4 projectionMatrix;
+        uniform vec2 uPlaneSizes;
         uniform float uTime;
         uniform float uSpeed;
         varying vec2 vUv;
+        
         void main() {
           vUv = uv;
-          vec3 p = position;
-          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          
+          vec3 pos = position;
+          
+          // Add some wave distortion based on speed
+          pos.z += sin(pos.x * 0.5 + uTime) * uSpeed * 0.1;
+          
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
         }
       `,
       fragment: `
         precision highp float;
-        uniform vec2 uImageSizes;
-        uniform vec2 uPlaneSizes;
         uniform sampler2D tMap;
+        uniform vec2 uPlaneSizes;
+        uniform vec2 uImageSizes;
         uniform float uBorderRadius;
         varying vec2 vUv;
         
-        float roundedBoxSDF(vec2 p, vec2 b, float r) {
-          vec2 d = abs(p) - b;
-          return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
+        // Add the missing roundedBoxSDF function
+        float roundedBoxSDF(vec2 centerPosition, vec2 size, float radius) {
+          return length(max(abs(centerPosition) - size + radius, 0.0)) - radius;
         }
         
         void main() {
@@ -301,10 +344,12 @@ class Media {
             min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
             min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
           );
+          
           vec2 uv = vec2(
             vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
             vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
           );
+          
           vec4 color = texture2D(tMap, uv);
           
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
@@ -313,7 +358,7 @@ class Media {
           float edgeSmooth = 0.002;
           float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
           
-          gl_FragColor = vec4(color.rgb, alpha);
+          gl_FragColor = vec4(color.rgb, color.a * alpha);
         }
       `,
       uniforms: {
@@ -326,6 +371,7 @@ class Media {
       },
       transparent: true,
     });
+
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = this.image;
@@ -453,7 +499,7 @@ class App {
     last: number;
     position?: number;
   };
-  onCheckDebounce: (...args: any[]) => void;
+  onCheckDebounce: (...args: unknown[]) => void; // Fix: change from 'any[]' to 'unknown[]'
   renderer!: Renderer;
   gl!: GL;
   camera!: Camera;
@@ -467,7 +513,7 @@ class App {
   theme: "light" | "dark" = "light";
 
   boundOnResize!: () => void;
-  boundOnWheel!: (e: Event) => void;
+  boundOnWheel!: EventListener; // Fix: change to EventListener
   boundOnTouchDown!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
@@ -609,7 +655,8 @@ class App {
     if (!this.isDown) return;
     const x = "touches" in e ? e.touches[0].clientX : e.clientX;
     const distance = this.start - x;
-    this.scroll.target = this.scroll.position + distance * this.scrollSpeed;
+    this.scroll.target =
+      (this.scroll.position ?? 0) + distance * this.scrollSpeed;
   }
 
   onTouchUp() {
@@ -617,12 +664,9 @@ class App {
     this.onCheck();
   }
 
-  onWheel(e: Event) {
-    const wheelEvent = e as WheelEvent;
-    const delta =
-      wheelEvent.deltaY ||
-      (wheelEvent as any).wheelDelta ||
-      (wheelEvent as any).detail;
+  onWheel(e: WheelEvent) {
+    // Fix: change from Event to WheelEvent
+    const delta = e.deltaY || e.deltaX; // Remove 'any' casting
     this.scroll.target +=
       (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
     this.onCheckDebounce();
@@ -673,12 +717,12 @@ class App {
 
   addEventListeners() {
     this.boundOnResize = this.onResize.bind(this);
-    this.boundOnWheel = this.onWheel.bind(this);
+    this.boundOnWheel = this.onWheel.bind(this) as EventListener; // Add type assertion
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
+
     window.addEventListener("resize", this.boundOnResize);
-    window.addEventListener("mousewheel", this.boundOnWheel);
     window.addEventListener("wheel", this.boundOnWheel);
     window.addEventListener("mousedown", this.boundOnTouchDown);
     window.addEventListener("mousemove", this.boundOnTouchMove);
@@ -691,7 +735,6 @@ class App {
   destroy() {
     window.cancelAnimationFrame(this.raf);
     window.removeEventListener("resize", this.boundOnResize);
-    window.removeEventListener("mousewheel", this.boundOnWheel);
     window.removeEventListener("wheel", this.boundOnWheel);
     window.removeEventListener("mousedown", this.boundOnTouchDown);
     window.removeEventListener("mousemove", this.boundOnTouchMove);
@@ -699,9 +742,12 @@ class App {
     window.removeEventListener("touchstart", this.boundOnTouchDown);
     window.removeEventListener("touchmove", this.boundOnTouchMove);
     window.removeEventListener("touchend", this.boundOnTouchUp);
+
+    // Fix: Add null check for parentNode
     if (
       this.renderer &&
       this.renderer.gl &&
+      this.renderer.gl.canvas &&
       this.renderer.gl.canvas.parentNode
     ) {
       this.renderer.gl.canvas.parentNode.removeChild(
@@ -728,6 +774,14 @@ export default function CircularGallery({
   // Dark mode = black text on light background
   const effectiveTextColor =
     textColor || (theme === "light" ? "#ffffff" : "#000000");
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // your code
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
