@@ -172,7 +172,9 @@ function Band({ maxSpeed = 5, minSpeed = 1.5 }: BandProps = {}) {
   const vec = new THREE.Vector3();
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();
-  const { nodes, materials } = useGLTF("/assets/card.glb") as unknown as GLTFResult;
+  const { nodes, materials } = useGLTF(
+    "/assets/card.glb"
+  ) as unknown as GLTFResult;
   const dir = new THREE.Vector3();
 
   const segmentProps: Partial<RigidBodyProps> = {
@@ -242,34 +244,52 @@ function Band({ maxSpeed = 5, minSpeed = 1.5 }: BandProps = {}) {
         z: vec.z - dragged.z,
       });
     }
-    
+
     [j1, j2, j3].forEach((ref) => {
       const rigidBodyWithLerp = ref.current as RigidBodyWithLerp;
+      // ✅ Add null check before accessing properties
+      if (!rigidBodyWithLerp) return;
+
       if (!rigidBodyWithLerp.lerped)
         rigidBodyWithLerp.lerped = new THREE.Vector3().copy(
-          ref.current.translation()
+          rigidBodyWithLerp.translation()
         );
       const clampedDistance = Math.max(
         0.1,
-        Math.min(1, rigidBodyWithLerp.lerped.distanceTo(ref.current.translation()))
+        Math.min(
+          1,
+          rigidBodyWithLerp.lerped.distanceTo(rigidBodyWithLerp.translation())
+        )
       );
       rigidBodyWithLerp.lerped.lerp(
-        ref.current.translation(),
+        rigidBodyWithLerp.translation(),
         delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
       );
     });
-    
+
+    // ✅ Add null checks for the curve points as well
+    if (!j3.current || !j2.current || !j1.current || !fixed.current) return;
+
     curve.points[0].copy(j3.current.translation());
     curve.points[1].copy((j2.current as RigidBodyWithLerp).lerped!);
     curve.points[2].copy((j1.current as RigidBodyWithLerp).lerped!);
     curve.points[3].copy(fixed.current.translation());
-    
+
     const points = curve.getPoints(32);
-    const flatPoints = points.flatMap(point => [point.x, point.y, point.z]);
-    (band.current!.geometry as unknown as MeshLineGeometry).setPoints(flatPoints);
+    const flatPoints = points.flatMap((point) => [point.x, point.y, point.z]);
+    (band.current!.geometry as unknown as MeshLineGeometry).setPoints(
+      flatPoints
+    );
+
+    // ✅ Add null check for card.current
+    if (!card.current) return;
+
     ang.copy(card.current.angvel());
     rot.copy(card.current.rotation());
-    card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true);
+    card.current.setAngvel(
+      { x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z },
+      true
+    );
   });
 
   curve.curveType = "chordal";
@@ -348,11 +368,17 @@ function Band({ maxSpeed = 5, minSpeed = 1.5 }: BandProps = {}) {
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: React.PointerEvent<THREE.Group>) => {
-              (e.target as Element).releasePointerCapture((e.nativeEvent as PointerEvent).pointerId);
+              (e.target as Element).releasePointerCapture(
+                (e.nativeEvent as PointerEvent).pointerId
+              );
               drag(false);
             }}
-            onPointerDown={(e: React.PointerEvent<THREE.Group> & { point: THREE.Vector3 }) => {
-              (e.target as Element).setPointerCapture((e.nativeEvent as PointerEvent).pointerId);
+            onPointerDown={(
+              e: React.PointerEvent<THREE.Group> & { point: THREE.Vector3 }
+            ) => {
+              (e.target as Element).setPointerCapture(
+                (e.nativeEvent as PointerEvent).pointerId
+              );
               drag(
                 new THREE.Vector3()
                   .copy(e.point)
