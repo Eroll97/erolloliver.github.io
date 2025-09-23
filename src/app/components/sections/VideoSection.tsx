@@ -495,6 +495,8 @@ export default function VideoSection(): React.ReactElement {
                       ? "text-gray-400 hover:text-white"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
+                  title="Close video modal"
+                  aria-label="Close video modal"
                 >
                   <X className="w-6 h-6" />
                 </button>
