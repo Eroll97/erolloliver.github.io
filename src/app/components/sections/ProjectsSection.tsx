@@ -378,7 +378,7 @@ export default function ProjectsSection() {
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            Social Media Portfolio
+          PROJECTS
           </h2>
           <p
             className={`text-lg max-w-3xl mx-auto ${
