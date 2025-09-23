@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withNextVideo } from "next-video/process";
 
 const nextConfig: NextConfig = {
   // ✅ Configure Turbopack (for Next.js 15+)
@@ -29,6 +30,11 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+
+  // Add images domain for Google Drive thumbnails
+  images: {
+    domains: ["drive.google.com", "lh3.googleusercontent.com"],
+  },
 };
 
-export default nextConfig;
+export default withNextVideo(nextConfig);

@@ -7,6 +7,7 @@ import ContactSection from "./components/sections/ContactSection";
 import Skill from "./components/sections/Skill";
 import Services from "./components/sections/Services";
 import Gallery from "./components/sections/Gallery";
+import VideoSection from "./components/sections/VideoSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Skill />
       <Services />
       <ProjectsSection />
+      <VideoSection />
       <ContactSection />
       <Footer />
     </div>

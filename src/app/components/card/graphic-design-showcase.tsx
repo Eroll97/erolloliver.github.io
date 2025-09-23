@@ -11,12 +11,14 @@ import {
   Share2,
   Calendar,
   Tag,
+  Palette,
 } from "lucide-react";
 
-interface GraphicDesignCardProps {
+export interface GraphicDesign {
   id: number;
   title: string;
   description: string;
+  longDescription: string;
   category: string;
   image: string;
   alt: string;
@@ -27,47 +29,38 @@ interface GraphicDesignCardProps {
   downloadUrl?: string;
   externalUrl?: string;
   status?: "featured" | "new" | "popular" | "default";
-  className?: string;
-  onImageClick?: (id: number) => void;
-  onLike?: (id: number) => void;
-  onShare?: (id: number) => void;
+  tools?: string[];
 }
 
-export default function GraphicDesignCard({
-  id,
-  title,
-  description,
-  category,
-  image,
-  alt,
-  date,
-  tags = [],
-  likes = 0,
-  views = 0,
-  downloadUrl,
-  externalUrl,
-  status = "default",
-  className = "",
-  onImageClick,
+interface GraphicDesignShowcaseProps {
+  design: GraphicDesign;
+  onClick?: (design: GraphicDesign) => void;
+  onLike?: (id: number) => void;
+  onShare?: (id: number) => void;
+  className?: string;
+}
+
+export default function GraphicDesignShowcase({
+  design,
+  onClick,
   onLike,
   onShare,
-}: GraphicDesignCardProps) {
+  className = "",
+}: GraphicDesignShowcaseProps) {
   const { theme } = useTheme();
   const [isLiked, setIsLiked] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-  const handleLike = () => {
+  const handleLike = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsLiked(!isLiked);
-    onLike?.(id);
+    onLike?.(design.id);
   };
 
-  const handleImageClick = () => {
-    onImageClick?.(id);
-  };
-
-  const handleShare = () => {
-    onShare?.(id);
+  const handleShare = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onShare?.(design.id);
   };
 
   const getStatusColor = (status: string) => {
@@ -88,11 +81,11 @@ export default function GraphicDesignCard({
   const getCategoryColor = (category: string) => {
     const colors = {
       "logo-design": "bg-blue-500",
-      "web-design": "bg-green-500",
-      "print-design": "bg-purple-500",
-      branding: "bg-pink-500",
+      branding: "bg-purple-500",
+      "poster-design": "bg-pink-500",
       illustration: "bg-yellow-500",
-      "ui-ux": "bg-indigo-500",
+      "ui-design": "bg-indigo-500",
+      "print-design": "bg-green-500",
     };
     return (
       colors[category.toLowerCase() as keyof typeof colors] || "bg-gray-500"
@@ -101,21 +94,22 @@ export default function GraphicDesignCard({
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl ${
+      className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl cursor-pointer ${
         theme === "dark"
           ? "bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50"
           : "bg-white border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-xl"
       } ${className}`}
+      onClick={() => onClick?.(design)}
     >
       {/* Status Badge */}
-      {status !== "default" && (
+      {design.status !== "default" && (
         <div className="absolute top-3 left-3 z-20">
           <span
             className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
-              status
+              design.status || "default"
             )}`}
           >
-            {status.charAt(0).toUpperCase() + status.slice(1)}
+            {design.status ? design.status.charAt(0).toUpperCase() + design.status.slice(1) : ''}
           </span>
         </div>
       )}
@@ -124,22 +118,20 @@ export default function GraphicDesignCard({
       <div className="absolute top-3 right-3 z-20">
         <span
           className={`px-2 py-1 rounded-full text-xs font-medium text-white ${getCategoryColor(
-            category
+            design.category
           )}`}
         >
-          {category}
+          <Palette size={10} className="inline mr-1" />
+          {design.category}
         </span>
       </div>
 
       {/* Image Container */}
-      <div
-        className="relative aspect-[4/3] overflow-hidden cursor-pointer"
-        onClick={handleImageClick}
-      >
+      <div className="relative aspect-[4/3] overflow-hidden">
         {!imageError ? (
           <Image
-            src={image}
-            alt={alt}
+            src={design.image}
+            alt={design.alt}
             fill
             className={`object-cover transition-all duration-500 group-hover:scale-110 ${
               imageLoaded ? "opacity-100" : "opacity-0"
@@ -160,7 +152,7 @@ export default function GraphicDesignCard({
                   theme === "dark" ? "bg-gray-600" : "bg-gray-300"
                 }`}
               >
-                <Eye
+                <Palette
                   className={`w-8 h-8 ${
                     theme === "dark" ? "text-gray-400" : "text-gray-500"
                   }`}
@@ -171,7 +163,7 @@ export default function GraphicDesignCard({
                   theme === "dark" ? "text-gray-400" : "text-gray-500"
                 }`}
               >
-                Image not available
+                Design not available
               </p>
             </div>
           </div>
@@ -191,21 +183,21 @@ export default function GraphicDesignCard({
           <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
             <div className="flex items-center space-x-2 text-white">
               <Eye size={16} />
-              <span className="text-sm">{views}</span>
+              <span className="text-sm">{design.views || 0}</span>
             </div>
             <div className="flex items-center space-x-2">
-              {downloadUrl && (
+              {design.downloadUrl && (
                 <a
-                  href={downloadUrl}
+                  href={design.downloadUrl}
                   className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Download size={16} className="text-white" />
                 </a>
               )}
-              {externalUrl && (
+              {design.externalUrl && (
                 <a
-                  href={externalUrl}
+                  href={design.externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
@@ -224,16 +216,16 @@ export default function GraphicDesignCard({
         {/* Title and Date */}
         <div className="flex justify-between items-start">
           <h3
-            className={`font-semibold text-lg leading-tight ${
+            className={`font-semibold text-lg leading-tight line-clamp-2 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            {title}
+            {design.title}
           </h3>
-          {date && (
+          {design.date && (
             <div className="flex items-center text-xs text-gray-500 ml-2">
               <Calendar size={12} className="mr-1" />
-              {date}
+              {design.date}
             </div>
           )}
         </div>
@@ -244,13 +236,13 @@ export default function GraphicDesignCard({
             theme === "dark" ? "text-gray-300" : "text-gray-600"
           }`}
         >
-          {description}
+          {design.description}
         </p>
 
         {/* Tags */}
-        {tags.length > 0 && (
+        {design.tags && design.tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {tags.slice(0, 3).map((tag, index) => (
+            {design.tags.slice(0, 3).map((tag, index) => (
               <span
                 key={index}
                 className={`inline-flex items-center px-2 py-1 rounded-md text-xs ${
@@ -263,13 +255,15 @@ export default function GraphicDesignCard({
                 {tag}
               </span>
             ))}
-            {tags.length > 3 && (
+            {design.tags.length > 3 && (
               <span
-                className={`text-xs ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                className={`inline-flex items-center px-2 py-1 rounded-md text-xs ${
+                  theme === "dark"
+                    ? "bg-gray-700 text-gray-300"
+                    : "bg-gray-100 text-gray-600"
                 }`}
               >
-                +{tags.length - 3} more
+                +{design.tags.length - 3}
               </span>
             )}
           </div>
@@ -288,11 +282,14 @@ export default function GraphicDesignCard({
             }`}
           >
             <Heart size={16} className={isLiked ? "fill-current" : ""} />
-            <span className="text-sm">{likes + (isLiked ? 1 : 0)}</span>
+            <span className="text-sm">
+              {(design.likes || 0) + (isLiked ? 1 : 0)}
+            </span>
           </button>
 
           <button
             onClick={handleShare}
+            aria-label="Share design"
             className={`p-2 rounded-full transition-colors ${
               theme === "dark"
                 ? "hover:bg-gray-700 text-gray-400 hover:text-white"
@@ -308,4 +305,4 @@ export default function GraphicDesignCard({
 }
 
 // Export types for use in other components
-export type { GraphicDesignCardProps };
+export type { GraphicDesignShowcaseProps };
