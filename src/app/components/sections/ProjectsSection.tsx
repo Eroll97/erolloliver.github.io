@@ -36,134 +36,80 @@ const projects: Project[] = [
       "Analytics",
       "Canva",
     ],
-    image: "/assets/sample-social-media/tmp063om_p0.webp",
+    image: "/assets/sample-social-media/pro-hub.webp",
     images: [
-      "/assets/sample-social-media/tmp063om_p0.webp",
-      "/assets/sample-social-media/tmp0k2rmbo0.webp",
-      "/assets/sample-social-media/tmp1gvij9vn.webp",
-      "/assets/sample-social-media/tmp49azcblo.webp",
+      "/assets/sample-social-media/pro-hub.webp",
+      "/assets/sample-social-media/pro-hub2.webp",
+      "/assets/sample-social-media/pro-hub3.webp",
+      "/assets/sample-social-media/pro-hub4.webp",
+      "/assets/sample-social-media/pro-hub5.webp",
+      "/assets/sample-social-media/pro-hub6.webp",
+      "/assets/sample-social-media/pro-hub7.webp",
     ],
-    demoUrl: "https://facebook.com/campaign",
     status: "completed",
   },
   {
     id: 2,
-    title: "E-commerce Product Promotion",
+    title: "Social Media Campaign - Brand Awareness",
     description:
-      "Product launch campaign with targeted social media advertising",
+      "Strategic social media campaign for brand visibility and engagement",
     longDescription:
-      "Multi-platform social media campaign for e-commerce product launch, featuring targeted advertising, influencer partnerships, and conversion-optimized content across all major social platforms.",
+      "Comprehensive social media marketing campaign designed to increase brand awareness, drive engagement, and build a strong online community. Includes content strategy, visual design, and performance analytics.",
     technologies: [
       "Facebook Ads",
-      "Instagram Shopping",
-      "TikTok Ads",
-      "Google Analytics",
-      "Hootsuite",
+      "Instagram",
+      "Content Strategy",
+      "Analytics",
+      "Canva",
     ],
-    image: "/assets/sample-social-media/tmp0k2rmbo0.webp",
-    demoUrl: "https://instagram.com/campaign",
+    image: "/assets/sample-social-media/workgenix.webp",
+    images: [
+      "/assets/sample-social-media/workgenix.webp",
+      "/assets/sample-social-media/workgenix2.webp",
+    ],
     status: "completed",
   },
   {
     id: 3,
-    title: "Restaurant Social Media Management",
-    description: "Complete social media management for restaurant chain",
+    title: "Social Media Campaign - Brand Awareness",
+    description:
+      "Strategic social media campaign for brand visibility and engagement",
     longDescription:
-      "Full-service social media management including daily content creation, community management, promotional campaigns, and customer engagement strategies for a growing restaurant chain.",
+      "Comprehensive social media marketing campaign designed to increase brand awareness, drive engagement, and build a strong online community. Includes content strategy, visual design, and performance analytics.",
     technologies: [
+      "Facebook Ads",
       "Instagram",
-      "Facebook",
-      "Content Creation",
-      "Community Management",
-      "Scheduling Tools",
+      "Content Strategy",
+      "Analytics",
+      "Canva",
     ],
-    image: "/assets/sample-social-media/tmp1gvij9vn.webp",
-    demoUrl: "https://instagram.com/restaurant",
+    image: "/assets/sample-social-media/multipeak.webp",
+    images: ["/assets/sample-social-mediamultipeak.webp"],
     status: "completed",
   },
   {
     id: 4,
-    title: "Fitness Brand Content Strategy",
-    description: "Health and fitness brand social media content strategy",
+    title: "Social Media Campaign - Brand Awareness",
+    description:
+      "Strategic social media campaign for brand visibility and engagement",
     longDescription:
-      "Developed comprehensive content strategy for fitness brand including workout videos, nutrition tips, success stories, and community building initiatives across multiple social platforms.",
+      "Comprehensive social media marketing campaign designed to increase brand awareness, drive engagement, and build a strong online community. Includes content strategy, visual design, and performance analytics.",
     technologies: [
-      "Video Content",
-      "Instagram Reels",
-      "YouTube",
-      "Content Planning",
-      "Engagement Strategy",
-    ],
-    image: "/assets/sample-social-media/tmp49azcblo.webp",
-    demoUrl: "https://youtube.com/fitness",
-    status: "completed",
-  },
-  {
-    id: 5,
-    title: "Tech Startup Launch Campaign",
-    description: "Social media launch strategy for tech startup",
-    longDescription:
-      "Strategic social media campaign for tech startup launch, including thought leadership content, product demonstrations, investor outreach, and community building across LinkedIn, Twitter, and Instagram.",
-    technologies: [
-      "LinkedIn Ads",
-      "Twitter",
-      "Content Marketing",
-      "Lead Generation",
+      "Facebook Ads",
+      "Instagram",
+      "Content Strategy",
       "Analytics",
+      "Canva",
     ],
-    image: "/assets/sample-social-media/tmp4ut17_2n.webp",
-    demoUrl: "https://linkedin.com/company/startup",
-    status: "completed",
-  },
-  {
-    id: 6,
-    title: "Fashion Brand Visual Campaign",
-    description: "Visual storytelling campaign for fashion brand",
-    longDescription:
-      "Creative visual campaign for fashion brand featuring lifestyle photography, product showcases, behind-the-scenes content, and user-generated content campaigns across Instagram and Pinterest.",
-    technologies: [
-      "Photography",
-      "Instagram",
-      "Pinterest",
-      "Visual Design",
-      "UGC Strategy",
+    image: "/assets/sample-social-media/level3d1.webp",
+    images: [
+      "/assets/sample-social-media/level3d1.webp",
+      "/assets/sample-social-media/level3d2.webp",
+      "/assets/sample-social-media/level3d3.webp",
+      "/assets/sample-social-media/level3d4.webp",
+      "/assets/sample-social-media/level3d5.webp",
+      "/assets/sample-social-media/level3d6.webp",
     ],
-    image: "/assets/sample-social-media/tmp92y9b9ir.webp",
-    demoUrl: "https://pinterest.com/fashion",
-    status: "completed",
-  },
-  {
-    id: 7,
-    title: "Real Estate Social Marketing",
-    description: "Real estate social media marketing and lead generation",
-    longDescription:
-      "Comprehensive social media strategy for real estate agency including property showcases, virtual tours, client testimonials, and targeted advertising for lead generation and brand building.",
-    technologies: [
-      "Facebook Lead Ads",
-      "Instagram Stories",
-      "Virtual Tours",
-      "CRM Integration",
-      "Local SEO",
-    ],
-    image: "/assets/sample-social-media/tmp9wexqk65.webp",
-    demoUrl: "https://facebook.com/realestate",
-    status: "completed",
-  },
-  {
-    id: 8,
-    title: "Beauty Brand Influencer Campaign",
-    description: "Influencer marketing campaign for beauty products",
-    longDescription:
-      "Strategic influencer marketing campaign for beauty brand featuring micro and macro influencers, product reviews, tutorials, and user-generated content to drive brand awareness and sales.",
-    technologies: [
-      "Influencer Marketing",
-      "TikTok",
-      "Instagram",
-      "Campaign Management",
-      "ROI Tracking",
-    ],
-    image: "/assets/sample-social-media/tmpalw0_cpm.webp",
-    demoUrl: "https://tiktok.com/beauty",
     status: "completed",
   },
 ];
@@ -947,7 +893,11 @@ export default function ProjectsSection() {
         {/* Image Gallery Modal */}
         {showImageGallery && selectedProject?.images && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50"
+            className={`fixed inset-0 flex items-center justify-center p-4 z-50 ${
+              theme === "dark"
+                ? "bg-black/70 backdrop-blur-sm"
+                : "bg-black/60 backdrop-blur-sm"
+            }`}
             onClick={closeImageGallery}
           >
             <div
@@ -955,7 +905,11 @@ export default function ProjectsSection() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Gallery Header */}
-              <div className="flex justify-between items-center mb-4 text-white">
+              <div
+                className={`flex justify-between items-center mb-4 ${
+                  theme === "dark" ? "text-white" : "text-white"
+                }`}
+              >
                 <h3 className="text-xl font-semibold">
                   {selectedProject.title}
                 </h3>
@@ -964,7 +918,11 @@ export default function ProjectsSection() {
                     {selectedImageIndex + 1} of {selectedProject.images.length}
                   </span>
                   <button
-                    className="text-2xl hover:text-gray-300"
+                    className={`text-2xl transition-colors ${
+                      theme === "dark"
+                        ? "hover:text-gray-300"
+                        : "hover:text-gray-200"
+                    }`}
                     onClick={closeImageGallery}
                   >
                     ×
@@ -988,7 +946,11 @@ export default function ProjectsSection() {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                      className={`absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full transition-colors ${
+                        theme === "dark"
+                          ? "bg-black/60 text-white hover:bg-black/80"
+                          : "bg-white/20 text-white hover:bg-white/30"
+                      }`}
                     >
                       <svg
                         className="w-6 h-6"
@@ -1006,7 +968,11 @@ export default function ProjectsSection() {
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                      className={`absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full transition-colors ${
+                        theme === "dark"
+                          ? "bg-black/60 text-white hover:bg-black/80"
+                          : "bg-white/20 text-white hover:bg-white/30"
+                      }`}
                     >
                       <svg
                         className="w-6 h-6"
@@ -1035,8 +1001,12 @@ export default function ProjectsSection() {
                       onClick={() => setSelectedImageIndex(index)}
                       className={`relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors ${
                         index === selectedImageIndex
-                          ? "border-white"
-                          : "border-gray-600 hover:border-gray-400"
+                          ? theme === "dark"
+                            ? "border-white"
+                            : "border-white"
+                          : theme === "dark"
+                          ? "border-gray-500 hover:border-gray-300"
+                          : "border-gray-400 hover:border-gray-200"
                       }`}
                     >
                       <Image
