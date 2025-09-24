@@ -14,7 +14,8 @@ interface Project {
   description: string;
   longDescription: string;
   technologies: string[];
-  image: string;
+  image: string; // Main thumbnail image
+  images?: string[]; // Additional gallery images
   demoUrl?: string;
   githubUrl?: string;
   status: "completed" | "in-progress" | "planned";
@@ -36,6 +37,12 @@ const projects: Project[] = [
       "Canva",
     ],
     image: "/assets/sample-social-media/tmp063om_p0.webp",
+    images: [
+      "/assets/sample-social-media/tmp063om_p0.webp",
+      "/assets/sample-social-media/tmp0k2rmbo0.webp",
+      "/assets/sample-social-media/tmp1gvij9vn.webp",
+      "/assets/sample-social-media/tmp49azcblo.webp",
+    ],
     demoUrl: "https://facebook.com/campaign",
     status: "completed",
   },
@@ -575,6 +582,8 @@ export default function ProjectsSection() {
   const [selectedDesign, setSelectedDesign] = useState<GraphicDesign | null>(
     null
   );
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [showImageGallery, setShowImageGallery] = useState(false);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -599,6 +608,33 @@ export default function ProjectsSection() {
         return "Planned";
       default:
         return "Unknown";
+    }
+  };
+
+  const openImageGallery = (project: Project, imageIndex = 0) => {
+    setSelectedProject(project);
+    setSelectedImageIndex(imageIndex);
+    setShowImageGallery(true);
+  };
+
+  const closeImageGallery = () => {
+    setShowImageGallery(false);
+    setSelectedImageIndex(0);
+  };
+
+  const nextImage = () => {
+    if (selectedProject?.images) {
+      setSelectedImageIndex((prev) =>
+        prev === selectedProject.images!.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject?.images) {
+      setSelectedImageIndex((prev) =>
+        prev === 0 ? selectedProject.images!.length - 1 : prev - 1
+      );
     }
   };
 
@@ -661,10 +697,16 @@ export default function ProjectsSection() {
                     ? "bg-gray-800 border border-gray-700 hover:shadow-2xl"
                     : "bg-white border border-gray-200 hover:shadow-2xl"
                 }`}
-                onClick={() => setSelectedProject(project)}
               >
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div
+                  className="relative h-48 overflow-hidden cursor-pointer"
+                  onClick={() =>
+                    project.images && project.images.length > 1
+                      ? openImageGallery(project, 0)
+                      : setSelectedProject(project)
+                  }
+                >
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -672,6 +714,25 @@ export default function ProjectsSection() {
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                  {/* Image count indicator */}
+                  {project.images && project.images.length > 1 && (
+                    <div className="absolute bottom-4 left-4 bg-black/70 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                      <svg
+                        className="w-3 h-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span>{project.images.length}</span>
+                    </div>
+                  )}
+
                   <div
                     className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
                       project.status
@@ -976,6 +1037,115 @@ export default function ProjectsSection() {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Image Gallery Modal */}
+        {showImageGallery && selectedProject?.images && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50"
+            onClick={closeImageGallery}
+          >
+            <div
+              className="max-w-5xl w-full h-full flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Gallery Header */}
+              <div className="flex justify-between items-center mb-4 text-white">
+                <h3 className="text-xl font-semibold">
+                  {selectedProject.title}
+                </h3>
+                <div className="flex items-center space-x-4">
+                  <span className="text-sm">
+                    {selectedImageIndex + 1} of {selectedProject.images.length}
+                  </span>
+                  <button
+                    className="text-2xl hover:text-gray-300"
+                    onClick={closeImageGallery}
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+
+              {/* Main Image */}
+              <div className="flex-1 relative mb-4">
+                <Image
+                  src={selectedProject.images[selectedImageIndex]}
+                  alt={`${selectedProject.title} - Image ${
+                    selectedImageIndex + 1
+                  }`}
+                  fill
+                  className="object-contain"
+                />
+
+                {/* Navigation Arrows */}
+                {selectedProject.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Thumbnail Navigation */}
+              {selectedProject.images.length > 1 && (
+                <div className="flex space-x-2 justify-center overflow-x-auto pb-2">
+                  {selectedProject.images.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImageIndex(index)}
+                      className={`relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors ${
+                        index === selectedImageIndex
+                          ? "border-white"
+                          : "border-gray-600 hover:border-gray-400"
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt={`Thumbnail ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
