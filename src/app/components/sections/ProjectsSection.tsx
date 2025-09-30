@@ -117,408 +117,141 @@ const projects: Project[] = [
 const graphicDesigns: GraphicDesign[] = [
   {
     id: 101,
-    title: "Modern Brand Identity Design",
-    description:
-      "Complete brand identity package with logo, colors, and typography",
-    longDescription:
-      "Comprehensive brand identity design including logo creation, color palette development, typography selection, and brand guidelines for a modern tech startup.",
-    category: "branding",
+    click: "Click Design",
     image: "/assets/graphic-design/1.webp",
-    alt: "Modern brand identity design showcase",
-    date: "2024-01-15",
-    tags: ["Branding", "Logo", "Identity", "Modern"],
-    likes: 45,
-    views: 320,
-    status: "featured",
-    tools: ["Adobe Illustrator", "Photoshop", "Figma"],
   },
   {
     id: 102,
-    title: "Restaurant Menu Design",
-    description: "Elegant menu design for upscale dining restaurant",
-    longDescription:
-      "Sophisticated menu design featuring elegant typography, food photography integration, and premium layout design for an upscale restaurant chain.",
-    category: "print-design",
+    click: "Click Design",
     image: "/assets/graphic-design/2.webp",
-    alt: "Restaurant menu design",
-    date: "2024-01-10",
-    tags: ["Menu", "Restaurant", "Print", "Elegant"],
-    likes: 32,
-    views: 156,
-    status: "popular",
-    tools: ["Adobe InDesign", "Photoshop"],
   },
   {
     id: 103,
-    title: "Concert Poster Design",
-    description: "Dynamic poster design for music festival event",
-    longDescription:
-      "Vibrant and energetic poster design for a summer music festival, incorporating bold typography, colorful graphics, and festival branding elements.",
-    category: "poster-design",
+    click: "Click Design",
     image: "/assets/graphic-design/3.webp",
-    alt: "Concert poster design",
-    date: "2024-01-05",
-    tags: ["Poster", "Music", "Festival", "Vibrant"],
-    likes: 67,
-    views: 234,
-    status: "new",
-    tools: ["Adobe Illustrator", "Photoshop"],
   },
   {
     id: 104,
-    title: "Corporate Logo Design",
-    description: "Professional logo design for business consulting firm",
-    longDescription:
-      "Clean and professional logo design for a business consulting firm, emphasizing trust, expertise, and modern business values through minimalist design approach.",
-    category: "logo-design",
+    click: "Click Design",
     image: "/assets/graphic-design/4.webp",
-    alt: "Corporate logo design",
-    date: "2023-12-20",
-    tags: ["Logo", "Corporate", "Business", "Professional"],
-    likes: 28,
-    views: 189,
-    status: "default",
-    tools: ["Adobe Illustrator"],
   },
   {
     id: 105,
-    title: "Mobile App UI Design",
-    description: "User interface design for mobile fitness application",
-    longDescription:
-      "Modern and intuitive mobile app interface design for a fitness tracking application, featuring clean layouts, motivational color schemes, and user-friendly navigation.",
-    category: "ui-design",
+    click: "Click Design",
     image: "/assets/graphic-design/5.webp",
-    alt: "Mobile app UI design",
-    date: "2023-12-15",
-    tags: ["UI", "Mobile", "App", "Fitness"],
-    likes: 89,
-    views: 445,
-    status: "featured",
-    tools: ["Figma", "Adobe XD"],
   },
   {
     id: 106,
-    title: "Book Cover Illustration",
-    description: "Creative book cover design for fantasy novel",
-    longDescription:
-      "Captivating book cover illustration for a fantasy novel, featuring mystical elements, dramatic lighting, and typography that captures the essence of the story.",
-    category: "illustration",
+    click: "Click Design",
     image: "/assets/graphic-design/6.webp",
-    alt: "Book cover illustration",
-    date: "2023-12-10",
-    tags: ["Illustration", "Book", "Fantasy", "Cover"],
-    likes: 76,
-    views: 298,
-    status: "popular",
-    tools: ["Adobe Photoshop", "Illustrator"],
   },
   {
     id: 107,
-    title: "Corporate Brand Guidelines",
-    description:
-      "Complete brand guideline documentation for corporate identity",
-    longDescription:
-      "Comprehensive brand guidelines including logo usage, color specifications, typography rules, and visual identity standards for corporate communications.",
-    category: "branding",
+    click: "Click Design",
     image:
       "/assets/graphic-design/307e91d3b702ba7884eeb70d381fbea3_1200_80.webp",
-    alt: "Corporate brand guidelines design",
-    date: "2023-11-25",
-    tags: ["Guidelines", "Corporate", "Brand", "Standards"],
-    likes: 34,
-    views: 187,
-    status: "default",
-    tools: ["Adobe InDesign", "Illustrator"],
   },
   {
     id: 108,
-    title: "E-commerce Product Catalog",
-    description: "Product catalog design for online retail platform",
-    longDescription:
-      "Modern e-commerce catalog featuring product photography, layout design, and user-friendly navigation for enhanced shopping experience.",
-    category: "print-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/392604fc3031162dbf80378171c12db9_1200_80.webp",
-    alt: "E-commerce product catalog design",
-    date: "2023-11-20",
-    tags: ["Catalog", "E-commerce", "Product", "Retail"],
-    likes: 42,
-    views: 203,
-    status: "popular",
-    tools: ["Adobe InDesign", "Photoshop"],
   },
   {
     id: 109,
-    title: "Music Album Cover Design",
-    description: "Creative album artwork for independent music artist",
-    longDescription:
-      "Artistic album cover design featuring abstract elements, creative typography, and visual storytelling that captures the essence of the musical composition.",
-    category: "illustration",
+    click: "Click Design",
     image:
       "/assets/graphic-design/44f0c79f9f9a48f2f6f19789386fba7e_1200_80.webp",
-    alt: "Music album cover design",
-    date: "2023-11-15",
-    tags: ["Album", "Music", "Cover", "Artistic"],
-    likes: 58,
-    views: 267,
-    status: "featured",
-    tools: ["Adobe Photoshop", "Illustrator"],
   },
   {
     id: 110,
-    title: "Event Flyer Design",
-    description: "Promotional flyer for community event and festival",
-    longDescription:
-      "Eye-catching event flyer featuring vibrant colors, engaging graphics, and clear information hierarchy to attract attendees and communicate event details effectively.",
-    category: "poster-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/4925fb9409deba833f68c97db72241c6_1200_80.webp",
-    alt: "Event flyer design",
-    date: "2023-11-10",
-    tags: ["Flyer", "Event", "Promotion", "Community"],
-    likes: 39,
-    views: 178,
-    status: "new",
-    tools: ["Adobe Illustrator", "Photoshop"],
   },
   {
     id: 111,
-    title: "Digital Marketing Banner",
-    description: "Web banner design for digital advertising campaign",
-    longDescription:
-      "Responsive web banner design optimized for digital platforms, featuring compelling visuals and clear call-to-action for maximum conversion rates.",
-    category: "ui-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/724b0b0396c6d662c4a78a7fccd17b34_1200_80.webp",
-    alt: "Digital marketing banner design",
-    date: "2023-11-05",
-    tags: ["Banner", "Digital", "Marketing", "Web"],
-    likes: 51,
-    views: 234,
-    status: "popular",
-    tools: ["Adobe Photoshop", "Figma"],
   },
   {
     id: 112,
-    title: "Food & Beverage Packaging",
-    description: "Product packaging design for gourmet food brand",
-    longDescription:
-      "Premium packaging design for gourmet food products, incorporating brand identity, product information, and visual appeal to stand out on retail shelves.",
-    category: "print-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/73c0637d3421e12b945a62cc7eef1817_1200_80.webp",
-    alt: "Food and beverage packaging design",
-    date: "2023-10-30",
-    tags: ["Packaging", "Food", "Beverage", "Retail"],
-    likes: 47,
-    views: 198,
-    status: "featured",
-    tools: ["Adobe Illustrator", "Photoshop"],
   },
   {
     id: 113,
-    title: "Tech Startup Logo",
-    description: "Modern logo design for technology startup company",
-    longDescription:
-      "Contemporary logo design for tech startup, emphasizing innovation, scalability, and modern technology through clean lines and strategic color choices.",
-    category: "logo-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/823716ac2c9953e30c19a8e01e293fe3_1200_80.webp",
-    alt: "Tech startup logo design",
-    date: "2023-10-25",
-    tags: ["Logo", "Startup", "Technology", "Innovation"],
-    likes: 63,
-    views: 289,
-    status: "new",
-    tools: ["Adobe Illustrator"],
   },
   {
     id: 114,
-    title: "Magazine Layout Design",
-    description: "Editorial layout design for lifestyle magazine",
-    longDescription:
-      "Sophisticated magazine layout featuring typography hierarchy, image placement, and reading flow optimization for enhanced reader engagement and visual appeal.",
-    category: "print-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/9deeb10205264a7ec2f68c2c18294474_1200_80.webp",
-    alt: "Magazine layout design",
-    date: "2023-10-20",
-    tags: ["Magazine", "Editorial", "Layout", "Typography"],
-    likes: 41,
-    views: 167,
-    status: "default",
-    tools: ["Adobe InDesign", "Photoshop"],
   },
   {
     id: 115,
-    title: "Social Media Graphics",
-    description: "Social media graphic templates for brand consistency",
-    longDescription:
-      "Cohesive social media graphics package including post templates, story designs, and profile elements to maintain brand consistency across all platforms.",
-    category: "ui-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/9e8185e0db50e1862238ce06cc3f15bc_1200_80.webp",
-    alt: "Social media graphics design",
-    date: "2023-10-15",
-    tags: ["Social Media", "Templates", "Branding", "Digital"],
-    likes: 55,
-    views: 312,
-    status: "popular",
-    tools: ["Adobe Photoshop", "Canva"],
   },
   {
     id: 116,
-    title: "Wellness Brand Identity",
-    description: "Holistic brand identity for wellness and health company",
-    longDescription:
-      "Comprehensive brand identity for wellness company including logo, color palette, typography, and visual elements that convey health, balance, and natural healing.",
-    category: "branding",
+    click: "Click Design",
     image:
       "/assets/graphic-design/a6eaab960af24cd55852dd63d8ddaff0_1200_80.webp",
-    alt: "Wellness brand identity design",
-    date: "2023-10-10",
-    tags: ["Wellness", "Health", "Brand", "Natural"],
-    likes: 38,
-    views: 145,
-    status: "featured",
-    tools: ["Adobe Illustrator", "Photoshop"],
   },
   {
     id: 117,
-    title: "Annual Report Design",
-    description:
-      "Corporate annual report with infographics and data visualization",
-    longDescription:
-      "Professional annual report design featuring data visualization, infographics, and corporate messaging to effectively communicate company performance and achievements.",
-    category: "print-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/aaf0d5a1303e60f697ae43f2d99fb76d_1200_80.webp",
-    alt: "Annual report design",
-    date: "2023-10-05",
-    tags: ["Report", "Corporate", "Data", "Infographics"],
-    likes: 29,
-    views: 134,
-    status: "default",
-    tools: ["Adobe InDesign", "Illustrator"],
   },
   {
     id: 118,
-    title: "Fashion Brand Campaign",
-    description: "Visual campaign design for fashion brand launch",
-    longDescription:
-      "Creative fashion campaign featuring lifestyle photography, typography design, and brand messaging to establish market presence and attract target audience.",
-    category: "poster-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/badc04978759160f8290986f7aad3e9d_1200_80.webp",
-    alt: "Fashion brand campaign design",
-    date: "2023-09-30",
-    tags: ["Fashion", "Campaign", "Lifestyle", "Brand"],
-    likes: 72,
-    views: 356,
-    status: "featured",
-    tools: ["Adobe Photoshop", "Illustrator"],
   },
   {
     id: 119,
-    title: "App Icon Design",
-    description: "Mobile application icon design for iOS and Android",
-    longDescription:
-      "Modern app icon design optimized for both iOS and Android platforms, featuring scalable vector graphics and platform-specific design guidelines compliance.",
-    category: "ui-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/bef19539e12fae89a52a1ce1cc418f60_1200_80.webp",
-    alt: "Mobile app icon design",
-    date: "2023-09-25",
-    tags: ["App Icon", "Mobile", "iOS", "Android"],
-    likes: 44,
-    views: 201,
-    status: "new",
-    tools: ["Adobe Illustrator", "Figma"],
   },
   {
     id: 120,
-    title: "Real Estate Brochure",
-    description: "Property brochure design for luxury real estate",
-    longDescription:
-      "Elegant real estate brochure featuring property photography, floor plans, and premium design elements to showcase luxury properties and attract potential buyers.",
-    category: "print-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/d16dd0631d6a69c898fbd7ef6ac21eac_1200_80.webp",
-    alt: "Real estate brochure design",
-    date: "2023-09-20",
-    tags: ["Brochure", "Real Estate", "Luxury", "Property"],
-    likes: 36,
-    views: 167,
-    status: "popular",
-    tools: ["Adobe InDesign", "Photoshop"],
   },
   {
     id: 121,
-    title: "Gaming Logo Design",
-    description: "Esports team logo and gaming brand identity",
-    longDescription:
-      "Dynamic gaming logo design for esports team featuring bold graphics, gaming aesthetics, and versatile design elements suitable for tournaments and merchandise.",
-    category: "logo-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/d79f54b07152a02873c5282ec5db9056_1200_80.webp",
-    alt: "Gaming logo design",
-    date: "2023-09-15",
-    tags: ["Gaming", "Esports", "Logo", "Team"],
-    likes: 67,
-    views: 298,
-    status: "featured",
-    tools: ["Adobe Illustrator", "Photoshop"],
   },
   {
     id: 122,
-    title: "Website UI Components",
-    description: "Web interface design components and elements",
-    longDescription:
-      "Comprehensive UI component library for web applications including buttons, forms, navigation elements, and interactive components with consistent design language.",
-    category: "ui-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/e8dab1d270eee67a8201d394c1552ed5_1200_80.webp",
-    alt: "Website UI components design",
-    date: "2023-09-10",
-    tags: ["UI", "Web", "Components", "Interface"],
-    likes: 53,
-    views: 243,
-    status: "new",
-    tools: ["Figma", "Adobe XD"],
   },
   {
     id: 123,
-    title: "Non-Profit Campaign",
-    description: "Awareness campaign design for non-profit organization",
-    longDescription:
-      "Impactful campaign design for non-profit organization featuring emotional storytelling, call-to-action elements, and visual messaging to drive awareness and donations.",
-    category: "poster-design",
+    click: "Click Design",
     image:
       "/assets/graphic-design/ea7ed901cfe7dc35ffc9378dcdc3bca6_1200_80.webp",
-    alt: "Non-profit campaign design",
-    date: "2023-09-05",
-    tags: ["Non-Profit", "Campaign", "Awareness", "Social"],
-    likes: 31,
-    views: 156,
-    status: "default",
-    tools: ["Adobe Photoshop", "Illustrator"],
   },
   {
     id: 124,
-    title: "Travel Agency Branding",
-    description: "Complete branding package for travel and tourism company",
-    longDescription:
-      "Comprehensive travel agency branding including logo design, marketing materials, and visual identity that captures the spirit of adventure and wanderlust.",
-    category: "branding",
+    click: "Click Design",
     image:
       "/assets/graphic-design/fc61c3db2e4b545b468177073631abc1_1200_80.webp",
-    alt: "Travel agency branding design",
-    date: "2023-08-30",
-    tags: ["Travel", "Tourism", "Branding", "Adventure"],
-    likes: 49,
-    views: 217,
-    status: "popular",
-    tools: ["Adobe Illustrator", "Photoshop", "InDesign"],
   },
 ];
 
@@ -592,27 +325,6 @@ export default function ProjectsSection() {
       id="projects"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Main Header */}
-        <div className="text-center mb-16">
-          <h2
-            className={`text-4xl font-bold mb-4 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
-          >
-            PROJECTS
-          </h2>
-          <p
-            className={`text-lg max-w-3xl mx-auto ${
-              theme === "dark" ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            A showcase of successful social media campaigns, content strategies,
-            graphic design projects, and digital marketing initiatives across
-            various industries. Each project demonstrates creative storytelling,
-            strategic thinking, and measurable results.
-          </p>
-        </div>
-
         {/* Social Media Campaigns Section */}
         <div className="mb-20">
           <div className="mb-12">
@@ -784,107 +496,44 @@ export default function ProjectsSection() {
                 key={design.id}
                 design={design}
                 onClick={setSelectedDesign}
-                onLike={(id) => console.log("Liked design:", id)}
-                onShare={(id) => console.log("Shared design:", id)}
               />
             ))}
           </div>
         </div>
 
-        {/* Design Modal */}
+        {/* Simplified Design Modal for Large Image View */}
         {selectedDesign && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            className={`fixed inset-0 flex items-center justify-center p-4 z-50 ${
+              theme === "dark"
+                ? "bg-black/70 backdrop-blur-sm"
+                : "bg-black/60 backdrop-blur-sm"
+            }`}
             onClick={() => setSelectedDesign(null)}
           >
             <div
-              className={`max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-xl ${
-                theme === "dark" ? "bg-gray-800" : "bg-white"
-              }`}
+              className="max-w-4xl w-full max-h-[90vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3
-                    className={`text-2xl font-bold ${
-                      theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {selectedDesign.title}
-                  </h3>
-                  <button
-                    onClick={() => setSelectedDesign(null)}
-                    className={`text-2xl ${
-                      theme === "dark"
-                        ? "text-gray-400 hover:text-white"
-                        : "text-gray-600 hover:text-gray-900"
-                    }`}
-                  >
-                    ×
-                  </button>
-                </div>
-
-                {/* Design Image */}
-                <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
-                  <Image
-                    src={selectedDesign.image}
-                    alt={selectedDesign.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                <p
-                  className={`text-lg mb-6 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-600"
-                  }`}
+              {/*X and image */}
+                <div className="flex justify-end items-center -mt-8 mb-2 text-white">
+              
+                <button
+                  onClick={() => setSelectedDesign(null)}
+                  className="text-4xl hover:text-gray-300 transition-colors"
                 >
-                  {selectedDesign.longDescription}
-                </p>
-
-                {selectedDesign.tools && (
-                  <div className="mb-6">
-                    <h4
-                      className={`text-lg font-semibold mb-3 ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      Design Tools Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedDesign.tools.map((tool) => (
-                        <span
-                          key={tool}
-                          className={`px-3 py-1 text-sm rounded-lg ${
-                            theme === "dark"
-                              ? "bg-gray-700 text-gray-300"
-                              : "bg-gray-100 text-gray-600"
-                          }`}
-                        >
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex space-x-4">
-                  {selectedDesign.externalUrl && (
-                    <a
-                      href={selectedDesign.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
-                        theme === "dark"
-                          ? "bg-blue-600 hover:bg-blue-700 text-white"
-                          : "bg-blue-600 hover:bg-blue-700 text-white"
-                      }`}
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                      <span>View Design</span>
-                    </a>
-                  )}
+                  ×
+                </button>
                 </div>
+
+              {/* Large Image Display */}
+              <div className="flex-1 relative min-h-[90vh]">
+                <Image
+                  src={selectedDesign.image}
+                  alt={selectedDesign.click}
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
@@ -946,6 +595,7 @@ export default function ProjectsSection() {
                   <>
                     <button
                       onClick={prevImage}
+                      aria-label="Previous image"
                       className={`absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full transition-colors ${
                         theme === "dark"
                           ? "bg-black/60 text-white hover:bg-black/80"
@@ -968,6 +618,7 @@ export default function ProjectsSection() {
                     </button>
                     <button
                       onClick={nextImage}
+                      aria-label="Next image"
                       className={`absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full transition-colors ${
                         theme === "dark"
                           ? "bg-black/60 text-white hover:bg-black/80"
@@ -997,6 +648,7 @@ export default function ProjectsSection() {
                 <div className="flex space-x-2 justify-center overflow-x-auto pb-2">
                   {selectedProject.images.map((img, index) => (
                     <button
+                      title={`Select image ${index + 1}`}
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
                       className={`relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors ${
