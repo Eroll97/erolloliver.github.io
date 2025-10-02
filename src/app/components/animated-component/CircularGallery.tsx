@@ -552,18 +552,17 @@ class App {
 
   createRenderer() {
     this.renderer = new Renderer({
-      alpha: false, // Change to false for solid background
+      alpha: false,
       antialias: true,
       dpr: Math.min(window.devicePixelRatio || 1, 2),
     });
     this.gl = this.renderer.gl;
 
-    // INVERTED BACKGROUND FEATURE:
-    // Light mode = dark background, Dark mode = light background
+    // NORMAL BACKGROUND COLORS - matching your theme system
     if (this.theme === "light") {
-      this.gl.clearColor(0.111, 0.111, 0.111, 1); // Dark background for light mode
+      this.gl.clearColor(1.0, 1.0, 1.0, 1); // White (#ffffff) for light mode
     } else {
-      this.gl.clearColor(0.95, 0.95, 0.95, 1); // Light background for dark mode
+      this.gl.clearColor(17 / 255, 24 / 255, 39 / 255, 1); // Gray-900 (#111827) for dark mode
     }
 
     this.container.appendChild(this.renderer.gl.canvas as HTMLCanvasElement);
@@ -773,7 +772,7 @@ export default function CircularGallery({
   // Light mode = white text on dark background
   // Dark mode = black text on light background
   const effectiveTextColor =
-    textColor || (theme === "light" ? "#ffffff" : "#000000");
+    textColor || (theme === "light" ? "#000000" : "#ffffff"); // Black text on white, white text on dark
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -814,11 +813,9 @@ export default function CircularGallery({
   return (
     <div
       className={`w-full h-full overflow-hidden cursor-grab active:cursor-grabbing transition-colors duration-300 ${
-        // INVERTED BACKGROUND FEATURE:
-        // Light mode = dark container, Dark mode = light container
         theme === "light"
-          ? "bg-gray-900" // Dark background for light mode
-          : "bg-white" // Light background for dark mode
+          ? "bg-white" // White background for light mode
+          : "bg-gray-900" // Dark background for dark mode
       }`}
       ref={containerRef}
     />
