@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 
 export default function Footer() {
@@ -41,13 +41,12 @@ export default function Footer() {
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               }`}
             >
-              Isaiah 29:11 
+              Isaiah 29:11
               <br />
-              &ldquo;For I know the plans I have for you, declares the
-              Lord, plans to prosper you and not to harm you, plans to give you
-              hope and a future.&rdquo;
+              &ldquo;For I know the plans I have for you, declares the Lord,
+              plans to prosper you and not to harm you, plans to give you hope
+              and a future.&rdquo;
             </p>
-
           </div>
 
           {/* Quick Links */}
@@ -136,19 +135,6 @@ export default function Footer() {
               }`}
             >
               © {currentYear} Eroll Oliver. All rights reserved.
-            </p>
-            <p
-              className={`text-sm flex items-center mt-2 sm:mt-0 ${
-                theme === "dark" ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              Made with{" "}
-              <Heart
-                size={16}
-                className="mx-1 text-red-500"
-                fill="currentColor"
-              />{" "}
-              and Next.js
             </p>
           </div>
         </div>
