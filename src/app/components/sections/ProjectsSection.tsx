@@ -3,7 +3,15 @@
 import React, { useState } from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import {
+  ExternalLink,
+  Settings,
+  Globe,
+  Users,
+  Database,
+  Link,
+  TrendingUp,
+} from "lucide-react";
 import GraphicDesignShowcase, {
   GraphicDesign,
 } from "@/app/components/card/graphic-design-showcase";
@@ -20,6 +28,59 @@ interface Project {
   githubUrl?: string;
   status: "completed" | "in-progress" | "planned";
 }
+
+// Services interface and data
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const services: Service[] = [
+  {
+    id: 1,
+    title: "Workflow Automation",
+    description:
+      "Enhance efficiency with customized automations in GoHighLevel. We design and implement automated workflows to simplify your processes, boost engagement, and drive growth.",
+    icon: <Settings className="w-8 h-8" />,
+  },
+  {
+    id: 2,
+    title: "Web Design",
+    description:
+      "Create a stunning, user-friendly website with our web design services. We build visually appealing and functional sites that enhance user experience and drive your business forward.",
+    icon: <Globe className="w-8 h-8" />,
+  },
+  {
+    id: 3,
+    title: "Leads Management",
+    description:
+      "Drive business growth with targeted lead generation services. We attract and convert high-quality leads to fuel your sales pipeline and expand your customer base.",
+    icon: <Users className="w-8 h-8" />,
+  },
+  {
+    id: 4,
+    title: "Integration Solutions",
+    description:
+      "Optimize efficiency with our integration solutions. We ensure smooth, effective connections between your tools and platforms, streamlining workflows and enhancing your operations.",
+    icon: <Link className="w-8 h-8" />,
+  },
+  {
+    id: 5,
+    title: "CRM Consulting",
+    description:
+      "Enhance your CRM strategy with tailored consulting services. We help you streamline processes, improve customer interactions, and maximize your CRM system's potential for better business results.",
+    icon: <Database className="w-8 h-8" />,
+  },
+  {
+    id: 6,
+    title: "Funnel Creation",
+    description:
+      "Optimize your sales process with custom funnel creation. We design effective, targeted funnels that guide leads through each stage, boosting engagement and increasing conversions.",
+    icon: <TrendingUp className="w-8 h-8" />,
+  },
+];
 
 const projects: Project[] = [
   {
@@ -115,7 +176,6 @@ const projects: Project[] = [
 ];
 
 const graphicDesigns: GraphicDesign[] = [
- 
   {
     id: 107,
     click: "Click Design",
@@ -296,7 +356,67 @@ export default function ProjectsSection() {
       id="projects"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Social Media Campaigns Section */}
+        {/* ========== SERVICES SECTION ========== */}
+        <div className="mb-20">
+          <div className="mb-12">
+            <h2
+              className={`text-4xl font-bold text-center mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              GoHighLevel Services
+            </h2>
+            <div className="flex justify-center mb-6">
+              <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+            </div>
+            <p
+              className={`text-center max-w-4xl mx-auto text-lg ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Maximize your results with our GoHighLevel expertise. We offer
+              tailored solutions for CRM, automation, and campaign management to
+              streamline your processes and drive growth.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <div
+                key={service.id}
+                className={`p-6 rounded-xl shadow-lg transition-all duration-300 hover:transform hover:scale-105 ${
+                  theme === "dark"
+                    ? "bg-gray-800 border border-gray-700 hover:shadow-2xl"
+                    : "bg-white border border-gray-200 hover:shadow-2xl"
+                }`}
+              >
+                <div
+                  className={`mb-4 ${
+                    theme === "dark" ? "text-blue-400" : "text-blue-600"
+                  }`}
+                >
+                  {service.icon}
+                </div>
+                <h3
+                  className={`text-xl font-semibold mb-3 ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  {service.title}
+                </h3>
+                <p
+                  className={`text-sm leading-relaxed ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ========== SOCIAL MEDIA CAMPAIGNS SECTION ========== */}
         <div className="mb-20">
           <div className="mb-12">
             <h3
@@ -440,7 +560,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Graphic Design Section */}
+        {/* ========== GRAPHIC DESIGN SECTION ========== */}
         <div className="mb-20">
           <div className="mb-12">
             <h3
@@ -472,6 +592,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
+        {/* ========== MODALS SECTION ========== */}
         {/* Simplified Design Modal for Large Image View */}
         {selectedDesign && (
           <div
@@ -487,15 +608,14 @@ export default function ProjectsSection() {
               onClick={(e) => e.stopPropagation()}
             >
               {/*X and image */}
-                <div className="flex justify-end items-center -mt-8 mb-2 text-white">
-              
+              <div className="flex justify-end items-center -mt-8 mb-2 text-white">
                 <button
                   onClick={() => setSelectedDesign(null)}
                   className="text-4xl hover:text-gray-300 transition-colors"
                 >
                   ×
                 </button>
-                </div>
+              </div>
 
               {/* Large Image Display */}
               <div className="flex-1 relative min-h-[90vh]">
