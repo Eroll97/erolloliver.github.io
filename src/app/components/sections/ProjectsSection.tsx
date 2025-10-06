@@ -115,36 +115,7 @@ const projects: Project[] = [
 ];
 
 const graphicDesigns: GraphicDesign[] = [
-  {
-    id: 101,
-    click: "Click Design",
-    image: "/assets/graphic-design/1.webp",
-  },
-  {
-    id: 102,
-    click: "Click Design",
-    image: "/assets/graphic-design/2.webp",
-  },
-  {
-    id: 103,
-    click: "Click Design",
-    image: "/assets/graphic-design/3.webp",
-  },
-  {
-    id: 104,
-    click: "Click Design",
-    image: "/assets/graphic-design/4.webp",
-  },
-  {
-    id: 105,
-    click: "Click Design",
-    image: "/assets/graphic-design/5.webp",
-  },
-  {
-    id: 106,
-    click: "Click Design",
-    image: "/assets/graphic-design/6.webp",
-  },
+ 
   {
     id: 107,
     click: "Click Design",
