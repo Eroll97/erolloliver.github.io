@@ -8,18 +8,19 @@ import Skill from "./components/sections/Skill";
 import Services from "./components/sections/Services";
 import Gallery from "./components/sections/Gallery";
 import VideoSection from "./components/sections/VideoSection";
+import WebImagesSection from "./components/sections/WebImagesSection"; // Add this import
 
 export default function Home() {
   return (
     <div className=" bg-white dark:bg-gray-900">
       <Navbar />
-
       <FirstSection />
       <AboutSection />
       <Gallery />
       <Skill />
       <Services />
       <ProjectsSection />
+      <WebImagesSection /> {/* Add this component */}
       <VideoSection />
       <ContactSection />
       <Footer />
