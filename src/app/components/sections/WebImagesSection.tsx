@@ -35,7 +35,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/earthbrew3.webp",
     ],
     websiteUrl: "https://earthbrew.example.com", // Placeholder URL
-    category: "E-commerce",
+    category: "Business",
     status: "live",
   },
   {
