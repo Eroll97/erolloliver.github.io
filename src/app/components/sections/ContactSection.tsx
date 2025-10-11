@@ -1,439 +1,144 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 import {
   Mail,
-  Phone,
-  MapPin,
-  Send,
-  User,
-  MessageSquare,
-  CheckCircle,
-  AlertCircle,
+  MessageCircle,
   Linkedin,
-  Github,
+  Instagram,
+  Facebook,
   ExternalLink,
 } from "lucide-react";
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-interface FormStatus {
-  type: "idle" | "loading" | "success" | "error";
-  message: string;
-}
-
 export default function ContactSection() {
   const { theme } = useTheme();
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<FormStatus>({
-    type: "idle",
-    message: "",
-  });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus({ type: "loading", message: "Sending message..." });
-
-    // Simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setStatus({
-        type: "success",
-        message: "Message sent successfully! I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch {
-      setStatus({
-        type: "error",
-        message: "Failed to send message. Please try again.",
-      });
-    }
-  };
-
-  const contactInfo = [
+  const contactMethods = [
     {
       icon: Mail,
-      label: "Email",
-      value: "eroll.oliver@example.com",
-      href: "mailto:eroll.oliver@example.com",
+      label: "Gmail",
+      value: "erolloliver97@gmail.com",
+      href: "mailto:erolloliver97@gmail.com",
+      color: "bg-red-500",
     },
     {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "+63 963 824 9137",
+      href: "https://wa.me/639638249137",
+      color: "bg-green-500",
     },
     {
-      icon: MapPin,
-      label: "Location",
-      value: "San Francisco, CA",
-      href: null,
+      icon: Instagram,
+      label: "Instagram",
+      value: "@eroll_onnn",
+      href: "https://www.instagram.com/eroll_onnn",
+      color: "bg-pink-500",
     },
-  ];
-
-  const socialLinks = [
     {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/eroll-oliver",
+      icon: Facebook,
+      label: "Facebook",
+      value: "Eroll Oliver",
+      href: "https://www.facebook.com/eroll.oliver.98",
+      color: "bg-blue-600",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/eroll-oliver",
-    },
-    {
-      icon: ExternalLink,
-      label: "Portfolio",
-      href: "https://erolloliver.dev",
+      value: "Eroll Oliver",
+      href: "https://www.linkedin.com/in/eroll-oliver-20009b290/",
+      color: "bg-blue-700",
     },
   ];
 
   return (
     <section
-      className={`py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-12 sm:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-50 text-gray-900"
       }`}
       id="contact"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2
-            className={`text-4xl font-bold mb-4 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
             Get In Touch
           </h2>
           <p
-            className={`text-lg max-w-3xl mx-auto ${
+            className={`text-base sm:text-lg max-w-3xl mx-auto px-4 ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            I&apos;m always interested in new opportunities and exciting projects.
-            Whether you have a question or just want to say hi, feel free to
-            reach out!
+            Ready to start your next project? Let&apos;s connect! Choose your
+            preferred way to reach out.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3
-                className={`text-2xl font-semibold mb-6 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
+        {/* Contact Methods Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+          {contactMethods.map((method, index) => {
+            const IconComponent = method.icon;
+            return (
+              <a
+                key={index}
+                href={method.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                  theme === "dark"
+                    ? "bg-gray-700 hover:bg-gray-600 border border-gray-600"
+                    : "bg-white hover:bg-gray-50 border border-gray-200 shadow-md hover:shadow-xl"
                 }`}
               >
-                Contact Information
-              </h3>
+                {/* Icon Background */}
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div
+                    className={`p-4 rounded-full ${method.color} transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
 
-              <div className="space-y-4">
-                {contactInfo.map((item, index) => {
-                  const IconComponent = item.icon;
-                  const content = (
-                    <div
-                      className={`flex items-center space-x-4 p-4 rounded-lg transition-colors duration-200 ${
-                        theme === "dark"
-                          ? "bg-gray-700 hover:bg-gray-600"
-                          : "bg-white hover:bg-gray-100"
-                      } ${item.href ? "cursor-pointer" : ""}`}
-                    >
-                      <div
-                        className={`p-3 rounded-lg ${
-                          theme === "dark" ? "bg-blue-600" : "bg-blue-100"
-                        }`}
-                      >
-                        <IconComponent
-                          className={`w-6 h-6 ${
-                            theme === "dark" ? "text-white" : "text-blue-600"
-                          }`}
-                        />
-                      </div>
-                      <div>
-                        <p
-                          className={`font-medium ${
-                            theme === "dark" ? "text-white" : "text-gray-900"
-                          }`}
-                        >
-                          {item.label}
-                        </p>
-                        <p
-                          className={`${
-                            theme === "dark" ? "text-gray-300" : "text-gray-600"
-                          }`}
-                        >
-                          {item.value}
-                        </p>
-                      </div>
-                    </div>
-                  );
-
-                  return item.href ? (
-                    <a key={index} href={item.href}>
-                      {content}
-                    </a>
-                  ) : (
-                    <div key={index}>{content}</div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4
-                className={`text-lg font-semibold mb-4 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Connect With Me
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-3 rounded-lg transition-all duration-200 hover:scale-105 ${
-                        theme === "dark"
-                          ? "bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white"
-                          : "bg-white hover:bg-gray-100 text-gray-600 hover:text-gray-900"
+                  {/* Content */}
+                  <div>
+                    <h3
+                      className={`font-semibold text-lg mb-1 ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
-                      title={social.label}
                     >
-                      <IconComponent className="w-6 h-6" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+                      {method.label}
+                    </h3>
+                    <p
+                      className={`text-sm ${
+                        theme === "dark" ? "text-gray-300" : "text-gray-600"
+                      }`}
+                    >
+                      {method.value}
+                    </p>
+                  </div>
+                </div>
 
-          {/* Contact Form */}
-          <div
-            className={`p-8 rounded-xl ${
-              theme === "dark"
-                ? "bg-gray-900 border border-gray-700"
-                : "bg-white border border-gray-200"
+                {/* Hover Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Additional Info */}
+        <div className="text-center mt-12 sm:mt-16">
+          <p
+            className={`text-sm ${
+              theme === "dark" ? "text-gray-400" : "text-gray-500"
             }`}
           >
-            <h3
-              className={`text-2xl font-semibold mb-6 ${
-                theme === "dark" ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Send a Message
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2 ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Name
-                  </label>
-                  <div className="relative">
-                    <User
-                      className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-400"
-                      }`}
-                    />
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors duration-200 ${
-                        theme === "dark"
-                          ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                          : "bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                      } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
-                      placeholder="Your name"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2 ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Email
-                  </label>
-                  <div className="relative">
-                    <Mail
-                      className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-400"
-                      }`}
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors duration-200 ${
-                        theme === "dark"
-                          ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                          : "bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                      } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label
-                  className={`block text-sm font-medium mb-2 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className={`w-full px-4 py-3 rounded-lg border transition-colors duration-200 ${
-                    theme === "dark"
-                      ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                      : "bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                  } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div>
-                <label
-                  className={`block text-sm font-medium mb-2 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Message
-                </label>
-                <div className="relative">
-                  <MessageSquare
-                    className={`absolute left-3 top-3 w-5 h-5 ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-400"
-                    }`}
-                  />
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className={`w-full pl-10 pr-4 py-3 rounded-lg border transition-colors duration-200 resize-none ${
-                      theme === "dark"
-                        ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                        : "bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500"
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
-                    placeholder="Tell me about your project or idea..."
-                  />
-                </div>
-              </div>
-
-              {/* Status Message */}
-              {status.type !== "idle" && (
-                <div
-                  className={`p-4 rounded-lg flex items-center space-x-3 ${
-                    status.type === "success"
-                      ? theme === "dark"
-                        ? "bg-green-900/20 border border-green-500/20"
-                        : "bg-green-50 border border-green-200"
-                      : status.type === "error"
-                      ? theme === "dark"
-                        ? "bg-red-900/20 border border-red-500/20"
-                        : "bg-red-50 border border-red-200"
-                      : theme === "dark"
-                      ? "bg-blue-900/20 border border-blue-500/20"
-                      : "bg-blue-50 border border-blue-200"
-                  }`}
-                >
-                  {status.type === "success" && (
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                  )}
-                  {status.type === "error" && (
-                    <AlertCircle className="w-5 h-5 text-red-500" />
-                  )}
-                  {status.type === "loading" && (
-                    <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-                  )}
-                  <p
-                    className={`text-sm ${
-                      status.type === "success"
-                        ? "text-green-600 dark:text-green-400"
-                        : status.type === "error"
-                        ? "text-red-600 dark:text-red-400"
-                        : "text-blue-600 dark:text-blue-400"
-                    }`}
-                  >
-                    {status.message}
-                  </p>
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={status.type === "loading"}
-                className={`w-full flex items-center justify-center space-x-2 py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-                  status.type === "loading"
-                    ? theme === "dark"
-                      ? "bg-gray-600 text-gray-400 cursor-not-allowed"
-                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : theme === "dark"
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-blue-600 hover:bg-blue-700 text-white"
-                } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20`}
-              >
-                {status.type === "loading" ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+            I typically respond within 24 hours. Looking forward to hearing from
+            you!
+          </p>
         </div>
       </div>
     </section>
