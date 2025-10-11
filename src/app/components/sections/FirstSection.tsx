@@ -54,20 +54,20 @@ export default function FirstSection() {
         />
 
         {/* Social Media Icons */}
-        <div className="flex justify-center lg:justify-start space-x-4 mt-8">
+        <div className="flex justify-center lg:justify-start space-x-3 md:space-x-4 mt-6 md:mt-8">
           <a
             href="https://www.instagram.com/eroll_onnn/"
             target="_blank"
             rel="noopener noreferrer"
             title="Follow me on Instagram"
             aria-label="Follow Eroll Oliver on Instagram"
-            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+            className={`p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 ${
               theme === "dark"
                 ? "bg-gray-800 hover:bg-pink-600 text-pink-400 hover:text-white"
                 : "bg-gray-100 hover:bg-pink-600 text-pink-600 hover:text-white"
             }`}
           >
-            <Instagram className="w-5 h-5" aria-hidden="true" />
+            <Instagram className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
           </a>
           <a
             href="https://www.linkedin.com/in/eroll-oliver-20009b290/"
@@ -81,7 +81,7 @@ export default function FirstSection() {
                 : "bg-gray-100 hover:bg-blue-600 text-blue-600 hover:text-white"
             }`}
           >
-            <Linkedin className="w-5 h-5" aria-hidden="true" />
+            <Linkedin className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
           </a>
           <a
             href="https://www.facebook.com/eroll.oliver.98"
@@ -89,13 +89,13 @@ export default function FirstSection() {
             rel="noopener noreferrer"
             title="Visit my Facebook profile"
             aria-label="Visit Eroll Oliver's Facebook profile"
-            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+            className={`p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 ${
               theme === "dark"
                 ? "bg-gray-800 hover:bg-blue-700 text-blue-400 hover:text-white"
                 : "bg-gray-100 hover:bg-blue-700 text-blue-600 hover:text-white"
             }`}
           >
-            <Facebook className="w-5 h-5" aria-hidden="true" />
+            <Facebook className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
           </a>
         </div>
 
@@ -103,20 +103,20 @@ export default function FirstSection() {
           href="https://drive.google.com/file/d/1wikQl77-nIu-bgLFePNkNT4jTvslUQ5j/view"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-6"
+          className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-4 md:mt-6"
         >
           View CV
         </a>
 
-        <div className="mt-8 space-y-4">
-          <div className="flex items-center space-x-3">
+        <div className="hidden md:block mt-6 md:mt-8 space-y-3 md:space-y-4">
+          <div className="flex items-center justify-center lg:justify-start space-x-2 md:space-x-3">
             <div
-              className={`p-2 rounded-lg ${
+              className={`p-1.5 md:p-2 rounded-lg ${
                 theme === "dark" ? "bg-gray-800" : "bg-gray-100"
               }`}
             >
               <Phone
-                className={`w-4 h-4 ${
+                className={`w-3 h-3 md:w-4 md:h-4 ${
                   theme === "dark" ? "text-purple-400" : "text-purple-600"
                 }`}
               />
@@ -131,7 +131,7 @@ export default function FirstSection() {
               </p>
               <a
                 href="tel:+639638249137"
-                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
+                className={`text-xs md:text-sm font-medium hover:text-blue-500 transition-colors ${
                   theme === "dark" ? "text-gray-200" : "text-gray-700"
                 }`}
               >
@@ -139,14 +139,14 @@ export default function FirstSection() {
               </a>
             </div>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center lg:justify-start space-x-2 md:space-x-3">
             <div
-              className={`p-2 rounded-lg ${
+              className={`p-1.5 md:p-2 rounded-lg ${
                 theme === "dark" ? "bg-gray-800" : "bg-gray-100"
               }`}
             >
               <Mail
-                className={`w-4 h-4 ${
+                className={`w-3 h-3 md:w-4 md:h-4 ${
                   theme === "dark" ? "text-blue-400" : "text-blue-600"
                 }`}
               />
@@ -161,7 +161,7 @@ export default function FirstSection() {
               </p>
               <a
                 href="mailto:erolloliver97@gmail.com"
-                className={`text-sm font-medium hover:text-blue-500 transition-colors ${
+                className={`text-xs md:text-sm font-medium hover:text-blue-500 transition-colors ${
                   theme === "dark" ? "text-gray-200" : "text-gray-700"
                 }`}
               >
@@ -170,14 +170,14 @@ export default function FirstSection() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center lg:justify-start space-x-2 md:space-x-3">
             <div
-              className={`p-2 rounded-lg ${
+              className={`p-1.5 md:p-2 rounded-lg ${
                 theme === "dark" ? "bg-gray-800" : "bg-gray-100"
               }`}
             >
               <MapPin
-                className={`w-4 h-4 ${
+                className={`w-3 h-3 md:w-4 md:h-4 ${
                   theme === "dark" ? "text-green-400" : "text-green-600"
                 }`}
               />
@@ -191,11 +191,11 @@ export default function FirstSection() {
                 Location
               </p>
               <p
-                className={`text-sm font-medium ${
+                className={`text-xs md:text-sm font-medium ${
                   theme === "dark" ? "text-gray-200" : "text-gray-700"
                 }`}
               >
-                Butuan City, Agusan del Norte, Philippines
+                Butuan City, Philippines
               </p>
             </div>
           </div>

@@ -358,19 +358,19 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto">
         {/* ========== SERVICES SECTION ========== */}
         <div className="mb-20">
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <h2
-              className={`text-4xl font-bold text-center mb-4 ${
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               GoHighLevel Services
             </h2>
-            <div className="flex justify-center mb-6">
-              <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+            <div className="flex justify-center mb-4 sm:mb-6">
+              <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
             </div>
             <p
-              className={`text-center max-w-4xl mx-auto text-lg ${
+              className={`text-center max-w-4xl mx-auto text-base sm:text-lg px-4 ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -380,32 +380,32 @@ export default function ProjectsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {services.map((service) => (
               <div
                 key={service.id}
-                className={`p-6 rounded-xl shadow-lg transition-all duration-300 hover:transform hover:scale-105 ${
+                className={`p-4 sm:p-6 rounded-xl shadow-lg transition-all duration-300 hover:transform hover:scale-105 ${
                   theme === "dark"
                     ? "bg-gray-800 border border-gray-700 hover:shadow-2xl"
                     : "bg-white border border-gray-200 hover:shadow-2xl"
                 }`}
               >
                 <div
-                  className={`mb-4 ${
+                  className={`mb-3 sm:mb-4 ${
                     theme === "dark" ? "text-blue-400" : "text-blue-600"
                   }`}
                 >
                   {service.icon}
                 </div>
                 <h3
-                  className={`text-xl font-semibold mb-3 ${
+                  className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
                   {service.title}
                 </h3>
                 <p
-                  className={`text-sm leading-relaxed ${
+                  className={`text-sm sm:text-base leading-relaxed ${
                     theme === "dark" ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
@@ -418,16 +418,16 @@ export default function ProjectsSection() {
 
         {/* ========== SOCIAL MEDIA CAMPAIGNS SECTION ========== */}
         <div className="mb-20">
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <h3
-              className={`text-3xl font-bold text-center mb-4 ${
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               Social Media Campaigns
             </h3>
             <p
-              className={`text-center max-w-2xl mx-auto ${
+              className={`text-center max-w-2xl mx-auto text-sm sm:text-base px-4 ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -437,7 +437,7 @@ export default function ProjectsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6">
             {projects.map((project) => (
               <div
                 key={project.id}
@@ -449,7 +449,7 @@ export default function ProjectsSection() {
               >
                 {/* Project Image */}
                 <div
-                  className="relative h-48 overflow-hidden cursor-pointer"
+                  className="relative h-40 sm:h-48 lg:h-52 overflow-hidden cursor-pointer"
                   onClick={() =>
                     project.images && project.images.length > 1
                       ? openImageGallery(project, 0)
@@ -492,9 +492,9 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-4">
+                <div className="p-3 sm:p-4">
                   <h3
-                    className={`text-lg font-semibold mb-2 ${
+                    className={`text-base sm:text-lg font-semibold mb-2 ${
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
@@ -562,16 +562,16 @@ export default function ProjectsSection() {
 
         {/* ========== GRAPHIC DESIGN SECTION ========== */}
         <div className="mb-20">
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12">
             <h3
-              className={`text-3xl font-bold text-center mb-4 ${
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               Graphic Design
             </h3>
             <p
-              className={`text-center max-w-2xl mx-auto ${
+              className={`text-center max-w-2xl mx-auto text-sm sm:text-base px-4 ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -581,7 +581,7 @@ export default function ProjectsSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6">
             {graphicDesigns.map((design) => (
               <GraphicDesignShowcase
                 key={design.id}

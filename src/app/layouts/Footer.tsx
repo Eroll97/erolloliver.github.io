@@ -15,20 +15,19 @@ export default function Footer() {
           : "bg-white border-gray-200"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* About Section */}
-          <div>
+          <div className="text-center md:text-left">
             <h3
-              className={`text-lg font-semibold mb-4 ${
+              className={`text-base md:text-lg font-semibold mb-3 md:mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               Eroll Oliver
             </h3>
-            <br />
             <p
-              className={`text-sm leading-relaxed ${
+              className={`text-xs md:text-sm leading-relaxed mb-3 md:mb-4 ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -37,7 +36,7 @@ export default function Footer() {
             </p>
 
             <p
-              className={`mt-4 text-sm ${
+              className={`text-xs md:text-sm ${
                 theme === "dark" ? "text-gray-400" : "text-gray-500"
               }`}
             >
@@ -50,20 +49,20 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h3
-              className={`text-lg font-semibold mb-4 ${
+              className={`text-base md:text-lg font-semibold mb-3 md:mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               Quick Links
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-1 md:space-y-2">
               {["About", "Projects", "Contact"].map((link) => (
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase()}`}
-                    className={`text-sm transition-colors duration-200 hover:text-blue-500 ${
+                    className={`text-xs md:text-sm transition-colors duration-200 hover:text-blue-500 ${
                       theme === "dark" ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
@@ -75,15 +74,15 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div>
+          <div className="text-center md:text-left">
             <h3
-              className={`text-lg font-semibold mb-4 ${
+              className={`text-base md:text-lg font-semibold mb-3 md:mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
               Connect
             </h3>
-            <div className="flex space-x-4">
+            <div className="flex justify-center md:justify-start space-x-3 md:space-x-4">
               <a
                 href="https://github.com"
                 target="_blank"
@@ -94,7 +93,7 @@ export default function Footer() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                <Github size={20} />
+                <Github size={18} className="md:w-5 md:h-5" />
               </a>
               <a
                 href="https://linkedin.com"
@@ -106,7 +105,7 @@ export default function Footer() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} className="md:w-5 md:h-5" />
               </a>
               <a
                 href="mailto:eroll@example.com"
@@ -116,7 +115,7 @@ export default function Footer() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                <Mail size={20} />
+                <Mail size={18} className="md:w-5 md:h-5" />
               </a>
             </div>
           </div>
@@ -124,13 +123,13 @@ export default function Footer() {
 
         {/* Copyright */}
         <div
-          className={`mt-8 pt-8 border-t ${
+          className={`mt-6 md:mt-8 pt-6 md:pt-8 border-t ${
             theme === "dark" ? "border-gray-700" : "border-gray-200"
           }`}
         >
-          <div className="flex flex-col sm:flex-row justify-between items-center">
+          <div className="text-center sm:flex sm:flex-row sm:justify-between sm:items-center">
             <p
-              className={`text-sm ${
+              className={`text-xs md:text-sm ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >

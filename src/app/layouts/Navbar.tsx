@@ -58,25 +58,26 @@ export default function Navbar() {
       } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 md:h-16">
           {/* Logo */}
           <div>
             <Link
               href="/"
-              className={`text-2xl font-bold transition-colors hover:text-blue-500 ${
+              className={`text-lg md:text-xl lg:text-2xl font-bold transition-colors hover:text-blue-500 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
-              Eroll Oliver
+              <span className="hidden sm:inline">Eroll Oliver</span>
+              <span className="sm:hidden">EO</span>
             </Link>
           </div>
 
           {/* Desktop Navigation - Hidden on tablet/mobile */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <div className="flex space-x-6">
+          <div className="hidden xl:flex items-center space-x-6 lg:space-x-8">
+            <div className="flex space-x-4 lg:space-x-6">
               <Link
                 href="/"
-                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                className={`px-2 lg:px-3 py-2 text-sm lg:text-base transition-colors hover:text-blue-500 ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
@@ -84,7 +85,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="#about"
-                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                className={`px-2 lg:px-3 py-2 text-sm lg:text-base transition-colors hover:text-blue-500 ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
@@ -92,7 +93,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="#projects"
-                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                className={`px-2 lg:px-3 py-2 text-sm lg:text-base transition-colors hover:text-blue-500 ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
@@ -100,7 +101,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="#contact"
-                className={`px-3 py-2 transition-colors hover:text-blue-500 ${
+                className={`px-2 lg:px-3 py-2 text-sm lg:text-base transition-colors hover:text-blue-500 ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
@@ -113,13 +114,13 @@ export default function Navbar() {
           </div>
 
           {/* Mobile/Tablet menu button - Shows on tablets and phones */}
-          <div className="lg:hidden flex items-center space-x-3">
+          <div className="xl:hidden flex items-center space-x-2 md:space-x-3">
             <ThemeToggle />
 
             {/* Enhanced Burger Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`relative p-2 rounded-md transition-all duration-200 ${
+              className={`relative p-1.5 md:p-2 rounded-md transition-all duration-200 ${
                 theme === "dark"
                   ? "text-gray-300 hover:bg-gray-800 hover:text-white"
                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
@@ -127,19 +128,19 @@ export default function Navbar() {
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {/* Animated Burger Icon */}
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+              <div className="w-5 md:w-6 h-5 md:h-6 flex flex-col justify-center space-y-1">
                 <span
-                  className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                  className={`block h-0.5 w-5 md:w-6 bg-current transform transition-all duration-300 ${
                     isOpen ? "rotate-45 translate-y-1.5" : ""
                   }`}
                 />
                 <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  className={`block h-0.5 w-5 md:w-6 bg-current transition-all duration-300 ${
                     isOpen ? "opacity-0" : ""
                   }`}
                 />
                 <span
-                  className={`block h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                  className={`block h-0.5 w-5 md:w-6 bg-current transform transition-all duration-300 ${
                     isOpen ? "-rotate-45 -translate-y-1.5" : ""
                   }`}
                 />
@@ -151,7 +152,7 @@ export default function Navbar() {
 
       {/* Mobile/Tablet menu - Animated dropdown */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+        className={`xl:hidden overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -162,10 +163,10 @@ export default function Navbar() {
               : "bg-white/95 backdrop-blur-md border-gray-200"
           }`}
         >
-          <div className="px-4 py-3 space-y-2">
+          <div className="px-3 md:px-4 py-2 md:py-3 space-y-1 md:space-y-2">
             <Link
               href="/"
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+              className={`block px-3 md:px-4 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-200 ${
                 theme === "dark"
                   ? "text-gray-300 hover:bg-gray-800 hover:text-white"
                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
@@ -176,7 +177,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="#about"
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+              className={`block px-3 md:px-4 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-200 ${
                 theme === "dark"
                   ? "text-gray-300 hover:bg-gray-800 hover:text-white"
                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
@@ -187,7 +188,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="#projects"
-              className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+              className={`block px-3 md:px-4 py-2 md:py-3 rounded-lg text-sm md:text-base font-medium transition-all duration-200 ${
                 theme === "dark"
                   ? "text-gray-300 hover:bg-gray-800 hover:text-white"
                   : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"

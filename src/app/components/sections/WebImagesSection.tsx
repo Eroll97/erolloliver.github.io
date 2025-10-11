@@ -37,7 +37,8 @@ const webProjects: WebProject[] = [
       "/assets/web-images/earthbrew2.webp",
       "/assets/web-images/earthbrew3.webp",
     ],
-    websiteUrl: "https://www.canva.com/design/DAGO27LNgo4/WIumcVIiPm0tggFjaeQw8w/edit", 
+    websiteUrl:
+      "https://www.canva.com/design/DAGO27LNgo4/WIumcVIiPm0tggFjaeQw8w/edit",
     category: "Business",
     status: "live",
   },
@@ -52,7 +53,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/flow_rentals2.webp",
       "/assets/web-images/flow_rentals3.webp",
     ],
-    websiteUrl: "https://flowrentalsva.com/", 
+    websiteUrl: "https://flowrentalsva.com/",
     category: "Business",
     status: "live",
   },
@@ -97,7 +98,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/smoke _vibes2.webp",
       "/assets/web-images/smoke_vibes3.webp",
     ],
-    websiteUrl: "https://www.smokevibes.com/", 
+    websiteUrl: "https://www.smokevibes.com/",
     category: "Lifestyle",
     status: "live",
   },
@@ -112,7 +113,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/stone_system2.webp",
       "/assets/web-images/stone_system3.webp",
     ],
-    websiteUrl: "https://stonesystems.io/", 
+    websiteUrl: "https://stonesystems.io/",
     category: "Construction",
     status: "live",
   },
@@ -136,13 +137,20 @@ const webProjects: WebProject[] = [
     name: "Video Funeral",
     description:
       "Memorial services website with video streaming and tribute features",
-    technologies: ["WordPress", "Video.js", "Custom Post Types", "Html5", "CSS3", "JavaScript"],
+    technologies: [
+      "WordPress",
+      "Video.js",
+      "Custom Post Types",
+      "Html5",
+      "CSS3",
+      "JavaScript",
+    ],
     images: [
       "/assets/web-images/video_funeral.webp",
       "/assets/web-images/video_funeral2.webp",
       "/assets/web-images/vide_funeral3.webp",
     ],
-    websiteUrl: "https://funeralvideomaker.com/", 
+    websiteUrl: "https://funeralvideomaker.com/",
     category: "Memorial Services",
     status: "live",
   },
@@ -157,7 +165,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/Xtreme2.webp",
       "/assets/web-images/Xtreme3.webp",
     ],
-    websiteUrl: "https://xtreme-coatings.com/", 
+    websiteUrl: "https://xtreme-coatings.com/",
     category: "Sports & Recreation",
     status: "development",
   },
@@ -185,7 +193,7 @@ export default function WebImagesSection() {
   const isUrlAvailable = (project: WebProject) => {
     if (!project.websiteUrl) return false;
     if (project.status === "unavailable") return false;
-    return !project.websiteUrl.includes('example.com');
+    return !project.websiteUrl.includes("example.com");
   };
 
   // Helper function to get button text based on URL availability and status
@@ -201,7 +209,9 @@ export default function WebImagesSection() {
     if (!isUrlAvailable(project)) {
       e.preventDefault();
       if (project.status === "unavailable") {
-        alert(`${project.name} website is no longer available. or the link cannot be found.`);
+        alert(
+          `${project.name} website is no longer available. or the link cannot be found.`
+        );
       } else {
         alert(`${project.name} website will be available soon!`);
       }
@@ -267,26 +277,26 @@ export default function WebImagesSection() {
 
   return (
     <section
-      className={`py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-10 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-50 text-gray-900"
       }`}
       id="web-projects"
     >
       <div className="max-w-7xl mx-auto">
         {/* ========== HEADER SECTION ========== */}
-        <div className="mb-12">
+        <div className="mb-8 md:mb-12">
           <h2
-            className={`text-4xl font-bold text-center mb-4 ${
+            className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-3 md:mb-4 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
             Web Development Projects
           </h2>
-          <div className="flex justify-center mb-6">
-            <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+          <div className="flex justify-center mb-4 md:mb-6">
+            <div className="h-1 w-16 md:w-20 bg-gradient-to-r from-purple-500 to-pink-500"></div>
           </div>
           <p
-            className={`text-center max-w-4xl mx-auto text-lg ${
+            className={`text-center max-w-4xl mx-auto text-sm sm:text-base md:text-lg px-4 ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -297,13 +307,13 @@ export default function WebImagesSection() {
         </div>
 
         {/* ========== FILTER SECTION ========== */}
-        <div className="mb-8">
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="mb-6 md:mb-8">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 capitalize ${
+                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 capitalize ${
                   filter === category
                     ? theme === "dark"
                       ? "bg-purple-600 text-white"
@@ -320,11 +330,11 @@ export default function WebImagesSection() {
         </div>
 
         {/* ========== PROJECTS GRID SECTION ========== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8 px-4 md:px-0">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`group rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`group rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:transform hover:scale-[1.02] md:hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-900 border border-gray-700 hover:shadow-2xl"
                   : "bg-white border border-gray-200 hover:shadow-2xl"
@@ -332,7 +342,7 @@ export default function WebImagesSection() {
             >
               {/* Project Image */}
               <div
-                className="relative h-64 overflow-hidden cursor-pointer"
+                className="relative h-48 sm:h-56 md:h-64 overflow-hidden cursor-pointer"
                 onClick={() => openImageGallery(project, 0)}
               >
                 <Image
@@ -344,33 +354,51 @@ export default function WebImagesSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
                 {/* Image count indicator */}
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                <div className="absolute bottom-2 md:bottom-4 left-2 md:left-4 bg-black/70 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
                   <Globe className="w-3 h-3" />
-                  <span>{project.images.length} screens</span>
+                  <span className="hidden sm:inline">
+                    {project.images.length} screens
+                  </span>
+                  <span className="sm:hidden">{project.images.length}</span>
                 </div>
 
                 {/* Status Badge */}
                 <div
-                  className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                  className={`absolute top-2 md:top-4 right-2 md:right-4 px-2 md:px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
                     project.status
                   )} ${theme === "dark" ? "bg-gray-900/80" : "bg-white/80"}`}
                 >
-                  {getStatusText(project.status)}
+                  <span className="hidden sm:inline">
+                    {getStatusText(project.status)}
+                  </span>
+                  <span className="sm:hidden">
+                    {project.status === "live"
+                      ? "●"
+                      : project.status === "development"
+                      ? "◐"
+                      : project.status === "completed"
+                      ? "◉"
+                      : "✕"}
+                  </span>
                 </div>
 
                 {/* URL Availability Indicator */}
                 {project.status === "unavailable" && (
-                  <div className="absolute top-4 left-4 bg-red-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                  <div className="absolute top-2 md:top-4 left-2 md:left-4 bg-red-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
                     <XCircle className="w-3 h-3" />
-                    <span>Website Offline</span>
+                    <span className="hidden sm:inline">Website Offline</span>
+                    <span className="sm:hidden">Offline</span>
                   </div>
                 )}
-                {project.status !== "unavailable" && !isUrlAvailable(project) && project.websiteUrl?.includes('example.com') && (
-                  <div className="absolute top-4 left-4 bg-orange-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
-                    <Lock className="w-3 h-3" />
-                    <span>Coming Soon</span>
-                  </div>
-                )}
+                {project.status !== "unavailable" &&
+                  !isUrlAvailable(project) &&
+                  project.websiteUrl?.includes("example.com") && (
+                    <div className="absolute top-2 md:top-4 left-2 md:left-4 bg-orange-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                      <Lock className="w-3 h-3" />
+                      <span className="hidden sm:inline">Coming Soon</span>
+                      <span className="sm:hidden">Soon</span>
+                    </div>
+                  )}
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -382,17 +410,17 @@ export default function WebImagesSection() {
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
+              <div className="p-4 md:p-6">
+                <div className="flex items-start justify-between mb-2 md:items-center">
                   <h3
-                    className={`text-xl font-semibold ${
+                    className={`text-lg md:text-xl font-semibold flex-1 pr-2 ${
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
                     {project.name}
                   </h3>
                   <span
-                    className={`text-xs px-2 py-1 rounded-md ${
+                    className={`text-xs px-2 py-1 rounded-md shrink-0 ${
                       theme === "dark"
                         ? "bg-gray-700 text-gray-300"
                         : "bg-gray-100 text-gray-600"
@@ -403,7 +431,7 @@ export default function WebImagesSection() {
                 </div>
 
                 <p
-                  className={`text-sm mb-4 ${
+                  className={`text-xs md:text-sm mb-3 md:mb-4 line-clamp-3 ${
                     theme === "dark" ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
@@ -411,44 +439,74 @@ export default function WebImagesSection() {
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {project.technologies.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className={`px-2 py-1 text-xs rounded-md ${
-                        theme === "dark"
-                          ? "bg-gray-800 text-gray-300"
-                          : "bg-gray-50 text-gray-600"
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span
-                      className={`px-2 py-1 text-xs rounded-md ${
-                        theme === "dark"
-                          ? "bg-gray-800 text-gray-300"
-                          : "bg-gray-50 text-gray-600"
-                      }`}
-                    >
-                      +{project.technologies.length - 3} more
-                    </span>
-                  )}
+                <div className="flex flex-wrap gap-1 mb-3 md:mb-4">
+                  {/* Show only 2 technologies on mobile, 3 on larger screens */}
+                  <div className="flex flex-wrap gap-1 md:hidden">
+                    {project.technologies.slice(0, 2).map((tech) => (
+                      <span
+                        key={tech}
+                        className={`px-2 py-1 text-xs rounded-md ${
+                          theme === "dark"
+                            ? "bg-gray-800 text-gray-300"
+                            : "bg-gray-50 text-gray-600"
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 2 && (
+                      <span
+                        className={`px-2 py-1 text-xs rounded-md ${
+                          theme === "dark"
+                            ? "bg-gray-800 text-gray-300"
+                            : "bg-gray-50 text-gray-600"
+                        }`}
+                      >
+                        +{project.technologies.length - 2}
+                      </span>
+                    )}
+                  </div>
+                  {/* Show 3 technologies on larger screens */}
+                  <div className="hidden md:flex flex-wrap gap-1">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <span
+                        key={tech}
+                        className={`px-2 py-1 text-xs rounded-md ${
+                          theme === "dark"
+                            ? "bg-gray-800 text-gray-300"
+                            : "bg-gray-50 text-gray-600"
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span
+                        className={`px-2 py-1 text-xs rounded-md ${
+                          theme === "dark"
+                            ? "bg-gray-800 text-gray-300"
+                            : "bg-gray-50 text-gray-600"
+                        }`}
+                      >
+                        +{project.technologies.length - 3} more
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex space-x-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <button
                     onClick={() => openImageGallery(project, 0)}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors flex-1 justify-center ${
+                    className={`flex items-center justify-center space-x-2 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors flex-1 ${
                       theme === "dark"
                         ? "bg-gray-700 hover:bg-gray-600 text-white"
                         : "bg-gray-100 hover:bg-gray-200 text-gray-700"
                     }`}
                   >
                     <Globe className="w-4 h-4" />
-                    <span>View Screens</span>
+                    <span className="hidden sm:inline">View Screens</span>
+                    <span className="sm:hidden">View</span>
                   </button>
 
                   {(project.websiteUrl || project.status === "unavailable") && (
@@ -456,7 +514,7 @@ export default function WebImagesSection() {
                       href={isUrlAvailable(project) ? project.websiteUrl : "#"}
                       target={isUrlAvailable(project) ? "_blank" : "_self"}
                       rel={isUrlAvailable(project) ? "noopener noreferrer" : ""}
-                      className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`flex items-center justify-center space-x-1 md:space-x-2 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-colors flex-1 sm:flex-initial ${
                         isUrlAvailable(project)
                           ? theme === "dark"
                             ? "bg-purple-600 hover:bg-purple-700 text-white"
@@ -472,13 +530,22 @@ export default function WebImagesSection() {
                       onClick={(e) => handleLinkClick(project, e)}
                     >
                       {isUrlAvailable(project) ? (
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-3 md:w-4 h-3 md:h-4" />
                       ) : project.status === "unavailable" ? (
-                        <XCircle className="w-4 h-4" />
+                        <XCircle className="w-3 md:w-4 h-3 md:h-4" />
                       ) : (
-                        <AlertCircle className="w-4 h-4" />
+                        <AlertCircle className="w-3 md:w-4 h-3 md:h-4" />
                       )}
-                      <span>{getButtonText(project)}</span>
+                      <span className="hidden sm:inline">
+                        {getButtonText(project)}
+                      </span>
+                      <span className="sm:hidden">
+                        {isUrlAvailable(project)
+                          ? "Visit"
+                          : project.status === "unavailable"
+                          ? "N/A"
+                          : "Soon"}
+                      </span>
                     </a>
                   )}
                 </div>
@@ -490,7 +557,7 @@ export default function WebImagesSection() {
         {/* ========== IMAGE GALLERY MODAL ========== */}
         {showImageGallery && selectedProject && (
           <div
-            className={`fixed inset-0 flex items-center justify-center p-4 z-50 ${
+            className={`fixed inset-0 flex items-center justify-center p-2 md:p-4 z-50 ${
               theme === "dark"
                 ? "bg-black/80 backdrop-blur-sm"
                 : "bg-black/70 backdrop-blur-sm"
@@ -502,54 +569,59 @@ export default function WebImagesSection() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Gallery Header */}
-              <div className="flex justify-between items-center mb-4 text-white">
-                <div>
-                  <h3 className="text-2xl font-semibold mb-1">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 md:mb-4 text-white gap-3 sm:gap-0">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg md:text-2xl font-semibold mb-1 truncate">
                     {selectedProject.name}
                   </h3>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-xs md:text-sm text-gray-300">
                     {selectedProject.category}
                   </p>
                 </div>
-                <div className="flex items-center space-x-6">
-                  <span className="text-sm">
+                <div className="flex items-center space-x-2 md:space-x-6 shrink-0">
+                  <span className="text-xs md:text-sm">
                     {selectedImageIndex + 1} of {selectedProject.images.length}
                   </span>
-                  {selectedProject.websiteUrl && isUrlAvailable(selectedProject) && (
-                    <a
-                      href={selectedProject.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Visit Site</span>
-                    </a>
-                  )}
+                  {selectedProject.websiteUrl &&
+                    isUrlAvailable(selectedProject) && (
+                      <a
+                        href={selectedProject.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hidden sm:flex items-center space-x-2 px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded-lg text-xs md:text-sm transition-colors"
+                      >
+                        <ExternalLink className="w-3 md:w-4 h-3 md:h-4" />
+                        <span>Visit Site</span>
+                      </a>
+                    )}
                   {selectedProject.status === "unavailable" && (
-                    <div className="flex items-center space-x-2 px-3 py-1 bg-red-600 rounded-lg text-sm">
-                      <XCircle className="w-4 h-4" />
-                      <span>Website Offline</span>
+                    <div className="hidden sm:flex items-center space-x-2 px-3 py-1 bg-red-600 rounded-lg text-xs md:text-sm">
+                      <XCircle className="w-3 md:w-4 h-3 md:h-4" />
+                      <span className="hidden md:inline">Website Offline</span>
+                      <span className="md:hidden">Offline</span>
                     </div>
                   )}
-                  {selectedProject.websiteUrl && !isUrlAvailable(selectedProject) && selectedProject.status !== "unavailable" && (
-                    <div className="flex items-center space-x-2 px-3 py-1 bg-gray-600 rounded-lg text-sm">
-                      <AlertCircle className="w-4 h-4" />
-                      <span>Coming Soon</span>
-                    </div>
-                  )}
+                  {selectedProject.websiteUrl &&
+                    !isUrlAvailable(selectedProject) &&
+                    selectedProject.status !== "unavailable" && (
+                      <div className="hidden sm:flex items-center space-x-2 px-3 py-1 bg-gray-600 rounded-lg text-xs md:text-sm">
+                        <AlertCircle className="w-3 md:w-4 h-3 md:h-4" />
+                        <span className="hidden md:inline">Coming Soon</span>
+                        <span className="md:hidden">Soon</span>
+                      </div>
+                    )}
                   <button
-                    className="text-3xl hover:text-gray-300 transition-colors"
+                    className="text-2xl md:text-3xl hover:text-gray-300 transition-colors"
                     onClick={closeImageGallery}
                     aria-label="Close image gallery"
                   >
-                    <X className="w-8 h-8" />
+                    <X className="w-6 md:w-8 h-6 md:h-8" />
                   </button>
                 </div>
               </div>
 
               {/* Main Image */}
-              <div className="flex-1 relative mb-4">
+              <div className="flex-1 relative mb-2 md:mb-4">
                 <Image
                   src={selectedProject.images[selectedImageIndex]}
                   alt={`${selectedProject.name} - Screen ${
@@ -565,16 +637,16 @@ export default function WebImagesSection() {
                     <button
                       onClick={prevImage}
                       aria-label="Previous screen"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                      className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 p-2 md:p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                     >
-                      <ChevronLeft className="w-6 h-6" />
+                      <ChevronLeft className="w-4 md:w-6 h-4 md:h-6" />
                     </button>
                     <button
                       onClick={nextImage}
                       aria-label="Next screen"
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                      className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 p-2 md:p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                     >
-                      <ChevronRight className="w-6 h-6" />
+                      <ChevronRight className="w-4 md:w-6 h-4 md:h-6" />
                     </button>
                   </>
                 )}
@@ -582,15 +654,17 @@ export default function WebImagesSection() {
 
               {/* Thumbnail Navigation */}
               {selectedProject.images.length > 1 && (
-                <div className="flex space-x-3 justify-center overflow-x-auto pb-2">
+                <div className="flex space-x-2 md:space-x-3 justify-center overflow-x-auto pb-2 px-4">
                   {selectedProject.images.map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedImageIndex(index)}
-                      aria-label={`View screen ${index + 1} of ${selectedProject.name}`}
-                      className={`relative w-20 h-12 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${
+                      aria-label={`View screen ${index + 1} of ${
+                        selectedProject.name
+                      }`}
+                      className={`relative w-16 md:w-20 h-10 md:h-12 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${
                         index === selectedImageIndex
-                          ? "border-purple-500 scale-110"
+                          ? "border-purple-500 scale-105 md:scale-110"
                           : "border-gray-500 hover:border-gray-300 opacity-70 hover:opacity-100"
                       }`}
                     >
@@ -606,11 +680,11 @@ export default function WebImagesSection() {
               )}
 
               {/* Project Info */}
-              <div className="mt-4 text-center text-white">
-                <p className="text-sm text-gray-300 mb-2">
+              <div className="mt-2 md:mt-4 text-center text-white px-4">
+                <p className="text-xs md:text-sm text-gray-300 mb-2 line-clamp-2">
                   {selectedProject.description}
                 </p>
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap justify-center gap-1 md:gap-2">
                   {selectedProject.technologies.map((tech) => (
                     <span
                       key={tech}
@@ -619,6 +693,36 @@ export default function WebImagesSection() {
                       {tech}
                     </span>
                   ))}
+                </div>
+
+                {/* Mobile-only action buttons */}
+                <div className="sm:hidden mt-3 flex gap-2 justify-center">
+                  {selectedProject.websiteUrl &&
+                    isUrlAvailable(selectedProject) && (
+                      <a
+                        href={selectedProject.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 px-3 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-xs transition-colors"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        <span>Visit Site</span>
+                      </a>
+                    )}
+                  {selectedProject.status === "unavailable" && (
+                    <div className="flex items-center space-x-2 px-3 py-2 bg-red-600 rounded-lg text-xs">
+                      <XCircle className="w-3 h-3" />
+                      <span>Offline</span>
+                    </div>
+                  )}
+                  {selectedProject.websiteUrl &&
+                    !isUrlAvailable(selectedProject) &&
+                    selectedProject.status !== "unavailable" && (
+                      <div className="flex items-center space-x-2 px-3 py-2 bg-gray-600 rounded-lg text-xs">
+                        <AlertCircle className="w-3 h-3" />
+                        <span>Soon</span>
+                      </div>
+                    )}
                 </div>
               </div>
             </div>

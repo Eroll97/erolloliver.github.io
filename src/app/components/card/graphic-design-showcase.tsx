@@ -27,7 +27,7 @@ export default function GraphicDesignShowcase({
 
   return (
     <div
-      className={`group relative overflow-hidden  transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl cursor-pointer ${
+      className={`group relative overflow-hidden rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl cursor-pointer ${
         theme === "dark"
           ? "bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50"
           : "bg-white border border-gray-200 hover:border-gray-300 shadow-md hover:shadow-xl"
@@ -35,7 +35,7 @@ export default function GraphicDesignShowcase({
       onClick={() => onClick?.(design)}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] overflow-hidden">
         {!imageError ? (
           <Image
             src={design.image}
@@ -56,12 +56,12 @@ export default function GraphicDesignShowcase({
           >
             <div className="text-center">
               <div
-                className={`w-16 h-16 flex items-center justify-center mx-auto mb-2 ${
+                className={`w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto mb-2 rounded ${
                   theme === "dark" ? "bg-gray-600" : "bg-gray-300"
                 }`}
               >
                 <svg
-                  className={`w-8 h-8 ${
+                  className={`w-6 h-6 sm:w-8 sm:h-8 ${
                     theme === "dark" ? "text-gray-400" : "text-gray-500"
                   }`}
                   fill="currentColor"
@@ -75,7 +75,7 @@ export default function GraphicDesignShowcase({
                 </svg>
               </div>
               <p
-                className={`text-sm ${
+                className={`text-xs sm:text-sm ${
                   theme === "dark" ? "text-gray-400" : "text-gray-500"
                 }`}
               >
@@ -96,8 +96,8 @@ export default function GraphicDesignShowcase({
 
         {/* Overlay on Hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="absolute bottom-4 left-4 right-4">
-            <h3 className="text-white font-semibold text-lg leading-tight">
+          <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4">
+            <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg leading-tight">
               {design.click}
             </h3>
           </div>
