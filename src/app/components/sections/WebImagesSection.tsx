@@ -9,6 +9,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Globe,
+  Lock,
+  AlertCircle,
+  XCircle,
 } from "lucide-react";
 
 interface WebProject {
@@ -17,9 +20,9 @@ interface WebProject {
   description: string;
   technologies: string[];
   images: string[];
-  websiteUrl?: string; // Placeholder for actual website links
+  websiteUrl?: string;
   category: string;
-  status: "live" | "development" | "completed";
+  status: "live" | "development" | "completed" | "unavailable";
 }
 
 const webProjects: WebProject[] = [
@@ -28,13 +31,13 @@ const webProjects: WebProject[] = [
     name: "EarthBrew",
     description:
       "Sustainable brewing company website with eco-friendly design and modern user experience",
-    technologies: ["WordPress", "CSS3", "JavaScript", "Responsive Design"],
+    technologies: ["canva", "Responsive Design"],
     images: [
       "/assets/web-images/earthbrew.webp",
       "/assets/web-images/earthbrew2.webp",
       "/assets/web-images/earthbrew3.webp",
     ],
-    websiteUrl: "https://earthbrew.example.com", // Placeholder URL
+    websiteUrl: "https://www.canva.com/design/DAGO27LNgo4/WIumcVIiPm0tggFjaeQw8w/edit", 
     category: "Business",
     status: "live",
   },
@@ -43,13 +46,13 @@ const webProjects: WebProject[] = [
     name: "Flow Rentals",
     description:
       "Property rental management platform with booking system and customer portal",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe API"],
+    technologies: ["Go High Level", "Funnel", "Frontend", "Stripe API"],
     images: [
       "/assets/web-images/flow_rentals.webp",
       "/assets/web-images/flow_rentals2.webp",
       "/assets/web-images/flow_rentals3.webp",
     ],
-    websiteUrl: "https://flowrentals.example.com", // Placeholder URL
+    websiteUrl: "https://flowrentalsva.com/", 
     category: "Business",
     status: "live",
   },
@@ -57,29 +60,29 @@ const webProjects: WebProject[] = [
     id: 3,
     name: "Pontiac",
     description:
-      "Automotive dealership website with inventory management and customer service features",
-    technologies: ["WordPress", "PHP", "MySQL", "Custom Plugins"],
+      "Automotive dealership website with inventory management and customer service features. Company has closed operations.",
+    technologies: ["WordPress", "Integrations", "Frontend", "Custom Plugins"],
     images: [
       "/assets/web-images/pontiac.webp",
       "/assets/web-images/pontiac1.webp",
       "/assets/web-images/pontiac2.webp",
     ],
-    websiteUrl: "https://pontiac.example.com", // Placeholder URL
+    websiteUrl: undefined, // No URL since company is closed
     category: "Automotive",
-    status: "completed",
+    status: "unavailable",
   },
   {
     id: 4,
     name: "SmartWeb",
     description:
       "Smart solutions web platform with integrated IoT dashboard and analytics",
-    technologies: ["Vue.js", "Laravel", "PostgreSQL", "Chart.js"],
+    technologies: ["Vanilla JS", "HTML5", "CSS3", "Responsive Design"],
     images: [
       "/assets/web-images/smartweb.webp",
       "/assets/web-images/smartweb2.webp",
       "/assets/web-images/smartweb3.webp",
     ],
-    websiteUrl: "https://smartweb.example.com", // Placeholder URL
+    websiteUrl: "https://smartwebusa.com/",
     category: "Technology",
     status: "development",
   },
@@ -94,7 +97,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/smoke _vibes2.webp",
       "/assets/web-images/smoke_vibes3.webp",
     ],
-    websiteUrl: "https://smokevibes.example.com", // Placeholder URL
+    websiteUrl: "https://www.smokevibes.com/", 
     category: "Lifestyle",
     status: "live",
   },
@@ -103,13 +106,13 @@ const webProjects: WebProject[] = [
     name: "Stone System",
     description:
       "Construction company website with project portfolio and contact management",
-    technologies: ["WordPress", "Elementor", "Contact Form 7", "SEO"],
+    technologies: ["Go High Level", "Funnel", "SEO"],
     images: [
       "/assets/web-images/stone_system.webp",
       "/assets/web-images/stone_system2.webp",
       "/assets/web-images/stone_system3.webp",
     ],
-    websiteUrl: "https://stonesystem.example.com", // Placeholder URL
+    websiteUrl: "https://stonesystems.io/", 
     category: "Construction",
     status: "live",
   },
@@ -124,7 +127,7 @@ const webProjects: WebProject[] = [
       "/assets/web-images/swanson2.JPG",
       "/assets/web-images/swanson3.JPG",
     ],
-    websiteUrl: "https://swanson.example.com", // Placeholder URL
+    websiteUrl: "https://swansonreservecapital.com/",
     category: "Professional Services",
     status: "completed",
   },
@@ -133,13 +136,13 @@ const webProjects: WebProject[] = [
     name: "Video Funeral",
     description:
       "Memorial services website with video streaming and tribute features",
-    technologies: ["WordPress", "Video.js", "Custom Post Types", "SSL"],
+    technologies: ["WordPress", "Video.js", "Custom Post Types", "Html5", "CSS3", "JavaScript"],
     images: [
       "/assets/web-images/video_funeral.webp",
       "/assets/web-images/video_funeral2.webp",
       "/assets/web-images/vide_funeral3.webp",
     ],
-    websiteUrl: "https://videofuneral.example.com", // Placeholder URL
+    websiteUrl: "https://funeralvideomaker.com/", 
     category: "Memorial Services",
     status: "live",
   },
@@ -148,13 +151,13 @@ const webProjects: WebProject[] = [
     name: "Xtreme",
     description:
       "Extreme sports and adventure website with booking system and event management",
-    technologies: ["React", "Express.js", "MongoDB", "Payment Gateway"],
+    technologies: ["Go High Level", "Funnel", "Frontend", "Payment Gateway"],
     images: [
       "/assets/web-images/Xtreme.webp",
       "/assets/web-images/Xtreme2.webp",
       "/assets/web-images/Xtreme3.webp",
     ],
-    websiteUrl: "https://xtreme.example.com", // Placeholder URL
+    websiteUrl: "https://xtreme-coatings.com/", 
     category: "Sports & Recreation",
     status: "development",
   },
@@ -178,6 +181,33 @@ export default function WebImagesSection() {
       ? webProjects
       : webProjects.filter((project) => project.category === filter);
 
+  // Helper function to check if URL is available
+  const isUrlAvailable = (project: WebProject) => {
+    if (!project.websiteUrl) return false;
+    if (project.status === "unavailable") return false;
+    return !project.websiteUrl.includes('example.com');
+  };
+
+  // Helper function to get button text based on URL availability and status
+  const getButtonText = (project: WebProject) => {
+    if (project.status === "unavailable") return "Not Available";
+    if (!project.websiteUrl) return "No Link";
+    if (!isUrlAvailable(project)) return "Coming Soon";
+    return "Live Site";
+  };
+
+  // Helper function to handle click for unavailable links
+  const handleLinkClick = (project: WebProject, e: React.MouseEvent) => {
+    if (!isUrlAvailable(project)) {
+      e.preventDefault();
+      if (project.status === "unavailable") {
+        alert(`${project.name} website is no longer available. or the link cannot be found.`);
+      } else {
+        alert(`${project.name} website will be available soon!`);
+      }
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "live":
@@ -186,6 +216,8 @@ export default function WebImagesSection() {
         return theme === "dark" ? "text-yellow-400" : "text-yellow-600";
       case "completed":
         return theme === "dark" ? "text-blue-400" : "text-blue-600";
+      case "unavailable":
+        return theme === "dark" ? "text-red-400" : "text-red-600";
       default:
         return theme === "dark" ? "text-gray-400" : "text-gray-600";
     }
@@ -199,6 +231,8 @@ export default function WebImagesSection() {
         return "In Development";
       case "completed":
         return "Completed";
+      case "unavailable":
+        return "Unavailable";
       default:
         return "Unknown";
     }
@@ -324,6 +358,20 @@ export default function WebImagesSection() {
                   {getStatusText(project.status)}
                 </div>
 
+                {/* URL Availability Indicator */}
+                {project.status === "unavailable" && (
+                  <div className="absolute top-4 left-4 bg-red-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                    <XCircle className="w-3 h-3" />
+                    <span>Website Offline</span>
+                  </div>
+                )}
+                {project.status !== "unavailable" && !isUrlAvailable(project) && project.websiteUrl?.includes('example.com') && (
+                  <div className="absolute top-4 left-4 bg-orange-500/80 text-white px-2 py-1 rounded-md text-xs flex items-center space-x-1">
+                    <Lock className="w-3 h-3" />
+                    <span>Coming Soon</span>
+                  </div>
+                )}
+
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-white text-center">
@@ -403,20 +451,34 @@ export default function WebImagesSection() {
                     <span>View Screens</span>
                   </button>
 
-                  {project.websiteUrl && (
+                  {(project.websiteUrl || project.status === "unavailable") && (
                     <a
-                      href={project.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={isUrlAvailable(project) ? project.websiteUrl : "#"}
+                      target={isUrlAvailable(project) ? "_blank" : "_self"}
+                      rel={isUrlAvailable(project) ? "noopener noreferrer" : ""}
                       className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        theme === "dark"
-                          ? "bg-purple-600 hover:bg-purple-700 text-white"
-                          : "bg-purple-600 hover:bg-purple-700 text-white"
+                        isUrlAvailable(project)
+                          ? theme === "dark"
+                            ? "bg-purple-600 hover:bg-purple-700 text-white"
+                            : "bg-purple-600 hover:bg-purple-700 text-white"
+                          : project.status === "unavailable"
+                          ? theme === "dark"
+                            ? "bg-red-600 text-gray-300 cursor-not-allowed"
+                            : "bg-red-500 text-white cursor-not-allowed"
+                          : theme === "dark"
+                          ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                          : "bg-gray-400 text-gray-600 cursor-not-allowed"
                       }`}
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => handleLinkClick(project, e)}
                     >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Site</span>
+                      {isUrlAvailable(project) ? (
+                        <ExternalLink className="w-4 h-4" />
+                      ) : project.status === "unavailable" ? (
+                        <XCircle className="w-4 h-4" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4" />
+                      )}
+                      <span>{getButtonText(project)}</span>
                     </a>
                   )}
                 </div>
@@ -453,7 +515,7 @@ export default function WebImagesSection() {
                   <span className="text-sm">
                     {selectedImageIndex + 1} of {selectedProject.images.length}
                   </span>
-                  {selectedProject.websiteUrl && (
+                  {selectedProject.websiteUrl && isUrlAvailable(selectedProject) && (
                     <a
                       href={selectedProject.websiteUrl}
                       target="_blank"
@@ -463,6 +525,18 @@ export default function WebImagesSection() {
                       <ExternalLink className="w-4 h-4" />
                       <span>Visit Site</span>
                     </a>
+                  )}
+                  {selectedProject.status === "unavailable" && (
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-red-600 rounded-lg text-sm">
+                      <XCircle className="w-4 h-4" />
+                      <span>Website Offline</span>
+                    </div>
+                  )}
+                  {selectedProject.websiteUrl && !isUrlAvailable(selectedProject) && selectedProject.status !== "unavailable" && (
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-gray-600 rounded-lg text-sm">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>Coming Soon</span>
+                    </div>
                   )}
                   <button
                     className="text-3xl hover:text-gray-300 transition-colors"
