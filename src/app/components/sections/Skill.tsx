@@ -1,10 +1,80 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
 import { Code, TrendingUp, Cloud, Smartphone, Palette } from "lucide-react";
 
+interface SkillProgress {
+  name: string;
+  percentage: number;
+  color: string;
+}
+
+const skillsProgress: SkillProgress[] = [
+  {
+    name: "Website Developer WordPress/GoHighLevel",
+    percentage: 92,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Website Design",
+    percentage: 95,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Project Management",
+    percentage: 97,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Graphic Designer",
+    percentage: 93,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Video Editing",
+    percentage: 97,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Bookkeeping",
+    percentage: 89,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Search Engine Optimization",
+    percentage: 88,
+    color: "bg-gradient-to-r from-blue-500 to-cyan-500",
+  },
+];
+
 export default function Skill() {
   const { theme } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
+  const [animatedBars, setAnimatedBars] = useState<number[]>([]);
+  const progressRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isVisible) {
+          setIsVisible(true);
+          // Animate each bar with a delay
+          skillsProgress.forEach((_, index) => {
+            setTimeout(() => {
+              setAnimatedBars((prev) => [...prev, index]);
+            }, index * 300);
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (progressRef.current) {
+      observer.observe(progressRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   return (
     <section
@@ -15,7 +85,7 @@ export default function Skill() {
     >
       <div className="max-w-6xl mx-auto">
         {/* Skills section */}
-        <div>
+        <div className="mb-16">
           <h3
             className={`text-4xl font-bold text-center mb-8 ${
               theme === "dark" ? "text-white" : "text-gray-900"
@@ -183,7 +253,99 @@ export default function Skill() {
             </div>
           </div>
         </div>
+
+        {/* Skills Progress Section */}
+        <div ref={progressRef} className="mt-20">
+          <div className="text-center mb-12">
+            <h2
+              className={`text-4xl font-bold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              MY{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                SKILLS
+              </span>
+            </h2>
+            <div className="flex justify-center mb-6">
+              <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+            </div>
+            <p
+              className={`text-lg max-w-2xl mx-auto ${
+                theme === "dark" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              Proficiency levels across key professional competencies
+            </p>
+          </div>
+
+          {/* Progress Bars */}
+          <div className="max-w-4xl mx-auto space-y-6">
+            {skillsProgress.map((skill, index) => (
+              <div key={index} className="relative">
+                {/* Skill Header */}
+                <div className="flex items-center justify-between mb-3">
+                  <h3
+                    className={`font-semibold text-lg uppercase tracking-wide ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {skill.name}
+                  </h3>
+                  <span
+                    className={`text-xl font-bold ${
+                      theme === "dark" ? "text-cyan-400" : "text-cyan-600"
+                    }`}
+                  >
+                    {skill.percentage}%
+                  </span>
+                </div>
+
+                {/* Progress Bar Container */}
+                <div
+                  className={`w-full h-4 rounded-full overflow-hidden ${
+                    theme === "dark" ? "bg-gray-700" : "bg-gray-300"
+                  }`}
+                >
+                  {/* Progress Bar Fill */}
+                  <div
+                    className={`h-full ${skill.color} rounded-full transition-all duration-[1500ms] ease-out transform relative overflow-hidden`}
+                    style={{
+                      width: animatedBars.includes(index)
+                        ? `${skill.percentage}%`
+                        : "0%",
+                    }}
+                  >
+                    {/* Shine effect - Fixed the animation conflict */}
+                    {animatedBars.includes(index) && (
+                      <div
+                        className="absolute top-0 left-0 h-full w-8 bg-white opacity-30 transform skew-x-12"
+                        style={{
+                          animation: `shine 2s ease-in-out infinite ${
+                            index * 0.3
+                          }s`,
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* CSS Animation Styles */}
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%) skewX(12deg);
+          }
+          100% {
+            transform: translateX(300px) skewX(12deg);
+          }
+        }
+      `}</style>
     </section>
   );
 }
