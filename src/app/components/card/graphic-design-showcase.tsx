@@ -35,7 +35,7 @@ export default function GraphicDesignShowcase({
       onClick={() => onClick?.(design)}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden">
         {!imageError ? (
           <Image
             src={design.image}
@@ -46,7 +46,7 @@ export default function GraphicDesignShowcase({
             }`}
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           />
         ) : (
           <div
@@ -97,7 +97,7 @@ export default function GraphicDesignShowcase({
         {/* Overlay on Hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 right-2 sm:right-4">
-            <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg leading-tight">
+            <h3 className="text-white font-semibold text-xs sm:text-sm lg:text-base leading-tight">
               {design.click}
             </h3>
           </div>

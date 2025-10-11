@@ -116,23 +116,23 @@ export default function VideoSection(): React.ReactElement {
 
   return (
     <section
-      className={`py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-12 sm:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
       id="videos"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2
-            className={`text-4xl font-bold mb-4 ${
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
             SAMPLE VIDEO
           </h2>
           <p
-            className={`text-lg max-w-3xl mx-auto ${
+            className={`text-base sm:text-lg max-w-3xl mx-auto px-4 ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -143,11 +143,11 @@ export default function VideoSection(): React.ReactElement {
         </div>
 
         {/* Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {videos.map((video) => (
             <div
               key={video.id}
-              className={`group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer ${
+              className={`group relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:shadow-2xl"
                   : "bg-white border border-gray-200 hover:shadow-2xl"
@@ -163,7 +163,7 @@ export default function VideoSection(): React.ReactElement {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                     onError={() => handleImageError(video.id)}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
                 ) : (
                   <div
@@ -172,7 +172,7 @@ export default function VideoSection(): React.ReactElement {
                     }`}
                   >
                     <Play
-                      className={`w-12 h-12 ${
+                      className={`w-8 h-8 sm:w-12 sm:h-12 ${
                         theme === "dark" ? "text-gray-400" : "text-gray-500"
                       }`}
                     />
@@ -182,12 +182,14 @@ export default function VideoSection(): React.ReactElement {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-3 mb-2">
-                      <Play className="w-10 h-10 text-black" />
+                    <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2 sm:p-3 mb-1 sm:mb-2">
+                      <Play className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-black" />
                     </div>
-                    <p className={`text-sm stroke font-medium ${
-                      theme === "dark" ? "text-gray-100" : "text-white"
-                    }`}>
+                    <p
+                      className={`text-xs sm:text-sm stroke font-medium ${
+                        theme === "dark" ? "text-gray-100" : "text-white"
+                      }`}
+                    >
                       {video.click}
                     </p>
                   </div>
@@ -200,7 +202,7 @@ export default function VideoSection(): React.ReactElement {
         {/* Video Modal */}
         {selectedVideo && (
           <div
-            className={`fixed inset-0 flex items-center justify-center p-4 z-50 ${
+            className={`fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 ${
               theme === "dark"
                 ? "bg-black/70 backdrop-blur-sm"
                 : "bg-black/60 backdrop-blur-sm"
@@ -208,18 +210,18 @@ export default function VideoSection(): React.ReactElement {
             onClick={() => setSelectedVideo(null)}
           >
             <div
-              className={`max-w-6xl w-full max-h-[90vh] overflow-hidden rounded-xl `}
+              className={`max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden rounded-lg sm:rounded-xl `}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
               <div
-                className={`flex justify-end items-center p-4 ${
+                className={`flex justify-end items-center p-2 sm:p-4 ${
                   theme === "dark" ? "border-gray-700" : "border-gray-200"
                 }`}
               >
                 <button
                   onClick={() => setSelectedVideo(null)}
-                  className={`p-2 rounded-full transition-colors ${
+                  className={`p-1 sm:p-2 rounded-full transition-colors ${
                     theme === "dark"
                       ? "text-gray-400 hover:text-white hover:bg-gray-700"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
@@ -228,7 +230,7 @@ export default function VideoSection(): React.ReactElement {
                   aria-label="Close video modal"
                 >
                   <X
-                    className={`w-6 h-6 ${
+                    className={`w-5 h-5 sm:w-6 sm:h-6 ${
                       theme === "dark"
                         ? "text-gray-400 hover:text-white"
                         : "text-gray-600 hover:text-gray-900"
