@@ -3,17 +3,15 @@ import { withNextVideo } from "next-video/process";
 
 const nextConfig: NextConfig = {
   // ✅ Configure Turbopack (for Next.js 15+)
-  experimental: {
-    turbo: {
-      rules: {
-        "*.glb": {
-          loaders: ["file-loader"],
-          as: "*.js",
-        },
-        "*.gltf": {
-          loaders: ["file-loader"],
-          as: "*.js",
-        },
+  turbopack: {
+    rules: {
+      "*.glb": {
+        loaders: ["file-loader"],
+        as: "*.js",
+      },
+      "*.gltf": {
+        loaders: ["file-loader"],
+        as: "*.js",
       },
     },
   },

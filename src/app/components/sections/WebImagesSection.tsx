@@ -169,6 +169,22 @@ const webProjects: WebProject[] = [
     category: "Sports & Recreation",
     status: "development",
   },
+  {
+    id: 10,
+    name: "Figma Redesign in Ibanez Project",
+    description:
+      "View famous guitar artist and musician, and can buy guitars online.",
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    images: [
+      "/assets/web-images/figma-redesign-sample.png",
+      "/assets/web-images/figma-redesign-sample2.png",
+      "/assets/web-images/figma-redesign-sample4.png",
+      "/assets/web-images/figma-redesign-sample3.png",
+    ],
+    websiteUrl: "https://www.ibanez.com/asia/",
+    category: "Business",
+    status: "live",
+  },
 ];
 
 export default function WebImagesSection() {
