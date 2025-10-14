@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useTheme } from "@/app/components/providers/ThemeProvider";
-import { Play, X } from "lucide-react";
 import Image from "next/image";
 
 interface VideoItem {
@@ -107,11 +106,25 @@ const videos: VideoItem[] = [
 
 export default function VideoSection(): React.ReactElement {
   const { theme } = useTheme();
-  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
   const [imageError, setImageError] = useState<Set<string>>(new Set());
+  const [isClicking, setIsClicking] = useState(false);
 
   const handleImageError = (videoId: string): void => {
     setImageError((prev) => new Set(prev).add(videoId));
+  };
+
+  const handleVideoClick = (videoId: string): void => {
+    // Prevent double clicking
+    if (isClicking) return;
+
+    setIsClicking(true);
+    setPlayingVideo(videoId);
+
+    // Reset the clicking state after a short delay
+    setTimeout(() => {
+      setIsClicking(false);
+    }, 1000);
   };
 
   return (
@@ -141,9 +154,8 @@ export default function VideoSection(): React.ReactElement {
             engage audiences and drive meaningful results.
           </p>
         </div>
-
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        {/* Video Grid - Portrait Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
           {videos.map((video) => (
             <div
               key={video.id}
@@ -152,106 +164,60 @@ export default function VideoSection(): React.ReactElement {
                   ? "bg-gray-800 border border-gray-700 hover:shadow-2xl"
                   : "bg-white border border-gray-200 hover:shadow-2xl"
               }`}
-              onClick={() => setSelectedVideo(video)}
+              onClick={() => handleVideoClick(video.id)}
             >
-              {/* Video Thumbnail */}
-              <div className="relative aspect-video overflow-hidden">
-                {!imageError.has(video.id) ? (
-                  <Image
-                    src={video.thumbnail}
-                    alt={`Video ${video.id}`}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    onError={() => handleImageError(video.id)}
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              {/* Video Container - Portrait Aspect Ratio */}
+              <div className="relative aspect-[9/16] overflow-hidden">
+                {playingVideo === video.id ? (
+                  // Direct video embed
+                  <iframe
+                    src={video.embedUrl}
+                    className="w-full h-full"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title={`Video ${video.id}`}
                   />
                 ) : (
-                  <div
-                    className={`w-full h-full flex items-center justify-center ${
-                      theme === "dark" ? "bg-gray-700" : "bg-gray-200"
-                    }`}
-                  >
-                    <Play
-                      className={`w-8 h-8 sm:w-12 sm:h-12 ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-500"
-                      }`}
-                    />
-                  </div>
-                )}
+                  // Thumbnail with play button
+                  <>
+                    {!imageError.has(video.id) ? (
+                      <Image
+                        src={video.thumbnail}
+                        alt={`Video ${video.id} thumbnail`}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        onError={() => handleImageError(video.id)}
+                      />
+                    ) : (
+                      <div
+                        className={`w-full h-full flex items-center justify-center ${
+                          theme === "dark" ? "bg-gray-700" : "bg-gray-200"
+                        }`}
+                      >
+                        <div className="text-center">
+                          <div className="text-4xl mb-2">🎥</div>
+                          <p className="text-sm opacity-70">Video Preview</p>
+                        </div>
+                      </div>
+                    )}
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2 sm:p-3 mb-1 sm:mb-2">
-                      <Play className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-black" />
+                    {/* Hover Overlay with Play Message */}
+                    <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-white font-semibold text-lg mb-2">
+                          Play Video
+                        </div>
+                        <div className="text-white text-sm opacity-80">
+                          Click to watch
+                        </div>
+                      </div>
                     </div>
-                    <p
-                      className={`text-xs sm:text-sm stroke font-medium ${
-                        theme === "dark" ? "text-gray-100" : "text-white"
-                      }`}
-                    >
-                      {video.click}
-                    </p>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Video Modal */}
-        {selectedVideo && (
-          <div
-            className={`fixed inset-0 flex items-center justify-center p-2 sm:p-4 z-50 ${
-              theme === "dark"
-                ? "bg-black/70 backdrop-blur-sm"
-                : "bg-black/60 backdrop-blur-sm"
-            }`}
-            onClick={() => setSelectedVideo(null)}
-          >
-            <div
-              className={`max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden rounded-lg sm:rounded-xl `}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Header */}
-              <div
-                className={`flex justify-end items-center p-2 sm:p-4 ${
-                  theme === "dark" ? "border-gray-700" : "border-gray-200"
-                }`}
-              >
-                <button
-                  onClick={() => setSelectedVideo(null)}
-                  className={`p-1 sm:p-2 rounded-full transition-colors ${
-                    theme === "dark"
-                      ? "text-gray-400 hover:text-white hover:bg-gray-700"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                  }`}
-                  title="Close video modal"
-                  aria-label="Close video modal"
-                >
-                  <X
-                    className={`w-5 h-5 sm:w-6 sm:h-6 ${
-                      theme === "dark"
-                        ? "text-gray-400 hover:text-white"
-                        : "text-gray-600 hover:text-gray-900"
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* Video Player */}
-              <div className="aspect-video">
-                <iframe
-                  src={selectedVideo.embedUrl}
-                  className="w-full h-full"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  title={`Video ${selectedVideo.id}`}
-                />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
