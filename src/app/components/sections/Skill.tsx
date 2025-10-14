@@ -86,13 +86,21 @@ export default function Skill() {
       <div className="max-w-6xl mx-auto">
         {/* Skills section */}
         <div className="mb-16">
-          <h3
-            className={`text-4xl font-bold text-center mb-8 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Skilled In
-          </h3>
+          <div className="text-center mb-8">
+            <h3
+              className={`text-4xl font-bold mb-4 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                SKILLED
+              </span>{" "}
+              IN
+            </h3>
+            <div className="flex justify-center mb-6">
+              <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
               className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${

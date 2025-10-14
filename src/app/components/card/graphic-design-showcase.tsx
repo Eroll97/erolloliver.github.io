@@ -35,7 +35,7 @@ export default function GraphicDesignShowcase({
       onClick={() => onClick?.(design)}
     >
       {/* Image Container */}
-      <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden">
+      <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10] overflow-hidden">
         {!imageError ? (
           <Image
             src={design.image}
