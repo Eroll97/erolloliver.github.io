@@ -20,7 +20,7 @@ export default function FirstSection() {
     <div
       className={` pt-20 ${
         theme === "dark" ? "bg-gray-900" : "bg-white"
-      } overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-auto
+      } overflow-visible z-0 grid grid-cols-1 lg:grid-cols-2 gap-8 -mt-16 min-h-screen relative
       `}
     >
       {/* Text Column */}
@@ -203,13 +203,65 @@ export default function FirstSection() {
       </div>
 
       {/* 3D Lanyard Column */}
-      <div className="order-2 flex justify-center items-center h-full">
-        <div className="w-full max-w-md">
+      <div className="order-2 relative overflow-visible w-full h-full min-h-screen">
+        <div className="relative w-full h-full overflow-visible">
           <Lanyard
             position={[0, 0, 11]}
             gravity={[0, -40, 0]}
             className="overflow-visible z-10"
           />
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20">
+            <h1
+              className={`text-lg md:text-xl font-semibold -mt-24 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              <span
+                className={
+                  theme === "dark" ? "text-stroke-black" : "text-stroke-white"
+                }
+              >
+                Drag the ID card
+              </span>
+            </h1>
+            <p
+              className={`text-sm ${
+                theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              <span
+                className={
+                  theme === "dark"
+                    ? "text-stroke-black-sm"
+                    : "text-stroke-white-sm"
+                }
+              >
+                Interactive 3D experience
+              </span>
+            </p>
+          </div>
+          <style jsx>{`
+            .text-stroke-black {
+              -webkit-text-stroke: 1px black;
+              text-stroke: 1px black;
+              paint-order: stroke fill;
+            }
+            .text-stroke-white {
+              -webkit-text-stroke: 1px white;
+              text-stroke: 1px white;
+              paint-order: stroke fill;
+            }
+            .text-stroke-black-sm {
+              -webkit-text-stroke: 0.5px black;
+              text-stroke: 0.5px black;
+              paint-order: stroke fill;
+            }
+            .text-stroke-white-sm {
+              -webkit-text-stroke: 0.5px white;
+              text-stroke: 0.5px white;
+              paint-order: stroke fill;
+            }
+          `}</style>
         </div>
       </div>
     </div>
