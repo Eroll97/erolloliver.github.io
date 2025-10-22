@@ -426,7 +426,7 @@ export default function FirstSection() {
         </div>
 
         {/* 3D Lanyard Column - Desktop */}
-        <div className="relative overflow-visible w-full h-full min-h-screen">
+        <div className=" -m-10 relative overflow-visible w-full h-full min-h-screen">
           <Lanyard
             position={[0, 0, 11]}
             gravity={[0, -40, 0]}
