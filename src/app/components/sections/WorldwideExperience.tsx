@@ -103,7 +103,7 @@ export default function WorldwideExperience() {
           {/* Video Background Section with Stats */}
           <div
             ref={worldRef}
-            className={`relative w-full h-full md:h-[700px] lg:h-[800px] overflow-hidden transition-all duration-1000 ${
+            className={`rounded-2xl relative w-full h-full md:h-[700px] lg:h-[800px] overflow-hidden transition-all duration-1000 ${
               isWorldVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
           >
@@ -115,7 +115,7 @@ export default function WorldwideExperience() {
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover"
+                className=" absolute inset-0 w-full h-full object-cover"
                 onError={() => {
                   console.error("Video failed to load");
                   setVideoError(true);
