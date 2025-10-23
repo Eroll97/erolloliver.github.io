@@ -11,6 +11,7 @@ import VideoSection from "./components/sections/VideoSection";
 import WebImagesSection from "./components/sections/WebImagesSection";
 import WorldwideExperience from "./components/sections/WorldwideExperience";
 import WorkExperience from "./components/sections/WorkExperience";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <VideoSection />
       <ContactSection />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
