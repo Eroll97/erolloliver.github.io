@@ -8,7 +8,8 @@ import Skill from "./components/sections/Skill";
 import Services from "./components/sections/Services";
 import Gallery from "./components/sections/Gallery";
 import VideoSection from "./components/sections/VideoSection";
-import WebImagesSection from "./components/sections/WebImagesSection"; // Add this import
+import WebImagesSection from "./components/sections/WebImagesSection";
+import WorldwideExperience from "./components/sections/WorldwideExperience";
 
 export default function Home() {
   return (
@@ -18,9 +19,10 @@ export default function Home() {
       <AboutSection />
       <Gallery />
       <Skill />
+      <WorldwideExperience />
       <Services />
       <ProjectsSection />
-      <WebImagesSection /> {/* Add this component */}
+      <WebImagesSection />
       <VideoSection />
       <ContactSection />
       <Footer />
