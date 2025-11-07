@@ -78,17 +78,17 @@ export default function Skill() {
 
   return (
     <section
-      className={`py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 md:px-6 lg:px-8 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
       id="skills"
     >
       <div className="max-w-6xl mx-auto">
         {/* Skills section */}
-        <div className="mb-10">
-          <div className="text-center mb-8">
+        <div className="mb-8 sm:mb-10 md:mb-12">
+          <div className="text-center mb-6 sm:mb-8">
             <h3
-              className={`text-4xl font-bold mb-4 ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
@@ -97,22 +97,22 @@ export default function Skill() {
               </span>{" "}
               IN
             </h3>
-            <div className="flex justify-center mb-6">
-              <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+            <div className="flex justify-center mb-4 sm:mb-6">
+              <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-blue-500"
                   : "bg-gray-50 border border-gray-200 hover:border-blue-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <Code className="w-8 h-8 text-blue-500" />
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <Code className="w-6 sm:w-8 h-6 sm:h-8 text-blue-500 flex-shrink-0" />
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -120,7 +120,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -129,18 +129,20 @@ export default function Skill() {
             </div>
 
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-green-500"
                   : "bg-gray-50 border border-gray-200 hover:border-green-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">VE</span>
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <div className="w-6 sm:w-8 h-6 sm:h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-xs sm:text-sm">
+                    VE
+                  </span>
                 </div>
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -148,7 +150,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -157,16 +159,16 @@ export default function Skill() {
             </div>
 
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-purple-500"
                   : "bg-gray-50 border border-gray-200 hover:border-purple-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <TrendingUp className="w-8 h-8 text-purple-500" />
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <TrendingUp className="w-6 sm:w-8 h-6 sm:h-8 text-purple-500 flex-shrink-0" />
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -174,7 +176,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -183,16 +185,16 @@ export default function Skill() {
             </div>
 
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-orange-500"
                   : "bg-gray-50 border border-gray-200 hover:border-orange-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <Cloud className="w-8 h-8 text-orange-500" />
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <Cloud className="w-6 sm:w-8 h-6 sm:h-8 text-orange-500 flex-shrink-0" />
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -200,7 +202,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -209,16 +211,16 @@ export default function Skill() {
             </div>
 
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-pink-500"
                   : "bg-gray-50 border border-gray-200 hover:border-pink-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <Smartphone className="w-8 h-8 text-pink-500" />
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <Smartphone className="w-6 sm:w-8 h-6 sm:h-8 text-pink-500 flex-shrink-0" />
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -226,7 +228,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -235,16 +237,16 @@ export default function Skill() {
             </div>
 
             <div
-              className={`p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
+              className={`p-4 sm:p-6 rounded-lg transition-all duration-300 hover:transform hover:scale-105 ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 hover:border-cyan-500"
                   : "bg-gray-50 border border-gray-200 hover:border-cyan-500 hover:shadow-lg"
               }`}
             >
-              <div className="flex items-center space-x-3 mb-4">
-                <Palette className="w-8 h-8 text-cyan-500" />
+              <div className="flex items-center space-x-3 mb-3 sm:mb-4">
+                <Palette className="w-6 sm:w-8 h-6 sm:h-8 text-cyan-500 flex-shrink-0" />
                 <h4
-                  className={`text-xl font-semibold ${
+                  className={`text-lg sm:text-xl font-semibold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -252,7 +254,7 @@ export default function Skill() {
                 </h4>
               </div>
               <p
-                className={`${
+                className={`text-sm sm:text-base ${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
@@ -263,10 +265,10 @@ export default function Skill() {
         </div>
 
         {/* Skills Progress Section */}
-        <div ref={progressRef} className="mt-12">
-          <div className="text-center mb-10">
+        <div ref={progressRef} className="mt-8 sm:mt-10 md:mt-12 lg:mt-16">
+          <div className="text-center mb-8 sm:mb-10">
             <h2
-              className={`text-4xl font-bold mb-4 ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 ${
                 theme === "dark" ? "text-white" : "text-gray-900"
               }`}
             >
@@ -275,11 +277,11 @@ export default function Skill() {
                 SKILLS
               </span>
             </h2>
-            <div className="flex justify-center mb-6">
-              <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+            <div className="flex justify-center mb-4 sm:mb-6">
+              <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
             </div>
             <p
-              className={`text-lg max-w-2xl mx-auto ${
+              className={`text-base sm:text-lg max-w-2xl mx-auto px-4 ${
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -288,20 +290,20 @@ export default function Skill() {
           </div>
 
           {/* Progress Bars */}
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
             {skillsProgress.map((skill, index) => (
               <div key={index} className="relative">
                 {/* Skill Header */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 sm:mb-3">
                   <h3
-                    className={`font-semibold text-lg uppercase tracking-wide ${
+                    className={`font-semibold text-sm sm:text-base md:text-lg uppercase tracking-wide mb-1 sm:mb-0 ${
                       theme === "dark" ? "text-white" : "text-gray-900"
                     }`}
                   >
                     {skill.name}
                   </h3>
                   <span
-                    className={`text-xl font-bold ${
+                    className={`text-lg sm:text-xl font-bold ${
                       theme === "dark" ? "text-cyan-400" : "text-cyan-600"
                     }`}
                   >
@@ -311,7 +313,7 @@ export default function Skill() {
 
                 {/* Progress Bar Container */}
                 <div
-                  className={`w-full h-4 rounded-full overflow-hidden ${
+                  className={`w-full h-3 sm:h-4 rounded-full overflow-hidden ${
                     theme === "dark" ? "bg-gray-700" : "bg-gray-300"
                   }`}
                 >
@@ -327,7 +329,7 @@ export default function Skill() {
                     {/* Shine effect - Fixed the animation conflict */}
                     {animatedBars.includes(index) && (
                       <div
-                        className="absolute top-0 left-0 h-full w-8 bg-white opacity-30 transform skew-x-12"
+                        className="absolute top-0 left-0 h-full w-6 sm:w-8 bg-white opacity-30 transform skew-x-12"
                         style={{
                           animation: `shine 2s ease-in-out infinite ${
                             index * 0.3

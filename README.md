@@ -1,34 +1,42 @@
 # Eroll Oliver Portfolio
 
-A modern, responsive portfolio website showcasing digital marketing expertise, video editing, graphic design, and web development skills. Built with Next.js, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website showcasing digital marketing expertise, video editing, graphic design, and web development skills. Built with Next.js 15.5.2, TypeScript, and Tailwind CSS 4 with advanced animations and interactive components.
 
 ## 🌟 Features
 
 ### Core Functionality
 
-- **Responsive Design**: Fully responsive across all device sizes
-- **Dark/Light Theme**: Toggle between light and dark modes with persistent preferences
-- **Interactive UI**: Smooth animations and transitions throughout
-- **Performance Optimized**: Fast loading with Next.js optimization
+- **Responsive Design**: Fully responsive across all device sizes with mobile-first approach
+- **Dark/Light Theme**: Toggle between light and dark modes with persistent preferences and system detection
+- **Interactive UI**: Smooth animations and transitions throughout with scroll-triggered effects
+- **Performance Optimized**: Fast loading with Next.js 15 optimization and Turbopack
+- **Accessibility**: Full keyboard navigation, screen reader support, and focus management
 
 ### Portfolio Sections
 
-- **Hero Section**: Dynamic text typing animation with 3D lanyard component
-- **About Section**: Personal information with interactive flip cards
-- **Skills**: Technology stack showcase with categorized skills
-- **Projects**: Social media campaigns with image galleries and modals
-- **Graphic Design**: Portfolio showcase with click-to-expand functionality
-- **Video Gallery**: Professional video content with Google Drive integration
-- **Services**: Complete service offerings with detailed descriptions
-- **Contact**: Functional contact form with validation
+- **Hero Section**: Dynamic text typing animation with 3D lanyard component and interactive elements
+- **About Section**: Personal information with interactive flip cards and smooth animations
+- **Gallery**: Circular image gallery with hover effects and modal viewers
+- **Skills**: Technology stack showcase with animated progress bars and categorized skill cards
+- **Worldwide Experience**: Full-screen video background with animated statistics counters
+- **Work Experience**: Professional timeline with 6 detailed experience cards and staggered animations
+- **Services**: Complete service offerings with detailed descriptions and interactive cards
+- **Projects**: Social media campaigns with image galleries and detailed project modals
+- **Web Images**: Dedicated web development portfolio showcase
+- **Video Gallery**: Professional video content with optimized loading
+- **Contact**: Functional contact form with validation and success states
 
 ### Technical Features
 
-- **Theme System**: Custom theme provider with system preference detection
-- **Image Optimization**: Next.js Image component with lazy loading
+- **Theme System**: Custom theme provider with context API and persistent storage
+- **Image Optimization**: Next.js Image component with lazy loading and responsive images
 - **3D Components**: Interactive 3D lanyard using Three.js and React Three Fiber
-- **Type Safety**: Full TypeScript implementation
-- **Modular Architecture**: Component-based structure for maintainability
+- **Video Integration**: MP4 video backgrounds with error handling and autoplay optimization
+- **Type Safety**: Full TypeScript implementation with strict type checking
+- **Modular Architecture**: Component-based structure for maintainability and reusability
+- **Scroll Animations**: IntersectionObserver-based animations for performance
+- **Navigation**: Auto-hiding navbar with smooth scroll and mobile-responsive burger menu
+- **Scroll to Top**: Fixed position button with theme-aware styling
 
 ## 🚀 Getting Started
 
@@ -42,8 +50,8 @@ A modern, responsive portfolio website showcasing digital marketing expertise, v
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/eroll-portfolio.git
-   cd eroll-portfolio
+   git clone https://github.com/Eroll97/erolloliver.github.io.git
+   cd eroll_portfolio
    ```
 
 2. **Install dependencies**
@@ -75,70 +83,129 @@ A modern, responsive portfolio website showcasing digital marketing expertise, v
 
 ## 📁 Project Structure
 
-```
+````
 eroll_portfolio/
 ├── public/
 │   └── assets/
-│       ├── graphic-design/     # Graphic design portfolio images
-│       ├── sample-social-media/ # Social media campaign images
-│       └── service-section/     # Service offering images
+│       ├── circular-gallery/      # Circular gallery images
+│       ├── graphic-design/        # Graphic design portfolio images
+│       ├── sample-social-media/   # Social media campaign images
+│       ├── service-section/       # Service offering images
+│       ├── web-images/           # Web development portfolio
+│       ├── worldwide.mp4         # Background video for worldwide section
+│       └── *.jpeg, *.png         # Profile and team images
 ├── src/
 │   └── app/
 │       ├── components/
-│       │   ├── card/           # Reusable card components
-│       │   ├── providers/      # Context providers (Theme, etc.)
-│       │   ├── sections/       # Main page sections
-│       │   └── ui/            # UI components (3D, animations)
-│       ├── layouts/           # Layout components (Navbar, Footer)
-│       └── globals.css        # Global styles
-├── tailwind.config.ts         # Tailwind CSS configuration
-└── next.config.js            # Next.js configuration
-```
-
-## 🎨 Theme System
-
-The portfolio includes a comprehensive dark/light theme system:
-
-### Theme Provider
-
-```typescript
-interface ThemeContextType {
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-}
-```
-
-### Usage in Components
-
-```tsx
-const { theme } = useTheme();
-
-<div className={`${
-  theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-}`}>
-```
-
-### Theme Classes
-
-- **Backgrounds**: `bg-white dark:bg-gray-900`
-- **Text**: `text-gray-900 dark:text-white`
-- **Borders**: `border-gray-300 dark:border-gray-700`
-- **Hover States**: `hover:bg-gray-100 dark:hover:bg-gray-800`
-
+│       │   ├── animated-component/ # Animation components
+│       │   │   └── CircularGallery.tsx
+│       │   ├── card/              # Reusable card components
+│       │   │   └── graphic-design-showcase.tsx
+│       │   ├── providers/         # Context providers
+│       │   │   ├── ThemeProvider.tsx
+│       │   │   └── ThemeToggle.tsx
+│       │   ├── sections/          # Main page sections
+│       │   │   ├── AboutSection.tsx
+│       │   │   ├── ContactSection.tsx
+│       │   │   ├── FirstSection.tsx
+│       │   │   ├── Gallery.tsx
+│       │   │   ├── ProjectsSection.tsx
+│       │   │   ├── Services.tsx
+│       │   │   ├── Skill.tsx
+│       │   │   ├── VideoSection.tsx
+│       │   │   ├── WebImagesSection.tsx
+│       │   │   ├── WorkExperience.tsx
+│       │   │   └── WorldwideExperience.tsx
+│       │   ├── Text-animation/    # Text animation components
+│       │   │   ├── ScrollFloat.tsx
+│       │   │   ├── ScrollReveal.tsx
+│       │   │   └── TextType.tsx
+│       │   └── ui/               # UI components
+│       │       ├── assets/       # 3D assets
+│       │       ├── Lanyard.tsx   # 3D business card
+│       │       ├── PixelTransition.tsx
+│       │       └── ScrollToTop.tsx
+│       ├── layouts/              # Layout components
+│       │   ├── Footer.tsx
+│       │   └── Navbar.tsx
+│       ├── hooks/               # Custom React hooks
+│       ├── lib/                 # Utility functions
+│       ├── globals.css          # Global styles
+│       ├── layout.tsx           # Root layout
+│       └── page.tsx            # Main page component
 ## 📱 Component Architecture
 
 ### Section Components
 
+#### WorldwideExperience
+
+Full-screen video background section with animated statistics:
+
+```typescript
+interface Counters {
+  projects: number;
+  clients: number;
+  years: number;
+  feedback: number;
+}
+````
+
+Features:
+
+- MP4 video background with error fallback
+- IntersectionObserver for scroll detection
+- Animated counters (0 → target in 2 seconds)
+- Staggered stat card animations
+- Full viewport width with negative margins
+
+#### WorkExperience
+
+Professional timeline with detailed experience cards:
+
+```typescript
+interface Experience {
+  title: string;
+  period: string;
+  description: string;
+}
+```
+
+Features:
+
+- 6 detailed work experience entries
+- Scroll-triggered fade-in animations
+- 2-column responsive grid layout
+- Theme-aware hover effects
+
+#### Skill
+
+Technology showcase with animated progress bars:
+
+```typescript
+interface SkillProgress {
+  name: string;
+  percentage: number;
+  color: string;
+}
+```
+
+Features:
+
+- Categorized skill cards with icons
+- Animated progress bars with shine effects
+- IntersectionObserver for trigger animations
+- Staggered bar animations (300ms delays)
+
 #### VideoSection
 
-Displays professional video content with Google Drive integration:
+Professional video content display:
 
 ```typescript
 interface VideoItem {
   id: string;
   embedUrl: string;
   thumbnail: string;
-  click: string;
+  title: string;
 }
 ```
 
@@ -161,6 +228,123 @@ interface Project {
 }
 ```
 
+#### CircularGallery
+
+Interactive circular image gallery component:
+
+Features:
+
+- Smooth circular layout animation
+- Hover effects with scale and rotation
+- Modal image viewer
+- Responsive design
+
+## 🎯 Key Features Implementation
+
+### Advanced Animations
+
+- **Scroll-Triggered Animations**: IntersectionObserver API for performance
+- **Staggered Entrances**: Delayed animations for multiple elements
+- **Progress Bar Animations**: 1.5s duration with easing functions
+- **Counter Animations**: Smooth number counting over 2 seconds
+- **3D Interactions**: Three.js physics and material animations
+
+### Video Integration
+
+- **MP4 Background Videos**: Optimized for web with autoplay
+- **Error Handling**: Graceful fallback to gradient backgrounds
+- **Video Controls**: Autoplay, loop, muted for user experience
+- **Performance**: Lazy loading and intersection-based playback
+
+### Image Galleries
+
+- **Multiple Formats**: Support for various image types and sizes
+- **Modal Viewers**: Full-screen image viewing with navigation
+- **Thumbnail Previews**: Optimized loading with Next.js Image
+- **Responsive Grids**: Adaptive layouts for different screen sizes
+
+### Navigation System
+
+- **Auto-Hide Navbar**: Hides on scroll down, shows on scroll up
+- **Smooth Scrolling**: CSS scroll-behavior and JavaScript fallbacks
+- **Mobile Menu**: Animated burger menu with backdrop blur
+- **Section Highlighting**: Active section detection
+
+## 🔧 Configuration
+
+### Next.js 15.5.2 Configuration
+
+The project uses Next.js 15 with Turbopack for development:
+
+```typescript
+const nextConfig = {
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
+};
+```
+
+### Tailwind CSS 4
+
+Advanced Tailwind configuration with custom animations:
+
+```typescript
+const config: Config = {
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    extend: {
+      animation: {
+        shine: "shine 2s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+      },
+      keyframes: {
+        shine: {
+          "0%": { transform: "translateX(-100%) skewX(12deg)" },
+          "100%": { transform: "translateX(300px) skewX(12deg)" },
+        },
+      },
+    },
+  },
+};
+```
+
+### TypeScript Configuration
+
+Strict TypeScript setup with path mapping:
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+#### Text Animations
+
+- **TextType**: Typewriter effect for hero section
+- **ScrollReveal**: Fade-in animations on scroll
+- **ScrollFloat**: Floating animations for elements
+  images?: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+  status: "completed" | "in-progress" | "planned";
+  }
+
+````
+
 #### GraphicDesignShowcase
 
 Interactive portfolio component for design work:
@@ -171,7 +355,7 @@ interface GraphicDesign {
   title: string;
   image: string;
 }
-```
+````
 
 ### UI Components
 
@@ -193,14 +377,20 @@ Persistent theme switching with local storage:
 
 ## 🎯 Key Features Implementation
 
-### Image Galleries
+## 📄 Environment Variables
 
-- Multiple image support for projects
-- Modal viewers with navigation
-- Thumbnail previews
-- Responsive image optimization
+Create a `.env.local` file for any environment-specific configurations:
 
-### Video Integration
+````bash
+# Theme preferences
+NEXT_PUBLIC_DEFAULT_THEME=dark
+
+# Analytics (if needed)
+# NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
+
+# Contact form integration (if needed)
+# NEXT_PUBLIC_EMAIL_SERVICE_ID=your_email_service_id
+``` Video Integration
 
 - Google Drive video embedding
 - Custom thumbnail generation
@@ -208,21 +398,21 @@ Persistent theme switching with local storage:
 - Modal video player
 
 ### Contact Form
+## 📞 Contact
 
-- Form validation
-- Theme-aware styling
-- Responsive design
-- Success/error states
+**Eroll Oliver**
 
-### Navigation
+- Portfolio: [https://erolloliver.github.io](https://erolloliver.github.io)
+- GitHub: [https://github.com/Eroll97](https://github.com/Eroll97)
+- Repository: [erolloliver.github.io](https://github.com/Eroll97/erolloliver.github.io)
 
-- Smooth scroll to sections
-- Mobile-responsive menu
-- Theme-aware styling
-- Active section highlighting
+## 🙏 Acknowledgments
 
-## 🔧 Configuration
-
+- [Next.js 15](https://nextjs.org/) - React framework with Turbopack
+- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/) - 3D graphics for React
+- [Lucide React](https://lucide.dev/) - Beautiful icon library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety and developer experience
 ### Tailwind CSS
 
 The project uses Tailwind CSS with custom configuration:
@@ -232,7 +422,7 @@ const config: Config = {
   darkMode: "class",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
 };
-```
+````
 
 ### Next.js Configuration
 

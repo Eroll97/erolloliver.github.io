@@ -54,23 +54,23 @@ export default function ContactSection() {
 
   return (
     <section
-      className={`py-12 sm:py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-8 sm:py-12 lg:py-16 px-3 sm:px-4 lg:px-6 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-50 text-gray-900"
       }`}
       id="contact"
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${
+            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
             Get In Touch
           </h2>
           <p
-            className={`text-base sm:text-lg max-w-3xl mx-auto px-4 ${
+            className={`text-sm sm:text-base lg:text-lg max-w-3xl mx-auto px-3 sm:px-4 ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -80,7 +80,7 @@ export default function ContactSection() {
         </div>
 
         {/* Contact Methods Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {contactMethods.map((method, index) => {
             const IconComponent = method.icon;
             return (
@@ -89,31 +89,31 @@ export default function ContactSection() {
                 href={method.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+                className={`group relative overflow-hidden rounded-xl p-4 sm:p-5 lg:p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                   theme === "dark"
                     ? "bg-gray-700 hover:bg-gray-600 border border-gray-600"
                     : "bg-white hover:bg-gray-50 border border-gray-200 shadow-md hover:shadow-xl"
                 }`}
               >
                 {/* Icon Background */}
-                <div className="flex flex-col items-center text-center space-y-3">
+                <div className="flex flex-col items-center text-center space-y-2 sm:space-y-3">
                   <div
-                    className={`p-4 rounded-full ${method.color} transition-transform duration-300 group-hover:scale-110`}
+                    className={`p-3 sm:p-4 rounded-full ${method.color} transition-transform duration-300 group-hover:scale-110`}
                   >
-                    <IconComponent className="w-8 h-8 text-white" />
+                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
 
                   {/* Content */}
                   <div>
                     <h3
-                      className={`font-semibold text-lg mb-1 ${
+                      className={`font-semibold text-base sm:text-lg mb-1 ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {method.label}
                     </h3>
                     <p
-                      className={`text-sm ${
+                      className={`text-xs sm:text-sm ${
                         theme === "dark" ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
@@ -130,9 +130,9 @@ export default function ContactSection() {
         </div>
 
         {/* Additional Info */}
-        <div className="text-center mt-12 sm:mt-16">
+        <div className="text-center mt-8 sm:mt-12 lg:mt-16">
           <p
-            className={`text-sm ${
+            className={`text-xs sm:text-sm ${
               theme === "dark" ? "text-gray-400" : "text-gray-500"
             }`}
           >

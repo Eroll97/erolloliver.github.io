@@ -11,7 +11,7 @@ export default function AboutSection() {
 
   return (
     <section
-      className={`py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+      className={`py-8 sm:py-12 lg:py-16 px-3 sm:px-4 lg:px-6 transition-colors duration-300 ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
       id="about"
@@ -29,18 +29,18 @@ export default function AboutSection() {
         </ScrollFloat>
 
         {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
+          <div className="space-y-4 sm:space-y-6">
             <ScrollReveal
               baseOpacity={1}
               enableBlur={true}
               baseRotation={10}
               blurStrength={15}
             >
-              Hi, I&apos;m Eroll Oliver — a passionate developer, loving husband, and
-              proud father. With deep expertise in WordPress and GoHighLevel, I
-              create websites that are not only visually striking but also
-              optimized for performance and user experience.
+              Hi, I&apos;m Eroll Oliver — a passionate developer, loving
+              husband, and proud father. With deep expertise in WordPress and
+              GoHighLevel, I create websites that are not only visually striking
+              but also optimized for performance and user experience.
             </ScrollReveal>
 
             <ScrollReveal
@@ -49,10 +49,10 @@ export default function AboutSection() {
               baseRotation={10}
               blurStrength={15}
             >
-              Whether it&apos;s a sleek portfolio or a powerful e-commerce platform,
-              I make sure your site looks amazing and works flawlessly. Beyond
-              web development, I bring a versatile skill set to support your
-              business operations. together.
+              Whether it&apos;s a sleek portfolio or a powerful e-commerce
+              platform, I make sure your site looks amazing and works
+              flawlessly. Beyond web development, I bring a versatile skill set
+              to support your business operations. together.
             </ScrollReveal>
             <ScrollReveal
               baseOpacity={1}
@@ -79,8 +79,8 @@ export default function AboutSection() {
               hard work, creativity, and purpose. What sets me apart is my drive
               for innovation and continuous improvement. I embrace challenges
               and always aim to push boundaries to deliver outstanding results.
-              Let&apos;s connect and explore how we can elevate your business to new
-              heights — together.
+              Let&apos;s connect and explore how we can elevate your business to
+              new heights — together.
             </ScrollReveal>
           </div>
           {/* Image section with PixelTransition */}
@@ -150,8 +150,6 @@ export default function AboutSection() {
             />
           </div>
         </div>
-
-     
       </div>
     </section>
   );
