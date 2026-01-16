@@ -8,7 +8,6 @@ import {
   Linkedin,
   Instagram,
   Facebook,
-  ExternalLink,
 } from "lucide-react";
 
 export default function ContactSection() {
