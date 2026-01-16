@@ -140,7 +140,7 @@ export default function FirstSection() {
           </div>
 
           <a
-            href="https://drive.google.com/file/d/1wikQl77-nIu-bgLFePNkNT4jTvslUQ5j/view"
+            href="https://drive.google.com/file/d/1SgJqoTxVhouscmccF8iwM1Hs0sq7nee2/view"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-6"
@@ -322,7 +322,7 @@ export default function FirstSection() {
           </div>
 
           <a
-            href="https://drive.google.com/file/d/1wikQl77-nIu-bgLFePNkNT4jTvslUQ5j/view"
+            href="https://drive.google.com/file/d/1SgJqoTxVhouscmccF8iwM1Hs0sq7nee2/view"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 text-base rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-6"
